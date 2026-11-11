@@ -61,3 +61,13 @@ test('specs: colspan fills every covered column', () => {
   </table></div>`;
   assert.deepEqual(parseProductPage(html).specs, [{ Club: '7 Iron', Loft: 'Adjustable', Lie: 'Adjustable' }]);
 });
+
+test('specs: a bullet list becomes one record; unlabeled items are numbered', () => {
+  const html = `<div id="specs"><h4>Specs</h4><ul>
+    <li><span>Magnification: 6x </span></li><li>5.4 lbs</li><li>Range:  5 - 1,300 yards</li></ul></div>`;
+  assert.deepEqual(parseProductPage(html).specs, [{ Magnification: '6x', 'Item 2': '5.4 lbs', Range: '5 - 1,300 yards' }]);
+});
+
+test('specs: no table and no list gives an empty list', () => {
+  assert.deepEqual(parseProductPage('<div id="specs"><p> </p></div>').specs, []);
+});

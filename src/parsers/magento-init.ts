@@ -144,10 +144,27 @@ function parseDescription($: cheerio.CheerioAPI): string | null {
   return text || null;
 }
 
+/**
+ * Clubs publish a table (one record per row). Bags, GPS units and accessories often publish a bullet
+ * list instead ("Magnification: 6x", "5.4 lbs"): it becomes a single record, unlabeled items keyed
+ * "Item N".
+ */
 function parseSpecs($: cheerio.CheerioAPI): Record<string, string>[] {
   const [header, ...body] = tableGrid($, '#specs table').filter((r) => r.some(Boolean));
-  if (!header) return [];
-  return body.map((cells) => Object.fromEntries(header.map((h, i) => [h || `col${i}`, cells[i] ?? ''])));
+  if (header) return body.map((cells) => Object.fromEntries(header.map((h, i) => [h || `col${i}`, cells[i] ?? ''])));
+
+  const items = $('#specs li')
+    .map((_, li) => $(li).text().replace(/\s+/g, ' ').trim())
+    .get()
+    .filter(Boolean);
+  if (items.length === 0) return [];
+  const record: Record<string, string> = {};
+  items.forEach((text, i) => {
+    const match = /^([^:]{1,40}):\s*(.+)$/.exec(text);
+    if (match) record[match[1]!.trim()] = match[2]!;
+    else record[`Item ${i + 1}`] = text;
+  });
+  return [record];
 }
 
 /**
