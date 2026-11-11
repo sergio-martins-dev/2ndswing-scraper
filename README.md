@@ -91,7 +91,7 @@ the ld+json image is enough, and, in production, re-fetching only products that 
 One record per product: identity, `attributes` (site display order), `variants` as a
 `{fields, rows}` matrix (one row per valid child SKU; attribute cells index into
 `attributes[i].options`, which keeps 444k configurations at 47 MB instead of 214 MB),
-`customizations` (upcharge groups with `priceDelta`), `pricing` (`per_variant` or `per_club`, club
+`customizations` (upcharge groups with `priceDelta` and a normalized `kind`), `pricing` (`per_variant` or `per_club`, club
 selection), `specs`, `media`, `meta` (how and when the page was fetched).
 Full example and field notes: [docs/data-model.md](docs/data-model.md).
 

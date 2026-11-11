@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseProductPage } from '../src/parsers/magento-init.ts';
-import { parseCustomizations } from '../src/parsers/customizations.ts';
+import { customizationKind, parseCustomizations } from '../src/parsers/customizations.ts';
 import { parseVariants } from '../src/parsers/variants.ts';
 import { configurationPrice } from '../src/pricing.ts';
 import { fixture } from './helpers.ts';
@@ -60,4 +60,35 @@ test('simple product: no customizations, per-variant pricing', () => {
   const { customizations, pricing } = load('fenix-9-pro-solar-gpsw');
   assert.equal(customizations.length, 0);
   assert.equal(pricing.model, 'per_variant');
+});
+
+test('customization kind: every label spelling seen in the full run maps to one canonical kind', () => {
+  const expected: Record<string, string[]> = {
+    grip: ['Grips', 'Grip', 'Grip Model', 'GripModel(InstallPriceIncluded)'],
+    grip_install: [
+      'Install Grips / Grip Size', 'Install Grip/Grip Size', 'Install Grip / Grip Size', 'InstallGrip/GripSize',
+      'InstallGrips/GripSize', 'Instal Grip/Grip Size', 'Grip Install', 'GripInstall', 'Install Options', 'Wraps',
+    ],
+    length: ['Length', 'Length Adjustment'],
+    loft: ['Loft', 'Loft Adjustment', 'LoftAdjustment'],
+    lie: ['Lie Angle', 'LieAngle', 'Lie Angle Adjustment', 'LieAngleAdjustment', 'Lie Adjustment'],
+    head_weight: ['Headweight', 'Head Weight', 'HeadWeight'],
+    hosel_setting: ['Hosel Setting', 'HoselSetting'],
+    tip_adapter: ['TipAdapter'],
+    shaft_lean: ['Shaft Lean', 'ShaftLean'],
+    alignment_back: ['AlignmentBack', 'Alignment Back', 'Alignment Mark Back'],
+    alignment_front: ['AlignmentFront', 'Alignment Front', 'Alignment Mark Front'],
+    sure_fit_cg: ['SureFit CG'],
+    weight_position: ['Weight Position'],
+  };
+  for (const [kind, labels] of Object.entries(expected)) {
+    for (const label of labels) assert.equal(customizationKind(label), kind, label);
+  }
+});
+
+test('customization kind is set on parsed groups; label keeps the site spelling', () => {
+  const { customizations } = load('zxi-rkt-max-dvr');
+  const install = customizations.find((c) => c.label === 'Install Grips / Grip Size')!;
+  assert.equal(install.kind, 'grip_install');
+  assert.equal(customizations.find((c) => c.label === 'Grips')!.kind, 'grip');
 });

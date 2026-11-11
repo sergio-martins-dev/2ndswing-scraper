@@ -37,7 +37,10 @@ export const ProductSchema = z.object({
   customizations: z.array(
     z.object({
       groupId: z.string(),
+      /** As written on the page. */
       label: z.string(),
+      /** Normalized group name for comparisons across products (grip, grip_install, lie, loft, ...). */
+      kind: z.string(),
       inputType: z.enum(['select', 'checkbox']),
       optionType: z.string(),
       options: z.array(z.object({ id: z.string(), name: z.string(), priceDelta: z.number(), isDefault: z.boolean() })),

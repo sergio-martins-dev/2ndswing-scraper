@@ -26,7 +26,7 @@ validated before it is written. `data/sample/` shows three real records and thei
     "rows": [["9279969", "C4613261", 849.99, null, 21, 1, 1, 1, 64], ...]   // 660 rows
   },
   "customizations": [                               // upcharges on top of a configuration
-    { "groupId": "...", "label": "Grips", "inputType": "select", "optionType": "grips",
+    { "groupId": "...", "label": "Grips", "kind": "grip", "inputType": "select", "optionType": "grips",
       "options": [{ "id": "622724080", "name": "Golf Pride CP2 Pro Jumbo", "priceDelta": 9.99, "isDefault": false }, ...] }
   ],
   "pricing": { "model": "per_variant", "defaultClubCount": 1, "clubSelection": null },
@@ -82,5 +82,8 @@ page publishes price 0 (out of stock).
 
 ## Labels
 
-Attribute and customization labels are stored as the site writes them. The same group appears
-under several spellings (`Install Grips / Grip Size`, `InstallGrip/GripSize`, …).
+Labels are stored as the site writes them. Customization groups also get a normalized `kind`:
+the site uses 47 spellings for 20 groups (`Install Grips / Grip Size`, `InstallGrip/GripSize`,
+`Grip Install` → `grip_install`; `Lie Angle`, `LieAngle`, `Lie Adjustment` → `lie`). Known synonyms
+are listed in `src/parsers/customizations.ts`; any other label falls back to snake_case. Attribute
+codes (`g2_shaft_flex`…) are already canonical.

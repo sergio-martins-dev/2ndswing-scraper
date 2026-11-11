@@ -36,6 +36,7 @@ export function parseCustomizations(page: Pick<ParsedPage, 'ironset' | 'optionLa
     customizations.push({
       groupId,
       label,
+      kind: customizationKind(label),
       inputType: page.optionInputTypes[groupId] ?? 'select',
       optionType: entries[0]![1].option_type,
       options: entries.map(([id, o]) => ({
@@ -59,4 +60,42 @@ export function parseCustomizations(page: Pick<ParsedPage, 'ironset' | 'optionLa
       clubSelection,
     },
   };
+}
+
+/** Label spellings of the same group (key = label lowercased, letters only) -> canonical kind. */
+const KIND_SYNONYMS: Record<string, string> = {
+  grips: 'grip',
+  gripmodel: 'grip',
+  gripmodelinstallpriceincluded: 'grip',
+  installgripsgripsize: 'grip_install',
+  installgripgripsize: 'grip_install',
+  instalgripgripsize: 'grip_install',
+  gripinstall: 'grip_install',
+  installoptions: 'grip_install',
+  wraps: 'grip_install',
+  lengthadjustment: 'length',
+  loftadjustment: 'loft',
+  lieangle: 'lie',
+  lieangleadjustment: 'lie',
+  lieadjustment: 'lie',
+  headweight: 'head_weight',
+  alignmentmarkback: 'alignment_back',
+  alignmentmarkfront: 'alignment_front',
+};
+
+/**
+ * Canonical, comparable name for a customization group. The site writes the same group many ways
+ * ("Install Grips / Grip Size", "InstallGrip/GripSize", "Grip Install"); `label` keeps the original.
+ * Unlisted labels fall back to snake_case ("Hosel Setting" / "HoselSetting" -> hosel_setting).
+ */
+export function customizationKind(label: string): string {
+  const key = label.toLowerCase().replace(/[^a-z]/g, '');
+  return (
+    KIND_SYNONYMS[key] ??
+    label
+      .replace(/([a-z])([A-Z])/g, '$1 $2')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '')
+  );
 }
