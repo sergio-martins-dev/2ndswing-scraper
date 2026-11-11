@@ -1,0 +1,2971 @@
+{
+  "metadata": {
+    "scrapedAt": "2026-11-11T18:05:55.410Z",
+    "totalInput": 3,
+    "successful": 3,
+    "unmatched": 0,
+    "failed": 0,
+    "totalVariants": 813,
+    "runtimeMs": 158,
+    "productsPerSecond": 18.99,
+    "concurrency": 8,
+    "proxy": true,
+    "networkMs": {
+      "count": 0,
+      "mean": 0,
+      "p50": 0,
+      "p95": 0,
+      "max": 0
+    },
+    "parseMs": {
+      "count": 3,
+      "mean": 31.4,
+      "p50": 35.7,
+      "p95": 36.1,
+      "max": 36.1
+    },
+    "requests": {
+      "network": 0,
+      "fromCache": 6,
+      "retries": 0
+    },
+    "priceCheck": {
+      "checked": 3,
+      "matched": 3,
+      "mismatches": []
+    }
+  },
+  "products": [
+    {
+      "parentItem": "FENIX 9 PRO SOLAR GPSW",
+      "name": "Garmin fenix 9 Pro Solar GPS Watch",
+      "brand": "Garmin",
+      "category": "GPS Watch",
+      "url": "https://www.2ndswing.com/accessories/gps-watches/garmin-fenix-9-pro-solar-gps-watch/fenix-9-pro-solar-gpsw",
+      "productId": "9250644",
+      "listedPrice": 1099.99,
+      "currency": "USD",
+      "availability": "InStock",
+      "description": "Who’s It For?\nDesigned for dedicated athletes, endurance enthusiasts, and outdoor adventurers who need maximum battery life and premium durability, the Garmin fenix 9 Pro Solar GPS Watch is ideal for users who spend long hours training, competing, or exploring in demanding environments. Its lightweight titanium construction, solar-charging lens, advanced stamina and endurance tracking, and enhanced navigation capabilities make it especially well suited for those who want extended time between charges without sacrificing performance insights. Optional inReach connectivity also appeals to adventurers venturing into remote areas who value an added layer of communication and peace of mind beyond traditional cellular coverage.\nThe Tech Story\nThe Garmin fenix 9 Pro GPS Watch is engineered as a premium multisport smartwatch that combines exceptional durability, advanced performance tracking, and extended battery life for athletes and adventurers who push their limits. Its lightweight yet rugged titanium case, scratch-resistant sapphire lens, leakproof metal buttons, and solar-charged 1.4-inch always-on display deliver up to 57 days of battery life in smartwatch mode while meeting U.S. military standards for thermal, shock, and water resistance. Performance-focused features include more than 100 activity profiles, advanced training tools, and enhanced stamina metrics that provide deeper insight into endurance and fitness progression. For navigation, smoother TopoActive maps and tools such as dynamic round-trip routing, NextFork™ guidance, and grade-adjusted pacing help users confidently explore virtually any environment. The watch also integrates a built-in speaker and microphone for wrist-based calling, voice messaging, and smartphone assistant access, while an integrated LED flashlight offers adjustable white, red, and green illumination for added versatility. Comprehensive 24/7 wellness tracking, including HRV status and sleep coaching, helps users better understand recovery and readiness, while Garmin Epic allows them to capture, relive, and share multi-day adventures complete with photos, health metrics, and performance data in a seamless digital story.\nWhat’s Inclduded\nFēnix 9 Pro smartwatch\nCharging/data cable\nDocumentation\nDimensions\nSizing: 51mm x 51mm x 16.6mm\nWeight: 102g (Case Only: 77g)\nGet Fit\n2nd Swing offers award-winning club fitting services at each of our store locations and through the 2nd Swing Online Fitting and Support team on 2ndswing.com. Make sure your equipment is fit for your game and schedule your award-winning fitting experience by calling (612) 216-4152 or by visiting the 2nd Swing fitting website: https://www.2ndswing.com/golf-club-fittings.",
+      "specs": [],
+      "attributes": [],
+      "variants": {
+        "fields": ["childId", "sku", "price", "regularPrice", "leadTimeDays"],
+        "rows": [
+          ["9250644", "FENIX 9 PRO SOLAR GPSW", 1099.99, null, null]
+        ]
+      },
+      "customizations": [],
+      "pricing": {
+        "model": "per_variant",
+        "defaultClubCount": 1,
+        "clubSelection": null
+      },
+      "media": {
+        "images": ["https://www.2ndswing.com/images/standard/FENIX%209%20PRO%20SOLAR%20GPSW.jpg", "https://www.2ndswing.com/images/standard/FENIX%209%20PRO%20SOLAR%20GPSW_2.jpg", "https://www.2ndswing.com/images/standard/FENIX%209%20PRO%20SOLAR%20GPSW_3.jpg", "https://www.2ndswing.com/images/standard/FENIX%209%20PRO%20SOLAR%20GPSW_4.jpg", "https://www.2ndswing.com/images/standard/FENIX%209%20PRO%20SOLAR%20GPSW_5.jpg"],
+        "videos": []
+      },
+      "meta": {
+        "resolvedVia": "root_slug",
+        "fetchedAt": "2026-11-11T14:01:54.089Z"
+      }
+    },
+    {
+      "parentItem": "PRO S4 STS",
+      "name": "Mizuno Pro S-4 Iron Set",
+      "brand": "Mizuno",
+      "category": "Iron Set",
+      "url": "https://www.2ndswing.com/golf-clubs/iron-sets/mizuno-pro-s-4-iron-set/pro-s4-sts",
+      "productId": "9246161",
+      "listedPrice": 1505,
+      "currency": "USD",
+      "availability": "InStock",
+      "description": "Who’s It For?\nDesigned for accomplished golfers who value the soft, responsive feel of a forged iron but want added forgiveness and confidence throughout the set, the Mizuno Pro S-4 Irons blend traditional shot-making precision with modern playability. The progressive offset, wider sole, deeper center of gravity, and lower-positioned mass help promote higher launch, greater stability, and increased forgiveness, making it easier to maintain consistent performance across the bag. Golfers who appreciate the feedback, workability, and craftsmanship of Mizuno’s Grain Flow Forged HD process will find it especially appealing, offering a balance of control and forgiveness without sacrificing the premium forged feel Mizuno is known for.\nThe Tech Story\nThe Mizuno Pro S-4 Irons combine the legendary feel of a forged Mizuno iron with modern performance enhancements designed to inspire more confidence throughout the set. At the core of the design is a redesigned curved muscle that strategically positions mass lower in the clubhead to increase forgiveness, promote higher launch, and improve stability while preserving the classic, compact Mizuno Pro profile preferred by skilled players. Each iron is Grain Flow Forged HD from a single billet of 1025E Mild Carbon Steel in Hiroshima, Japan, delivering the exceptionally soft feel, precise feedback, and workability that define Mizuno’s forged heritage. Progressive head geometry incorporates increased offset, a wider sole, and a deeper center of gravity to make launching the ball easier while enhancing forgiveness and consistency. The Triple Cut Sole features beveled leading and trailing edges for cleaner turf interaction and smoother movement through impact, while a copper underlay further refines feel for a softer, more responsive sensation. Complementing these technologies, Harmonic Impact Technology (HIT) precisely tunes vibration frequencies to produce the solid, satisfying sound and feel expected from Mizuno’s most premium forged irons.\nFacts and Figures\nConstruction: Forged\nCategory: Players\nMaterial: 1025E Mild Carbon Steel\nStock Set Makeup: 4 – PW\nStock Shafts and Grips\nStock Steel Shaft: True Temper Dynamic Gold MID 115 S300\nStock Grip: Golf Pride Z-Cord Std.\nGet Fit\n2nd Swing offers award-winning club fitting services at each of our store locations and through the 2nd Swing Online Fitting and Support team on 2ndswing.com. Make sure your equipment is fit for your game and schedule your award-winning fitting experience by calling (612) 216-4152 or by visiting the 2nd Swing fitting website: https://www.2ndswing.com/golf-club-fittings.",
+      "specs": [
+        {
+          "Club": "3",
+          "Loft": "21°",
+          "Length": "39.25\"",
+          "Bounce": "3°",
+          "Hand": "RH Only"
+        },
+        {
+          "Club": "4",
+          "Loft": "24°",
+          "Length": "38.75\"",
+          "Bounce": "3°",
+          "Hand": "RH/LH"
+        },
+        {
+          "Club": "5",
+          "Loft": "27°",
+          "Length": "38.25\"",
+          "Bounce": "4°",
+          "Hand": "RH/LH"
+        },
+        {
+          "Club": "6",
+          "Loft": "30°",
+          "Length": "37.75\"",
+          "Bounce": "5°",
+          "Hand": "RH/LH"
+        },
+        {
+          "Club": "7",
+          "Loft": "34°",
+          "Length": "37.25\"",
+          "Bounce": "6°",
+          "Hand": "RH/LH"
+        },
+        {
+          "Club": "8",
+          "Loft": "38°",
+          "Length": "36.75\"",
+          "Bounce": "7°",
+          "Hand": "RH/LH"
+        },
+        {
+          "Club": "9",
+          "Loft": "42°",
+          "Length": "36.25\"",
+          "Bounce": "8°",
+          "Hand": "RH/LH"
+        },
+        {
+          "Club": "PW",
+          "Loft": "46°",
+          "Length": "35.75\"",
+          "Bounce": "9°",
+          "Hand": "RH/LH"
+        }
+      ],
+      "attributes": [
+        {
+          "code": "g2_dexterity",
+          "label": "Dexterity",
+          "options": [
+            {
+              "id": "32795",
+              "label": "Right Handed"
+            },
+            {
+              "id": "32789",
+              "label": "Left Handed"
+            }
+          ]
+        },
+        {
+          "code": "g2_club_shaftmatl",
+          "label": "Shaft Material",
+          "options": [
+            {
+              "id": "32744",
+              "label": "Steel"
+            },
+            {
+              "id": "32741",
+              "label": "Graphite"
+            }
+          ]
+        },
+        {
+          "code": "g2_shaft_flex",
+          "label": "Shaft Flex",
+          "options": [
+            {
+              "id": "75593",
+              "label": "Regular"
+            },
+            {
+              "id": "75572",
+              "label": "Stiff"
+            },
+            {
+              "id": "75608",
+              "label": "X-Stiff"
+            },
+            {
+              "id": "75596",
+              "label": "Senior"
+            },
+            {
+              "id": "75539",
+              "label": "Ladies"
+            },
+            {
+              "id": "75611",
+              "label": "Tour X-Stiff"
+            }
+          ]
+        },
+        {
+          "code": "g2_shaft_type",
+          "label": "Shaft Model",
+          "options": [
+            {
+              "id": "121487",
+              "label": "True Temper Dynamic Gold Mid 100 R300"
+            },
+            {
+              "id": "121485",
+              "label": "True Temper Dynamic Gold Mid 100 S300"
+            },
+            {
+              "id": "119101",
+              "label": "Project X Red 5.5"
+            },
+            {
+              "id": "119103",
+              "label": "Project X Red 6.0"
+            },
+            {
+              "id": "119105",
+              "label": "Project X Red 6.5"
+            },
+            {
+              "id": "118894",
+              "label": "True Temper AMT Tour Silver"
+            },
+            {
+              "id": "117557",
+              "label": "True Temper Dynamic Gold Mid 115 TI S400 GunMetal"
+            },
+            {
+              "id": "117788",
+              "label": "True Temper Dynamic Gold Mid 115 TI X100 GunMetal"
+            },
+            {
+              "id": "116576",
+              "label": "UST Mamiya Recoil Dart ESX 440 F0"
+            },
+            {
+              "id": "116578",
+              "label": "UST Mamiya Recoil Dart ESX 450 F1"
+            },
+            {
+              "id": "116580",
+              "label": "UST Mamiya Recoil Dart ESX 460 F2"
+            },
+            {
+              "id": "116582",
+              "label": "UST Mamiya Recoil Dart ESX 460 F3"
+            },
+            {
+              "id": "113192",
+              "label": "Dynamic Gold Mid 115"
+            },
+            {
+              "id": "112505",
+              "label": "FST KBS Tour Lite Black"
+            },
+            {
+              "id": "112857",
+              "label": "Nippon NS Pro Modus 3 Tour 115"
+            },
+            {
+              "id": "110153",
+              "label": "FST KBS PGI 70"
+            },
+            {
+              "id": "110151",
+              "label": "FST KBS PGI 80"
+            },
+            {
+              "id": "110498",
+              "label": "FST KBS Tour Lite"
+            },
+            {
+              "id": "111153",
+              "label": "True Temper Dynamic Gold 95"
+            },
+            {
+              "id": "111237",
+              "label": "UST Mamiya Recoil 90 Dart"
+            },
+            {
+              "id": "85028",
+              "label": "Aerotech SteelFiber i110"
+            },
+            {
+              "id": "84557",
+              "label": "Aerotech SteelFiber i70"
+            },
+            {
+              "id": "84098",
+              "label": "Aerotech SteelFiber i95"
+            },
+            {
+              "id": "80768",
+              "label": "True Temper Dynamic Gold Tour Issue S400"
+            },
+            {
+              "id": "80729",
+              "label": "True Temper Dynamic Gold Tour Issue X100"
+            },
+            {
+              "id": "76106",
+              "label": "FST KBS Tour"
+            },
+            {
+              "id": "88388",
+              "label": "FST KBS Tour $-Taper"
+            },
+            {
+              "id": "76160",
+              "label": "FST KBS Tour Black Nickel"
+            },
+            {
+              "id": "75983",
+              "label": "FST KBS Tour C-Taper"
+            },
+            {
+              "id": "81959",
+              "label": "FST KBS Tour C-Taper Lite"
+            },
+            {
+              "id": "80189",
+              "label": "FST KBS Tour-V"
+            },
+            {
+              "id": "105158",
+              "label": "Mitsubishi MMT 105"
+            },
+            {
+              "id": "104067",
+              "label": "Mitsubishi MMT 55"
+            },
+            {
+              "id": "104065",
+              "label": "Mitsubishi MMT 65"
+            },
+            {
+              "id": "105160",
+              "label": "Mitsubishi MMT 85"
+            },
+            {
+              "id": "103962",
+              "label": "Nippon NS Pro 950GH Neo"
+            },
+            {
+              "id": "85658",
+              "label": "Nippon NS Pro Modus 3 Tour 105"
+            },
+            {
+              "id": "76535",
+              "label": "Nippon NS Pro Modus 3 Tour 120"
+            },
+            {
+              "id": "85709",
+              "label": "Nippon NS Pro Modus 3 Tour 125"
+            },
+            {
+              "id": "87290",
+              "label": "Project X LZ 5.0"
+            },
+            {
+              "id": "87020",
+              "label": "Project X LZ 5.5"
+            },
+            {
+              "id": "87002",
+              "label": "Project X LZ 6.0"
+            },
+            {
+              "id": "86972",
+              "label": "Project X LZ 6.5"
+            },
+            {
+              "id": "104541",
+              "label": "Project X LZ Black 5.5"
+            },
+            {
+              "id": "88730",
+              "label": "True Temper Dynamic Gold 105"
+            },
+            {
+              "id": "89186",
+              "label": "True Temper Dynamic Gold 120"
+            },
+            {
+              "id": "94496",
+              "label": "True Temper Dynamic Gold S300"
+            },
+            {
+              "id": "94463",
+              "label": "True Temper Dynamic Gold X100"
+            },
+            {
+              "id": "82538",
+              "label": "True Temper Dynamic Gold X7"
+            },
+            {
+              "id": "89036",
+              "label": "UST Recoil 780 ES SMACWRAP"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "fields": ["childId", "sku", "price", "regularPrice", "leadTimeDays", "g2_dexterity", "g2_club_shaftmatl", "g2_shaft_flex", "g2_shaft_type"],
+        "rows": [
+          ["9257427", "C4605039", 275, null, 21, 1, 1, 1, 20],
+          ["9257428", "C4605040", 275, null, 21, 0, 1, 1, 20],
+          ["9257429", "C4605041", 275, null, 21, 1, 1, 3, 21],
+          ["9257430", "C4605042", 275, null, 21, 0, 1, 3, 21],
+          ["9257431", "C4605043", 275, null, 21, 1, 1, 0, 22],
+          ["9257432", "C4605044", 275, null, 21, 1, 1, 1, 22],
+          ["9257433", "C4605045", 275, null, 21, 0, 1, 0, 22],
+          ["9257434", "C4605046", 275, null, 21, 0, 1, 1, 22],
+          ["9257435", "C4605047", 215, null, 21, 1, 0, 1, 12],
+          ["9257436", "C4605048", 215, null, 21, 1, 0, 2, 12],
+          ["9257437", "C4605049", 215, null, 21, 0, 0, 1, 12],
+          ["9257438", "C4605050", 215, null, 21, 0, 0, 2, 12],
+          ["9257439", "C4605051", 215, null, 21, 1, 0, 1, 26],
+          ["9257440", "C4605052", 215, null, 21, 1, 0, 2, 26],
+          ["9257441", "C4605053", 215, null, 21, 0, 0, 1, 26],
+          ["9257442", "C4605054", 215, null, 21, 0, 0, 2, 26],
+          ["9257443", "C4605055", 215, null, 21, 1, 1, 0, 15],
+          ["9257445", "C4605056", 215, null, 21, 0, 1, 0, 15],
+          ["9257446", "C4605057", 215, null, 21, 1, 1, 1, 16],
+          ["9257447", "C4605058", 215, null, 21, 0, 1, 1, 16],
+          ["9257448", "C4605059", 215, null, 21, 1, 0, 0, 25],
+          ["9257449", "C4605060", 215, null, 21, 1, 0, 1, 25],
+          ["9257450", "C4605061", 215, null, 21, 1, 0, 2, 25],
+          ["9257451", "C4605062", 215, null, 21, 0, 0, 0, 25],
+          ["9257452", "C4605063", 215, null, 21, 0, 0, 1, 25],
+          ["9257453", "C4605064", 215, null, 21, 0, 0, 2, 25],
+          ["9257454", "C4605065", 215, null, 21, 1, 0, 1, 27],
+          ["9257455", "C4605066", 215, null, 21, 1, 0, 2, 27],
+          ["9257456", "C4605067", 215, null, 21, 0, 0, 1, 27],
+          ["9257457", "C4605068", 215, null, 21, 0, 0, 2, 27],
+          ["9257458", "C4605069", 215, null, 21, 1, 0, 1, 28],
+          ["9257459", "C4605070", 215, null, 21, 0, 0, 1, 28],
+          ["9257460", "C4605071", 215, null, 21, 1, 0, 0, 29],
+          ["9257461", "C4605072", 215, null, 21, 1, 0, 1, 29],
+          ["9257462", "C4605073", 215, null, 21, 1, 0, 2, 29],
+          ["9257463", "C4605074", 215, null, 21, 0, 0, 0, 29],
+          ["9257465", "C4605075", 215, null, 21, 0, 0, 1, 29],
+          ["9257466", "C4605076", 215, null, 21, 0, 0, 2, 29],
+          ["9257467", "C4605077", 215, null, 21, 1, 0, 0, 17],
+          ["9257468", "C4605078", 215, null, 21, 1, 0, 1, 17],
+          ["9257469", "C4605079", 215, null, 21, 0, 0, 0, 17],
+          ["9257470", "C4605080", 215, null, 21, 0, 0, 1, 17],
+          ["9257471", "C4605081", 215, null, 21, 1, 0, 0, 13],
+          ["9257472", "C4605082", 215, null, 21, 1, 0, 1, 13],
+          ["9257473", "C4605083", 215, null, 21, 0, 0, 0, 13],
+          ["9257474", "C4605084", 215, null, 21, 0, 0, 1, 13],
+          ["9257475", "C4605085", 240, null, 21, 1, 0, 1, 30],
+          ["9257476", "C4605086", 240, null, 21, 1, 0, 2, 30],
+          ["9257477", "C4605087", 240, null, 21, 0, 0, 1, 30],
+          ["9257478", "C4605088", 240, null, 21, 0, 0, 2, 30],
+          ["9257479", "C4605089", 215, null, 21, 1, 1, 1, 31],
+          ["9257480", "C4605090", 215, null, 21, 1, 1, 5, 31],
+          ["9257482", "C4605091", 215, null, 21, 0, 1, 1, 31],
+          ["9257483", "C4605092", 215, null, 21, 0, 1, 5, 31],
+          ["9257484", "C4605093", 215, null, 21, 1, 1, 3, 32],
+          ["9257485", "C4605094", 215, null, 21, 0, 1, 3, 32],
+          ["9257486", "C4605095", 215, null, 21, 1, 1, 0, 33],
+          ["9257487", "C4605096", 215, null, 21, 0, 1, 0, 33],
+          ["9257488", "C4605097", 215, null, 21, 1, 1, 0, 34],
+          ["9257489", "C4605098", 215, null, 21, 1, 1, 1, 34],
+          ["9257490", "C4605099", 215, null, 21, 0, 1, 0, 34],
+          ["9257491", "C4605100", 215, null, 21, 0, 1, 1, 34],
+          ["9257492", "C4605101", 215, null, 21, 1, 0, 0, 35],
+          ["9257493", "C4605102", 215, null, 21, 1, 0, 1, 35],
+          ["9257494", "C4605103", 215, null, 21, 0, 0, 0, 35],
+          ["9257495", "C4605104", 215, null, 21, 0, 0, 1, 35],
+          ["9257496", "C4605105", 215, null, 21, 1, 0, 0, 36],
+          ["9257497", "C4605106", 215, null, 21, 1, 0, 1, 36],
+          ["9257498", "C4605107", 215, null, 21, 1, 0, 2, 36],
+          ["9257499", "C4605108", 215, null, 21, 0, 0, 0, 36],
+          ["9257500", "C4605109", 215, null, 21, 0, 0, 1, 36],
+          ["9257501", "C4605110", 215, null, 21, 0, 0, 2, 36],
+          ["9257502", "C4605111", 215, null, 21, 1, 0, 1, 14],
+          ["9257503", "C4605112", 215, null, 21, 1, 0, 2, 14],
+          ["9257504", "C4605113", 215, null, 21, 0, 0, 1, 14],
+          ["9257506", "C4605114", 215, null, 21, 0, 0, 2, 14],
+          ["9257507", "C4605115", 215, null, 21, 1, 0, 0, 37],
+          ["9257508", "C4605116", 215, null, 21, 1, 0, 1, 37],
+          ["9257509", "C4605117", 215, null, 21, 1, 0, 2, 37],
+          ["9257510", "C4605118", 215, null, 21, 0, 0, 0, 37],
+          ["9257511", "C4605119", 215, null, 21, 0, 0, 1, 37],
+          ["9257512", "C4605120", 215, null, 21, 0, 0, 2, 37],
+          ["9257513", "C4605121", 240, null, 21, 1, 0, 1, 38],
+          ["9257514", "C4605122", 240, null, 21, 1, 0, 2, 38],
+          ["9257515", "C4605123", 240, null, 21, 0, 0, 1, 38],
+          ["9257516", "C4605124", 240, null, 21, 0, 0, 2, 38],
+          ["9257517", "C4605125", 215, null, 21, 1, 0, 0, 39],
+          ["9257518", "C4605126", 215, null, 21, 0, 0, 0, 39],
+          ["9257519", "C4605127", 215, null, 21, 1, 0, 0, 40],
+          ["9257521", "C4605128", 215, null, 21, 0, 0, 0, 40],
+          ["9257522", "C4605129", 215, null, 21, 1, 0, 1, 41],
+          ["9257523", "C4605130", 215, null, 21, 0, 0, 1, 41],
+          ["9257524", "C4605131", 215, null, 21, 1, 0, 2, 42],
+          ["9257525", "C4605132", 215, null, 21, 0, 0, 2, 42],
+          ["9257526", "C4605133", 215, null, 21, 1, 0, 0, 43],
+          ["9257527", "C4605134", 215, null, 21, 0, 0, 0, 43],
+          ["9257528", "C4605135", 215, null, 21, 1, 0, 0, 2],
+          ["9257529", "C4605136", 215, null, 21, 0, 0, 0, 2],
+          ["9257530", "C4605137", 215, null, 21, 1, 0, 1, 3],
+          ["9257531", "C4605138", 215, null, 21, 0, 0, 1, 3],
+          ["9257532", "C4605139", 215, null, 21, 1, 0, 2, 4],
+          ["9257533", "C4605140", 215, null, 21, 0, 0, 2, 4],
+          ["9257534", "C4605141", 215, null, 21, 1, 0, 1, 5],
+          ["9257535", "C4605142", 215, null, 21, 1, 0, 2, 5],
+          ["9257536", "C4605143", 215, null, 21, 0, 0, 1, 5],
+          ["9257538", "C4605144", 215, null, 21, 0, 0, 2, 5],
+          ["9257539", "C4605145", 215, null, 21, 1, 0, 0, 44],
+          ["9257540", "C4605147", 215, null, 21, 0, 0, 0, 44],
+          ["9257541", "C4605146", 215, null, 21, 1, 0, 1, 44],
+          ["9257542", "C4605148", 215, null, 21, 0, 0, 1, 44],
+          ["9257543", "C4605149", 215, null, 21, 1, 0, 1, 45],
+          ["9257544", "C4605150", 215, null, 21, 1, 0, 2, 45],
+          ["9257545", "C4605151", 215, null, 21, 0, 0, 1, 45],
+          ["9257546", "C4605152", 215, null, 21, 0, 0, 2, 45],
+          ["9257547", "C4605153", 215, null, 21, 1, 0, 0, 18],
+          ["9257548", "C4605154", 215, null, 21, 1, 0, 1, 18],
+          ["9257549", "C4605155", 215, null, 21, 0, 0, 0, 18],
+          ["9257550", "C4605156", 215, null, 21, 0, 0, 1, 18],
+          ["9257551", "C4605157", 215, null, 21, 1, 0, 0, 0],
+          ["9257553", "C4605158", 215, null, 21, 0, 0, 0, 0],
+          ["9257554", "C4605159", 215, null, 21, 1, 0, 1, 1],
+          ["9257555", "C4605160", 215, null, 21, 0, 0, 1, 1],
+          ["9257556", "C4605161", 215, null, 21, 1, 0, 1, 6],
+          ["9257557", "C4605162", 215, null, 21, 0, 0, 1, 6],
+          ["9257558", "C4605163", 215, null, 21, 1, 0, 2, 7],
+          ["9257559", "C4605164", 215, null, 21, 0, 0, 2, 7],
+          ["9257560", "C4605165", 215, null, 21, 1, 0, 1, 46],
+          ["9257561", "C4605166", 215, null, 21, 0, 0, 1, 46],
+          ["9257562", "C4605167", 260, null, 21, 1, 0, 1, 23],
+          ["9257563", "C4605168", 260, null, 21, 0, 0, 1, 23],
+          ["9257564", "C4605169", 260, null, 21, 1, 0, 2, 24],
+          ["9257565", "C4605170", 260, null, 21, 0, 0, 2, 24],
+          ["9257566", "C4605171", 215, null, 21, 1, 0, 2, 47],
+          ["9257567", "C4605172", 215, null, 21, 0, 0, 2, 47],
+          ["9257568", "C4605173", 260, null, 21, 1, 0, 2, 48],
+          ["9257569", "C4605174", 260, null, 21, 0, 0, 2, 48],
+          ["9257570", "C4605175", 215, null, 21, 1, 1, 0, 19],
+          ["9257571", "C4605176", 215, null, 21, 1, 1, 1, 19],
+          ["9257572", "C4605177", 215, null, 21, 0, 1, 0, 19],
+          ["9257573", "C4605178", 215, null, 21, 0, 1, 1, 19],
+          ["9257574", "C4605179", 215, null, 21, 1, 1, 4, 8],
+          ["9257575", "C4605180", 215, null, 21, 0, 1, 4, 8],
+          ["9257576", "C4605181", 215, null, 21, 1, 1, 4, 9],
+          ["9257577", "C4605182", 215, null, 21, 0, 1, 4, 9],
+          ["9257578", "C4605183", 215, null, 21, 1, 1, 3, 10],
+          ["9257579", "C4605184", 215, null, 21, 0, 1, 3, 10],
+          ["9257580", "C4605185", 215, null, 21, 1, 1, 0, 11],
+          ["9257581", "C4605186", 215, null, 21, 0, 1, 0, 11],
+          ["9257582", "C4605187", 215, null, 21, 1, 1, 0, 49],
+          ["9257584", "C4605188", 215, null, 21, 1, 1, 1, 49],
+          ["9257585", "C4605189", 215, null, 21, 0, 1, 0, 49],
+          ["9257586", "C4605190", 215, null, 21, 0, 1, 1, 49]
+        ]
+      },
+      "customizations": [
+        {
+          "groupId": "30643426",
+          "label": "Ferrule",
+          "inputType": "select",
+          "optionType": "select",
+          "options": [
+            {
+              "id": "623145717",
+              "name": "Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145718",
+              "name": "ICON (Black/Blue/White)",
+              "priceDelta": 2.5,
+              "isDefault": false
+            }
+          ]
+        },
+        {
+          "groupId": "30643427",
+          "label": "Grips",
+          "inputType": "select",
+          "optionType": "grips",
+          "options": [
+            {
+              "id": "623145719",
+              "name": "Golf Pride MCC Plus 4 Blue Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145720",
+              "name": "Golf Pride CP2 Pro Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145721",
+              "name": "Golf Pride CP2 Pro Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145722",
+              "name": "Golf Pride CP2 Wrap Jumbo",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145723",
+              "name": "Golf Pride CP2 Wrap Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145724",
+              "name": "Golf Pride CP2 Wrap Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145725",
+              "name": "Golf Pride CP2 Wrap Undersize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145726",
+              "name": "Golf Pride MCC Align Black/White Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145727",
+              "name": "Golf Pride MCC Blue/White Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145728",
+              "name": "Golf Pride MCC Plus 4 Black/Gray Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145729",
+              "name": "Golf Pride MCC Plus 4 Gray Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145730",
+              "name": "Golf Pride MCC Teams Blue Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145731",
+              "name": "Golf Pride MCC Teams Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145732",
+              "name": "Golf Pride MCC Plus 4 Blue/White Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145733",
+              "name": "Golf Pride Mizuno M-31 360 Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145734",
+              "name": "Golf Pride Mizuno M-31 Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145735",
+              "name": "Golf Pride MCC Plus 4 Align Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145736",
+              "name": "Golf Pride MCC Teams Blue Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145737",
+              "name": "Golf Pride MCC Teams Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145738",
+              "name": "Golf Pride Tour Velvet 360 Cord Gray Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145739",
+              "name": "Golf Pride Tour Velvet 360 Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145740",
+              "name": "Golf Pride Tour Velvet Align Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145741",
+              "name": "Golf Pride Tour Velvet Cord Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145742",
+              "name": "Golf Pride Tour Velvet Jumbo",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145743",
+              "name": "Golf Pride Tour Velvet Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145744",
+              "name": "Golf Pride Tour Velvet Plus 4 Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145745",
+              "name": "Golf Pride Tour Velvet Plus 4 Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145746",
+              "name": "Golf Pride Tour Velvet Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145747",
+              "name": "Golf Pride Tour Wrap 2G Black Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145748",
+              "name": "Golf Pride Tour Wrap 2G Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145749",
+              "name": "Golf Pride Tour Wrap 2G Black Undersize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145750",
+              "name": "Golf Pride Tour Wrap 2G White Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145751",
+              "name": "Golf Pride Z-Grip Align Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145752",
+              "name": "Golf Pride Z-Grip Cord Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145753",
+              "name": "Golf Pride Z-Grip Cord Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145754",
+              "name": "Mizuno M-31 360 Scuba Blue Undersize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145755",
+              "name": "SuperStroke Crossline 2.0 Jumbo",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145756",
+              "name": "SuperStroke Crossline 2.0 Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145757",
+              "name": "SuperStroke Crossline 2.0 Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145758",
+              "name": "SuperStroke REVL Black Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145759",
+              "name": "SuperStroke REVL Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145760",
+              "name": "SuperStroke REVL Element Blue Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145761",
+              "name": "SuperStroke REVL Element Blue Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145762",
+              "name": "SuperStroke REVL Element Black Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145763",
+              "name": "SuperStroke REVL Element Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145764",
+              "name": "SuperStroke REVL Player Black Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145765",
+              "name": "SuperStroke REVL Player Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145766",
+              "name": "SuperStroke REVL Player White Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145767",
+              "name": "WINN DRI-TAC Wrap Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145768",
+              "name": "WINN DRI-TAC Wrap Oversize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145769",
+              "name": "WINN DRI-TAC Wrap Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145770",
+              "name": "WINN DRI-TAC Wrap Ladies",
+              "priceDelta": 0,
+              "isDefault": false
+            }
+          ]
+        },
+        {
+          "groupId": "30643428",
+          "label": "Install Grips / Grip Size",
+          "inputType": "select",
+          "optionType": "grips",
+          "options": [
+            {
+              "id": "623145771",
+              "name": "Do Not Install Grips - Include In Box",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145772",
+              "name": "+ 1 Wrap",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145773",
+              "name": "+ 2 Wraps",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145774",
+              "name": "+2 Wraps Bottom Hand: 1 Wrap Top Hand",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145775",
+              "name": "+ 3 Wraps",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145776",
+              "name": "+ 3 Wraps Bottom Hand: + 2 Wraps Top Hand",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145777",
+              "name": "+ 4 Wraps",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145778",
+              "name": "Standard (1 Wrap)",
+              "priceDelta": 0,
+              "isDefault": false
+            }
+          ]
+        },
+        {
+          "groupId": "30643429",
+          "label": "Length",
+          "inputType": "select",
+          "optionType": "select",
+          "options": [
+            {
+              "id": "623145779",
+              "name": "- 1.00\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145780",
+              "name": "- 1.25\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145781",
+              "name": "- 1.50\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145782",
+              "name": "- .25\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145783",
+              "name": "- .50\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145784",
+              "name": "- .75\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145785",
+              "name": "+ 1.00\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145786",
+              "name": "+ 1.25\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145787",
+              "name": "+ 1.50\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145788",
+              "name": "+ 1.75\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145789",
+              "name": "+ .25\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145790",
+              "name": "+ 2.00\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145791",
+              "name": "+ .50\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145792",
+              "name": "+ .75\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145793",
+              "name": "Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            }
+          ]
+        },
+        {
+          "groupId": "30643430",
+          "label": "Lie Angle Adjustment",
+          "inputType": "select",
+          "optionType": "select",
+          "options": [
+            {
+              "id": "623145794",
+              "name": "0.5° Flat",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145795",
+              "name": "0.5° Upright",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145796",
+              "name": "1.5° Flat",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145797",
+              "name": "1° Flat",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145798",
+              "name": "1.5° Upright",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145799",
+              "name": "1° Upright",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145800",
+              "name": "2° Flat",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145801",
+              "name": "2° Upright",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145802",
+              "name": "Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            }
+          ]
+        },
+        {
+          "groupId": "30643431",
+          "label": "Loft Adjustment",
+          "inputType": "select",
+          "optionType": "select",
+          "options": [
+            {
+              "id": "623145803",
+              "name": "1° Strong",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145804",
+              "name": "1° Weak",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145805",
+              "name": "2° Strong",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145806",
+              "name": "2° Weak",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "623145807",
+              "name": "Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            }
+          ]
+        }
+      ],
+      "pricing": {
+        "model": "per_club",
+        "defaultClubCount": 7,
+        "clubSelection": {
+          "groupId": "30643432",
+          "label": "Irons In Set",
+          "options": [
+            {
+              "id": "623145808",
+              "name": "3 Iron",
+              "includedByDefault": false
+            },
+            {
+              "id": "623145809",
+              "name": "4 Iron",
+              "includedByDefault": true
+            },
+            {
+              "id": "623145810",
+              "name": "5 Iron",
+              "includedByDefault": true
+            },
+            {
+              "id": "623145811",
+              "name": "6 Iron",
+              "includedByDefault": true
+            },
+            {
+              "id": "623145812",
+              "name": "7 Iron",
+              "includedByDefault": true
+            },
+            {
+              "id": "623145813",
+              "name": "8 Iron",
+              "includedByDefault": true
+            },
+            {
+              "id": "623145814",
+              "name": "9 Iron",
+              "includedByDefault": true
+            },
+            {
+              "id": "623145815",
+              "name": "PW",
+              "includedByDefault": true
+            }
+          ]
+        }
+      },
+      "media": {
+        "images": ["https://www.2ndswing.com/images/standard/PRO%20S4%20STS.jpg", "https://www.2ndswing.com/images/standard/PRO%20S4%20STS_2.jpg", "https://www.2ndswing.com/images/standard/PRO%20S4%20STS_3.jpg", "https://www.2ndswing.com/images/standard/PRO%20S4%20STS_4.jpg", "https://www.2ndswing.com/images/standard/PRO%20S4%20STS_5.jpg", "https://www.2ndswing.com/images/standard/PRO%20S4%20STS_6.jpg"],
+        "videos": ["https://www.youtube.com/watch?v=1LNL-MUEc1Y"]
+      },
+      "meta": {
+        "resolvedVia": "root_slug",
+        "fetchedAt": "2026-11-11T14:01:56.113Z"
+      }
+    },
+    {
+      "parentItem": "ZXI RKT MAX DVR",
+      "name": "Srixon ZXi RKT MAX Driver",
+      "brand": "Srixon",
+      "category": "Driver",
+      "url": "https://www.2ndswing.com/golf-clubs/drivers/srixon-zxi-rkt-max-driver/zxi-rkt-max-dvr",
+      "productId": "9239929",
+      "listedPrice": 649.99,
+      "currency": "USD",
+      "availability": "InStock",
+      "description": "Who’s It For?\nDesigned for golfers who prioritize maximum forgiveness and stability off the tee, the Srixon ZXi RKT MAX Driver is ideal for players seeking confidence-inspiring performance on both center and off-center strikes. Its ultra-high MOI design helps maintain ball speed and accuracy across the face, while the easy-swinging profile appeals to a broad range of players looking for effortless distance and consistency. The rear-positioned adjustable sole weight allows golfers to fine-tune swing weight preferences while maximizing forgiveness, making it an excellent choice for anyone who values control, confidence, and playability from the tee box.\nThe Tech Story\nThe Srixon ZXi RKT MAX Driver pairs maximum forgiveness with advanced speed and tuning technologies, led by the innovative RKT Face, which integrates Srixon’s most refined ball speed, face flex, and roll technologies into a single system engineered to deliver exceptional distance and accuracy. Its Tour-Driven Chassis was shaped through extensive prototype development and feedback from professional players, resulting in a confidence-inspiring profile that meets the visual and performance demands of elite golfers. The newly developed ACOUSTICORE chassis features AI-optimized internal rib structures that fine-tune vibration frequencies to produce a crisp, controlled impact sound and premium feel. Player-focused adjustability further enhances performance with model-specific weighting systems and an adjustable hosel that allow golfers to customize launch, spin, and shot shape to suit their swing. For female golfers, the Women’s-specific build incorporates a shorter shaft with a customized flex profile and a softer, lighter grip, creating a more optimized fit that promotes greater speed, control, and consistency.\nFacts and Figures\nDesired Ball Flight: High MOI\nLaunch: Mid-High\nSpin: Mid\nWeight Adjustability: Backweight\nStock Shafts and Grips\nStock Shafts: Mitsubishi Kai’li DarkWaves Red CB 50 (SR, R, S), Mitsubishi Bassara PL 40 Women’s (Ladies)\nStock Grip: Golf Pride Tour Velvet 360 Std., Golf Pride Fine Line Women’s Std.\nGet Fit\n2nd Swing offers award-winning club fitting services at each of our store locations and through the 2nd Swing Online Fitting and Support team on 2ndswing.com. Make sure your equipment is fit for your game and schedule your award-winning fitting experience by calling (612) 216-4152 or by visiting the 2nd Swing fitting website: https://www.2ndswing.com/golf-club-fittings.",
+      "specs": [
+        {
+          "Loft": "9°",
+          "Length": "45.75\"",
+          "Lie": "59°",
+          "Head Volume": "460cc",
+          "Swing Weight": "D3",
+          "Hand": "RH Only"
+        },
+        {
+          "Loft": "10.5°",
+          "Length": "45.75\"",
+          "Lie": "59°",
+          "Head Volume": "460cc",
+          "Swing Weight": "D3",
+          "Hand": "RH/LH"
+        },
+        {
+          "Loft": "12°",
+          "Length": "45.75\"",
+          "Lie": "59°",
+          "Head Volume": "460cc",
+          "Swing Weight": "D3",
+          "Hand": "RH Only"
+        },
+        {
+          "Loft": "12° (Womens)",
+          "Length": "44.75\"",
+          "Lie": "59°",
+          "Head Volume": "460cc",
+          "Swing Weight": "D0.5",
+          "Hand": "RH Only"
+        }
+      ],
+      "attributes": [
+        {
+          "code": "g2_dexterity",
+          "label": "Dexterity",
+          "options": [
+            {
+              "id": "32795",
+              "label": "Right Handed"
+            },
+            {
+              "id": "32789",
+              "label": "Left Handed"
+            }
+          ]
+        },
+        {
+          "code": "g2_club_loft",
+          "label": "Club Loft",
+          "options": [
+            {
+              "id": "32399",
+              "label": "9°"
+            },
+            {
+              "id": "32060",
+              "label": "10.5°"
+            },
+            {
+              "id": "32159",
+              "label": "12°"
+            }
+          ]
+        },
+        {
+          "code": "g2_shaft_flex",
+          "label": "Shaft Flex",
+          "options": [
+            {
+              "id": "75593",
+              "label": "Regular"
+            },
+            {
+              "id": "75572",
+              "label": "Stiff"
+            },
+            {
+              "id": "75608",
+              "label": "X-Stiff"
+            },
+            {
+              "id": "75596",
+              "label": "Senior"
+            },
+            {
+              "id": "75539",
+              "label": "Ladies"
+            },
+            {
+              "id": "75590",
+              "label": "Stiff/Regular"
+            },
+            {
+              "id": "75611",
+              "label": "Tour X-Stiff"
+            }
+          ]
+        },
+        {
+          "code": "g2_shaft_type",
+          "label": "Shaft Model",
+          "options": [
+            {
+              "id": "126465",
+              "label": "Mitsubishi Bassara PL 40"
+            },
+            {
+              "id": "126467",
+              "label": "Mitsubishi Kai'li Red DarkWave CB 50"
+            },
+            {
+              "id": "126469",
+              "label": "Project X Titan Yellow 60"
+            },
+            {
+              "id": "126471",
+              "label": "Project X Titan Yellow 70"
+            },
+            {
+              "id": "125473",
+              "label": "Fujikura Ventus TR Black Velocore+ 6"
+            },
+            {
+              "id": "125475",
+              "label": "Fujikura Ventus TR Black Velocore+ 7"
+            },
+            {
+              "id": "125323",
+              "label": "Project X Titan Black 70"
+            },
+            {
+              "id": "123796",
+              "label": "UST Lin-Q PowerCore Blue 5"
+            },
+            {
+              "id": "123282",
+              "label": "Aretera EC1 Gray 65"
+            },
+            {
+              "id": "123284",
+              "label": "Aretera EC1 Gray 75"
+            },
+            {
+              "id": "123082",
+              "label": "Fujikura Ventus TR Blue Velocore+ 5"
+            },
+            {
+              "id": "123084",
+              "label": "Fujikura Ventus TR Blue Velocore+ 6"
+            },
+            {
+              "id": "123086",
+              "label": "Fujikura Ventus TR Blue Velocore+ 7"
+            },
+            {
+              "id": "123092",
+              "label": "UST Lin-Q PowerCore Blue 6"
+            },
+            {
+              "id": "123094",
+              "label": "UST Lin-Q PowerCore Blue 7"
+            },
+            {
+              "id": "123090",
+              "label": "UST Lin-Q PowerCore Red 5"
+            },
+            {
+              "id": "123096",
+              "label": "UST Lin-Q PowerCore White 7"
+            },
+            {
+              "id": "122937",
+              "label": "Aretera AO2 Blue 55"
+            },
+            {
+              "id": "122939",
+              "label": "Aretera AO2 Blue 65"
+            },
+            {
+              "id": "122941",
+              "label": "Aretera AO2 Blue 75"
+            },
+            {
+              "id": "122945",
+              "label": "Aretera AO2 Gray 65"
+            },
+            {
+              "id": "122947",
+              "label": "Aretera AO2 Gray 75"
+            },
+            {
+              "id": "122961",
+              "label": "UST Lin-Q PowerCore Red 6"
+            },
+            {
+              "id": "122963",
+              "label": "UST Lin-Q PowerCore White 6"
+            },
+            {
+              "id": "120528",
+              "label": "Graphite Design Tour AD FI 5"
+            },
+            {
+              "id": "120530",
+              "label": "Graphite Design Tour AD FI 6"
+            },
+            {
+              "id": "120532",
+              "label": "Graphite Design Tour AD FI 7"
+            },
+            {
+              "id": "118203",
+              "label": "Mitsubishi Kai'li Blue DarkWave 60"
+            },
+            {
+              "id": "118205",
+              "label": "Mitsubishi Kai'li Blue DarkWave 70"
+            },
+            {
+              "id": "117651",
+              "label": "Mitsubishi Diamana RB 63"
+            },
+            {
+              "id": "117473",
+              "label": "Aretera EC1 Blue 55"
+            },
+            {
+              "id": "117455",
+              "label": "Aretera EC1 Blue 65"
+            },
+            {
+              "id": "117457",
+              "label": "Aretera EC1 Blue 75"
+            },
+            {
+              "id": "117388",
+              "label": "Mitsubishi Kai'li White DarkWave 60"
+            },
+            {
+              "id": "117479",
+              "label": "Mitsubishi Kai'li White DarkWave 70"
+            },
+            {
+              "id": "117445",
+              "label": "Mitsubishi Vanquish 4"
+            },
+            {
+              "id": "117085",
+              "label": "Graphite Design Tour AD GC-5"
+            },
+            {
+              "id": "117087",
+              "label": "Graphite Design Tour AD GC-6"
+            },
+            {
+              "id": "116335",
+              "label": "Fujikura Ventus Velocore+ Black 6"
+            },
+            {
+              "id": "116337",
+              "label": "Fujikura Ventus Velocore+ Black 7"
+            },
+            {
+              "id": "116343",
+              "label": "Fujikura Ventus Velocore+ Red 5"
+            },
+            {
+              "id": "116345",
+              "label": "Fujikura Ventus Velocore+ Red 6"
+            },
+            {
+              "id": "116297",
+              "label": "Mitsubishi Tensei 1K Blue 75"
+            },
+            {
+              "id": "116485",
+              "label": "Mitsubishi Diamana BB 63"
+            },
+            {
+              "id": "116125",
+              "label": "Mitsubishi Tensei 1K Blue 65"
+            },
+            {
+              "id": "116127",
+              "label": "Project X Denali Red 50"
+            },
+            {
+              "id": "116131",
+              "label": "Project X Denali Red 60"
+            },
+            {
+              "id": "115456",
+              "label": "Fujikura Ventus Velocore+ Blue 5"
+            },
+            {
+              "id": "115458",
+              "label": "Fujikura Ventus Velocore+ Blue 6"
+            },
+            {
+              "id": "115460",
+              "label": "Fujikura Ventus Velocore+ Blue 7"
+            },
+            {
+              "id": "114877",
+              "label": "Mitsubishi Diamana WB 63"
+            },
+            {
+              "id": "114873",
+              "label": "Mitsubishi Diamana WB 73"
+            },
+            {
+              "id": "114824",
+              "label": "Project X Denali Blue 60"
+            },
+            {
+              "id": "114828",
+              "label": "Project X Denali Blue 70"
+            },
+            {
+              "id": "113266",
+              "label": "Fujikura Ventus TR Red Velocore 5"
+            },
+            {
+              "id": "113601",
+              "label": "Graphite Design Tour AD VF-6"
+            },
+            {
+              "id": "113604",
+              "label": "Graphite Design Tour AD VF-7"
+            },
+            {
+              "id": "113681",
+              "label": "Project X Denali Black 70"
+            },
+            {
+              "id": "113680",
+              "label": "Project X Denali Black 80"
+            },
+            {
+              "id": "112807",
+              "label": "Fujikura Ventus TR Blue Velocore 5"
+            },
+            {
+              "id": "112805",
+              "label": "Fujikura Ventus TR Blue Velocore 6"
+            },
+            {
+              "id": "112811",
+              "label": "Fujikura Ventus TR Blue Velocore 7"
+            },
+            {
+              "id": "111554",
+              "label": "Fujikura Ventus TR Blue 5"
+            },
+            {
+              "id": "111552",
+              "label": "Fujikura Ventus TR Blue 6"
+            },
+            {
+              "id": "111649",
+              "label": "Fujikura Ventus TR Black VeloCore 6"
+            },
+            {
+              "id": "111647",
+              "label": "Fujikura Ventus TR Black VeloCore 7"
+            },
+            {
+              "id": "111645",
+              "label": "Fujikura Ventus TR Red Velocore 6"
+            },
+            {
+              "id": "111669",
+              "label": "UST Mamiya LIN-Q M40X Blue 6"
+            },
+            {
+              "id": "111667",
+              "label": "UST Mamiya LIN-Q M40X Blue 7"
+            },
+            {
+              "id": "111479",
+              "label": "Fujikura Ventus TR Red 5"
+            },
+            {
+              "id": "111005",
+              "label": "Mitsubishi Tensei 1K Black 65"
+            },
+            {
+              "id": "111015",
+              "label": "Mitsubishi Tensei 1K Black 75"
+            },
+            {
+              "id": "109956",
+              "label": "UST Mamiya LIN-Q M40X White 6"
+            },
+            {
+              "id": "109960",
+              "label": "UST Mamiya LIN-Q M40X White 7"
+            },
+            {
+              "id": "104298",
+              "label": "Fujikura Ventus Blue 5"
+            },
+            {
+              "id": "104300",
+              "label": "Fujikura Ventus Blue 6"
+            },
+            {
+              "id": "104302",
+              "label": "Fujikura Ventus Blue 7"
+            },
+            {
+              "id": "81050",
+              "label": "Graphite Design Tour AD DI-7"
+            },
+            {
+              "id": "79169",
+              "label": "Graphite Design Tour AD DI-6"
+            },
+            {
+              "id": "88913",
+              "label": "Graphite Design Tour AD IZ-6"
+            },
+            {
+              "id": "88865",
+              "label": "Graphite Design Tour AD IZ-7"
+            },
+            {
+              "id": "104227",
+              "label": "Graphite Design Tour AD XC-6"
+            },
+            {
+              "id": "104229",
+              "label": "Graphite Design Tour AD XC-7"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "fields": ["childId", "sku", "price", "regularPrice", "leadTimeDays", "g2_dexterity", "g2_club_loft", "g2_shaft_flex", "g2_shaft_type"],
+        "rows": [
+          ["9279969", "C4613261", 849.99, null, 21, 1, 1, 1, 64],
+          ["9279970", "C4613262", 849.99, null, 21, 1, 1, 2, 64],
+          ["9279971", "C4613263", 849.99, null, 21, 0, 1, 1, 64],
+          ["9279973", "C4613264", 849.99, null, 21, 0, 1, 2, 64],
+          ["9279974", "C4613265", 849.99, null, 21, 0, 2, 1, 64],
+          ["9279975", "C4613266", 849.99, null, 21, 0, 2, 2, 64],
+          ["9279976", "C4613267", 849.99, null, 21, 0, 0, 1, 64],
+          ["9279977", "C4613268", 849.99, null, 21, 0, 0, 2, 64],
+          ["9279978", "C4613269", 849.99, null, 21, 1, 1, 1, 65],
+          ["9279979", "C4613270", 849.99, null, 21, 1, 1, 2, 65],
+          ["9279980", "C4613271", 849.99, null, 21, 0, 1, 1, 65],
+          ["9279981", "C4613272", 849.99, null, 21, 0, 1, 2, 65],
+          ["9279982", "C4613273", 849.99, null, 21, 0, 2, 1, 65],
+          ["9279983", "C4613274", 849.99, null, 21, 0, 2, 2, 65],
+          ["9279984", "C4613275", 849.99, null, 21, 0, 0, 1, 65],
+          ["9279985", "C4613276", 849.99, null, 21, 0, 0, 2, 65],
+          ["9279986", "C4613277", 849.99, null, 21, 1, 1, 0, 59],
+          ["9279987", "C4613278", 849.99, null, 21, 1, 1, 1, 59],
+          ["9279988", "C4613279", 849.99, null, 21, 0, 1, 0, 59],
+          ["9279989", "C4613280", 849.99, null, 21, 0, 1, 1, 59],
+          ["9279990", "C4613281", 849.99, null, 21, 0, 2, 0, 59],
+          ["9279991", "C4613282", 849.99, null, 21, 0, 2, 1, 59],
+          ["9279992", "C4613283", 849.99, null, 21, 0, 0, 0, 59],
+          ["9279993", "C4613284", 849.99, null, 21, 0, 0, 1, 59],
+          ["9279995", "C4613285", 849.99, null, 21, 1, 1, 0, 60],
+          ["9279996", "C4613286", 849.99, null, 21, 1, 1, 1, 60],
+          ["9279997", "C4613287", 849.99, null, 21, 1, 1, 2, 60],
+          ["9279999", "C4613288", 849.99, null, 21, 0, 1, 0, 60],
+          ["9280000", "C4613289", 849.99, null, 21, 0, 1, 1, 60],
+          ["9280001", "C4613290", 849.99, null, 21, 0, 1, 2, 60],
+          ["9280002", "C4613291", 849.99, null, 21, 0, 2, 0, 60],
+          ["9280003", "C4613292", 849.99, null, 21, 0, 2, 1, 60],
+          ["9280004", "C4613293", 849.99, null, 21, 0, 2, 2, 60],
+          ["9280005", "C4613294", 849.99, null, 21, 0, 0, 0, 60],
+          ["9280006", "C4613295", 849.99, null, 21, 0, 0, 1, 60],
+          ["9280007", "C4613296", 849.99, null, 21, 0, 0, 2, 60],
+          ["9280008", "C4613297", 849.99, null, 21, 1, 1, 1, 61],
+          ["9280009", "C4613298", 849.99, null, 21, 1, 1, 2, 61],
+          ["9280010", "C4613299", 849.99, null, 21, 0, 1, 1, 61],
+          ["9280011", "C4613300", 849.99, null, 21, 0, 1, 2, 61],
+          ["9280012", "C4613301", 849.99, null, 21, 0, 2, 1, 61],
+          ["9280014", "C4613302", 849.99, null, 21, 0, 2, 2, 61],
+          ["9280015", "C4613303", 849.99, null, 21, 0, 0, 1, 61],
+          ["9280016", "C4613304", 849.99, null, 21, 0, 0, 2, 61],
+          ["9280017", "C4613305", 849.99, null, 21, 1, 1, 1, 54],
+          ["9280018", "C4613306", 849.99, null, 21, 0, 1, 1, 54],
+          ["9280019", "C4613307", 849.99, null, 21, 0, 2, 1, 54],
+          ["9280020", "C4613308", 849.99, null, 21, 0, 0, 1, 54],
+          ["9280021", "C4613309", 849.99, null, 21, 1, 1, 0, 66],
+          ["9280022", "C4613310", 849.99, null, 21, 1, 1, 1, 66],
+          ["9280023", "C4613311", 849.99, null, 21, 1, 1, 2, 66],
+          ["9280024", "C4613312", 849.99, null, 21, 0, 1, 0, 66],
+          ["9280025", "C4613313", 849.99, null, 21, 0, 1, 1, 66],
+          ["9280026", "C4613314", 849.99, null, 21, 0, 1, 2, 66],
+          ["9280027", "C4613315", 849.99, null, 21, 0, 2, 0, 66],
+          ["9280028", "C4613316", 849.99, null, 21, 0, 2, 1, 66],
+          ["9280029", "C4613317", 849.99, null, 21, 0, 2, 2, 66],
+          ["9280030", "C4613318", 849.99, null, 21, 0, 0, 0, 66],
+          ["9280032", "C4613319", 849.99, null, 21, 0, 0, 1, 66],
+          ["9280033", "C4613320", 849.99, null, 21, 0, 0, 2, 66],
+          ["9280034", "C4613321", 849.99, null, 21, 1, 1, 1, 38],
+          ["9280035", "C4613322", 849.99, null, 21, 1, 1, 2, 38],
+          ["9280036", "C4613323", 849.99, null, 21, 0, 1, 1, 38],
+          ["9280037", "C4613324", 849.99, null, 21, 0, 1, 2, 38],
+          ["9280038", "C4613325", 849.99, null, 21, 0, 2, 1, 38],
+          ["9280039", "C4613326", 849.99, null, 21, 0, 2, 2, 38],
+          ["9280040", "C4613327", 849.99, null, 21, 0, 0, 1, 38],
+          ["9280041", "C4613328", 849.99, null, 21, 0, 0, 2, 38],
+          ["9280042", "C4613329", 849.99, null, 21, 1, 1, 1, 39],
+          ["9280043", "C4613330", 849.99, null, 21, 1, 1, 2, 39],
+          ["9280044", "C4613331", 849.99, null, 21, 0, 1, 1, 39],
+          ["9280045", "C4613332", 849.99, null, 21, 0, 1, 2, 39],
+          ["9280047", "C4613333", 849.99, null, 21, 0, 2, 1, 39],
+          ["9280048", "C4613334", 849.99, null, 21, 0, 2, 2, 39],
+          ["9280049", "C4613335", 849.99, null, 21, 0, 0, 1, 39],
+          ["9280050", "C4613336", 849.99, null, 21, 0, 0, 2, 39],
+          ["9280051", "C4613337", 849.99, null, 21, 1, 1, 0, 47],
+          ["9280052", "C4613338", 849.99, null, 21, 1, 1, 1, 47],
+          ["9280053", "C4613339", 849.99, null, 21, 0, 1, 0, 47],
+          ["9280054", "C4613340", 849.99, null, 21, 0, 1, 1, 47],
+          ["9280055", "C4613341", 849.99, null, 21, 0, 2, 0, 47],
+          ["9280056", "C4613342", 849.99, null, 21, 0, 2, 1, 47],
+          ["9280058", "C4613343", 849.99, null, 21, 0, 0, 0, 47],
+          ["9280059", "C4613344", 849.99, null, 21, 0, 0, 1, 47],
+          ["9280060", "C4613345", 849.99, null, 21, 1, 1, 0, 48],
+          ["9280061", "C4613346", 849.99, null, 21, 1, 1, 1, 48],
+          ["9280062", "C4613347", 849.99, null, 21, 1, 1, 2, 48],
+          ["9280063", "C4613348", 849.99, null, 21, 0, 1, 0, 48],
+          ["9280064", "C4613349", 849.99, null, 21, 0, 1, 1, 48],
+          ["9280065", "C4613350", 849.99, null, 21, 0, 1, 2, 48],
+          ["9280066", "C4613352", 849.99, null, 21, 0, 2, 1, 48],
+          ["9280067", "C4613351", 849.99, null, 21, 0, 2, 0, 48],
+          ["9280068", "C4613353", 849.99, null, 21, 0, 2, 2, 48],
+          ["9280069", "C4613354", 849.99, null, 21, 0, 0, 0, 48],
+          ["9280070", "C4613355", 849.99, null, 21, 0, 0, 1, 48],
+          ["9280071", "C4613356", 849.99, null, 21, 0, 0, 2, 48],
+          ["9280072", "C4613357", 849.99, null, 21, 1, 1, 1, 49],
+          ["9280073", "C4613358", 849.99, null, 21, 1, 1, 2, 49],
+          ["9280075", "C4613359", 849.99, null, 21, 0, 1, 1, 49],
+          ["9280076", "C4613360", 849.99, null, 21, 0, 1, 2, 49],
+          ["9280077", "C4613361", 849.99, null, 21, 0, 2, 1, 49],
+          ["9280078", "C4613362", 849.99, null, 21, 0, 2, 2, 49],
+          ["9280079", "C4613363", 849.99, null, 21, 0, 0, 1, 49],
+          ["9280080", "C4613364", 849.99, null, 21, 0, 0, 2, 49],
+          ["9280081", "C4613365", 849.99, null, 21, 1, 1, 0, 40],
+          ["9280082", "C4613366", 849.99, null, 21, 1, 1, 1, 40],
+          ["9280083", "C4613367", 849.99, null, 21, 0, 1, 0, 40],
+          ["9280084", "C4613368", 849.99, null, 21, 0, 1, 1, 40],
+          ["9280085", "C4613369", 849.99, null, 21, 0, 2, 0, 40],
+          ["9280086", "C4613370", 849.99, null, 21, 0, 2, 1, 40],
+          ["9280087", "C4613371", 849.99, null, 21, 0, 0, 0, 40],
+          ["9280088", "C4613372", 849.99, null, 21, 0, 0, 1, 40],
+          ["9280089", "C4613373", 849.99, null, 21, 1, 1, 1, 41],
+          ["9280090", "C4613374", 849.99, null, 21, 1, 1, 2, 41],
+          ["9280092", "C4613375", 849.99, null, 21, 0, 1, 1, 41],
+          ["9280094", "C4613376", 849.99, null, 21, 0, 1, 2, 41],
+          ["9280095", "C4613377", 849.99, null, 21, 0, 2, 1, 41],
+          ["9280096", "C4613378", 849.99, null, 21, 0, 2, 2, 41],
+          ["9280097", "C4613379", 849.99, null, 21, 0, 0, 1, 41],
+          ["9280098", "C4613380", 849.99, null, 21, 0, 0, 2, 41],
+          ["9280100", "C4613381", 824.99, null, 21, 1, 1, 1, 78],
+          ["9280101", "C4613382", 824.99, null, 21, 1, 1, 2, 78],
+          ["9280102", "C4613383", 824.99, null, 21, 0, 1, 1, 78],
+          ["9280103", "C4613384", 824.99, null, 21, 0, 1, 2, 78],
+          ["9280104", "C4613385", 824.99, null, 21, 0, 2, 1, 78],
+          ["9280105", "C4613386", 824.99, null, 21, 0, 2, 2, 78],
+          ["9280106", "C4613387", 824.99, null, 21, 0, 0, 1, 78],
+          ["9280107", "C4613388", 824.99, null, 21, 0, 0, 2, 78],
+          ["9280108", "C4613389", 824.99, null, 21, 1, 1, 1, 77],
+          ["9280109", "C4613390", 824.99, null, 21, 1, 1, 2, 77],
+          ["9280110", "C4613391", 824.99, null, 21, 0, 1, 1, 77],
+          ["9280111", "C4613392", 824.99, null, 21, 0, 1, 2, 77],
+          ["9280112", "C4613393", 824.99, null, 21, 0, 2, 1, 77],
+          ["9280113", "C4613394", 824.99, null, 21, 0, 2, 2, 77],
+          ["9280114", "C4613395", 824.99, null, 21, 0, 0, 1, 77],
+          ["9280115", "C4613396", 824.99, null, 21, 0, 0, 2, 77],
+          ["9280117", "C4613397", 824.99, null, 21, 1, 1, 0, 36],
+          ["9280118", "C4613398", 824.99, null, 21, 1, 1, 1, 36],
+          ["9280119", "C4613399", 824.99, null, 21, 0, 1, 0, 36],
+          ["9280120", "C4613400", 824.99, null, 21, 0, 1, 1, 36],
+          ["9280122", "C4613401", 824.99, null, 21, 0, 2, 0, 36],
+          ["9280123", "C4613402", 824.99, null, 21, 0, 2, 1, 36],
+          ["9280124", "C4613403", 824.99, null, 21, 0, 0, 0, 36],
+          ["9280125", "C4613404", 824.99, null, 21, 0, 0, 1, 36],
+          ["9280126", "C4613405", 824.99, null, 21, 1, 1, 1, 37],
+          ["9280127", "C4613406", 824.99, null, 21, 1, 1, 5, 37],
+          ["9280128", "C4613407", 824.99, null, 21, 1, 1, 2, 37],
+          ["9280129", "C4613408", 824.99, null, 21, 0, 1, 1, 37],
+          ["9280130", "C4613409", 824.99, null, 21, 0, 1, 5, 37],
+          ["9280131", "C4613410", 824.99, null, 21, 0, 1, 2, 37],
+          ["9280132", "C4613411", 824.99, null, 21, 0, 2, 1, 37],
+          ["9280133", "C4613413", 824.99, null, 21, 0, 2, 2, 37],
+          ["9280134", "C4613412", 824.99, null, 21, 0, 2, 5, 37],
+          ["9280135", "C4613414", 824.99, null, 21, 0, 0, 1, 37],
+          ["9280136", "C4613415", 824.99, null, 21, 0, 0, 5, 37],
+          ["9280140", "C4613416", 824.99, null, 21, 0, 0, 2, 37],
+          ["9280156", "C4613433", 824.99, null, 21, 1, 1, 1, 79],
+          ["9280157", "C4613434", 824.99, null, 21, 1, 1, 2, 79],
+          ["9280158", "C4613435", 824.99, null, 21, 0, 1, 1, 79],
+          ["9280159", "C4613436", 824.99, null, 21, 0, 1, 2, 79],
+          ["9280160", "C4613437", 824.99, null, 21, 0, 2, 1, 79],
+          ["9280161", "C4613438", 824.99, null, 21, 0, 2, 2, 79],
+          ["9280162", "C4613439", 824.99, null, 21, 0, 0, 1, 79],
+          ["9280163", "C4613440", 824.99, null, 21, 0, 0, 2, 79],
+          ["9280164", "C4613441", 824.99, null, 21, 1, 1, 1, 80],
+          ["9280165", "C4613442", 824.99, null, 21, 1, 1, 2, 80],
+          ["9280167", "C4613443", 824.99, null, 21, 0, 1, 1, 80],
+          ["9280168", "C4613444", 824.99, null, 21, 0, 1, 2, 80],
+          ["9280169", "C4613445", 824.99, null, 21, 0, 2, 1, 80],
+          ["9280170", "C4613446", 824.99, null, 21, 0, 2, 2, 80],
+          ["9280171", "C4613447", 824.99, null, 21, 0, 0, 1, 80],
+          ["9280172", "C4613448", 824.99, null, 21, 0, 0, 2, 80],
+          ["9280173", "C4613449", 824.99, null, 21, 1, 1, 1, 55],
+          ["9280174", "C4613450", 824.99, null, 21, 1, 1, 6, 55],
+          ["9280175", "C4613451", 824.99, null, 21, 1, 1, 2, 55],
+          ["9280176", "C4613452", 824.99, null, 21, 0, 1, 1, 55],
+          ["9280177", "C4613453", 824.99, null, 21, 0, 1, 6, 55],
+          ["9280179", "C4613454", 824.99, null, 21, 0, 1, 2, 55],
+          ["9280180", "C4613455", 824.99, null, 21, 0, 2, 1, 55],
+          ["9280181", "C4613456", 824.99, null, 21, 0, 2, 6, 55],
+          ["9280182", "C4613457", 824.99, null, 21, 0, 2, 2, 55],
+          ["9280183", "C4613459", 824.99, null, 21, 0, 0, 6, 55],
+          ["9280184", "C4613458", 824.99, null, 21, 0, 0, 1, 55],
+          ["9280185", "C4613460", 824.99, null, 21, 0, 0, 2, 55],
+          ["9280186", "C4613462", 824.99, null, 21, 1, 1, 6, 56],
+          ["9280187", "C4613464", 824.99, null, 21, 0, 1, 1, 56],
+          ["9280188", "C4613461", 824.99, null, 21, 1, 1, 1, 56],
+          ["9280189", "C4613463", 824.99, null, 21, 1, 1, 2, 56],
+          ["9280190", "C4613465", 824.99, null, 21, 0, 1, 6, 56],
+          ["9280191", "C4613466", 824.99, null, 21, 0, 1, 2, 56],
+          ["9280192", "C4613467", 824.99, null, 21, 0, 2, 1, 56],
+          ["9280193", "C4613468", 824.99, null, 21, 0, 2, 6, 56],
+          ["9280194", "C4613469", 824.99, null, 21, 0, 2, 2, 56],
+          ["9280195", "C4613470", 824.99, null, 21, 0, 0, 1, 56],
+          ["9280196", "C4613471", 824.99, null, 21, 0, 0, 6, 56],
+          ["9280197", "C4613472", 824.99, null, 21, 0, 0, 2, 56],
+          ["9280198", "C4613473", 824.99, null, 21, 1, 1, 1, 81],
+          ["9280199", "C4613474", 824.99, null, 21, 1, 1, 5, 81],
+          ["9280200", "C4613475", 824.99, null, 21, 1, 1, 2, 81],
+          ["9280201", "C4613476", 824.99, null, 21, 0, 1, 1, 81],
+          ["9280202", "C4613477", 824.99, null, 21, 0, 1, 5, 81],
+          ["9280203", "C4613478", 824.99, null, 21, 0, 1, 2, 81],
+          ["9280204", "C4613479", 824.99, null, 21, 0, 2, 1, 81],
+          ["9280205", "C4613481", 824.99, null, 21, 0, 2, 2, 81],
+          ["9280206", "C4613480", 824.99, null, 21, 0, 2, 5, 81],
+          ["9280207", "C4613482", 824.99, null, 21, 0, 0, 1, 81],
+          ["9280208", "C4613484", 824.99, null, 21, 0, 0, 2, 81],
+          ["9280209", "C4613483", 824.99, null, 21, 0, 0, 5, 81],
+          ["9280210", "C4613485", 824.99, null, 21, 1, 1, 1, 82],
+          ["9280211", "C4613486", 824.99, null, 21, 1, 1, 2, 82],
+          ["9280212", "C4613487", 824.99, null, 21, 0, 1, 1, 82],
+          ["9280213", "C4613488", 824.99, null, 21, 0, 1, 2, 82],
+          ["9280214", "C4613489", 824.99, null, 21, 0, 2, 1, 82],
+          ["9280215", "C4613490", 824.99, null, 21, 0, 2, 2, 82],
+          ["9280216", "C4613491", 824.99, null, 21, 0, 0, 1, 82],
+          ["9280217", "C4613492", 824.99, null, 21, 0, 0, 2, 82],
+          ["9280218", "C4613493", 894.99, null, 21, 1, 1, 1, 43],
+          ["9280219", "C4613494", 894.99, null, 21, 1, 1, 2, 43],
+          ["9280220", "C4613495", 894.99, null, 21, 0, 1, 1, 43],
+          ["9280221", "C4613496", 894.99, null, 21, 0, 1, 2, 43],
+          ["9280222", "C4613497", 894.99, null, 21, 0, 2, 1, 43],
+          ["9280223", "C4613498", 894.99, null, 21, 0, 2, 2, 43],
+          ["9280224", "C4613499", 894.99, null, 21, 0, 0, 1, 43],
+          ["9280225", "C4613500", 894.99, null, 21, 0, 0, 2, 43],
+          ["9280226", "C4613501", 894.99, null, 21, 1, 1, 2, 50],
+          ["9280227", "C4613502", 894.99, null, 21, 0, 1, 2, 50],
+          ["9280228", "C4613503", 894.99, null, 21, 0, 2, 2, 50],
+          ["9280229", "C4613504", 894.99, null, 21, 0, 0, 2, 50],
+          ["9280230", "C4613505", 894.99, null, 21, 1, 1, 2, 51],
+          ["9280232", "C4613506", 894.99, null, 21, 0, 1, 2, 51],
+          ["9280233", "C4613507", 894.99, null, 21, 0, 2, 2, 51],
+          ["9280235", "C4613508", 894.99, null, 21, 0, 0, 2, 51],
+          ["9280267", "C4613541", 649.99, null, 21, 1, 1, 1, 70],
+          ["9280268", "C4613542", 649.99, null, 21, 1, 1, 2, 70],
+          ["9280269", "C4613543", 649.99, null, 21, 0, 1, 1, 70],
+          ["9280270", "C4613544", 649.99, null, 21, 0, 1, 2, 70],
+          ["9280271", "C4613545", 649.99, null, 21, 0, 2, 1, 70],
+          ["9280272", "C4613546", 649.99, null, 21, 0, 2, 2, 70],
+          ["9280273", "C4613547", 649.99, null, 21, 0, 0, 1, 70],
+          ["9280274", "C4613548", 649.99, null, 21, 0, 0, 2, 70],
+          ["9280275", "C4613549", 649.99, null, 21, 1, 1, 1, 71],
+          ["9280276", "C4613550", 649.99, null, 21, 1, 1, 2, 71],
+          ["9280277", "C4613551", 649.99, null, 21, 0, 1, 1, 71],
+          ["9280278", "C4613552", 649.99, null, 21, 0, 1, 2, 71],
+          ["9280279", "C4613553", 649.99, null, 21, 0, 2, 1, 71],
+          ["9280280", "C4613554", 649.99, null, 21, 0, 2, 2, 71],
+          ["9280281", "C4613555", 649.99, null, 21, 0, 0, 1, 71],
+          ["9280282", "C4613556", 649.99, null, 21, 0, 0, 2, 71],
+          ["9280283", "C4613557", 649.99, null, 21, 1, 1, 1, 44],
+          ["9280284", "C4613558", 649.99, null, 21, 1, 1, 2, 44],
+          ["9280285", "C4613559", 649.99, null, 21, 0, 1, 1, 44],
+          ["9280286", "C4613560", 649.99, null, 21, 0, 1, 2, 44],
+          ["9280287", "C4613561", 649.99, null, 21, 0, 2, 1, 44],
+          ["9280289", "C4613562", 649.99, null, 21, 0, 2, 2, 44],
+          ["9280290", "C4613563", 649.99, null, 21, 0, 0, 1, 44],
+          ["9280291", "C4613564", 649.99, null, 21, 0, 0, 2, 44],
+          ["9280292", "C4613565", 649.99, null, 21, 1, 1, 1, 42],
+          ["9280293", "C4613566", 649.99, null, 21, 1, 1, 2, 42],
+          ["9280294", "C4613567", 649.99, null, 21, 0, 1, 1, 42],
+          ["9280295", "C4613568", 649.99, null, 21, 0, 1, 2, 42],
+          ["9280296", "C4613569", 649.99, null, 21, 0, 2, 1, 42],
+          ["9280297", "C4613570", 649.99, null, 21, 0, 2, 2, 42],
+          ["9280298", "C4613571", 649.99, null, 21, 0, 0, 1, 42],
+          ["9280299", "C4613572", 649.99, null, 21, 0, 0, 2, 42],
+          ["9280304", "C4613577", 649.99, null, 21, 1, 1, 1, 57],
+          ["9280305", "C4613578", 649.99, null, 21, 1, 1, 2, 57],
+          ["9280306", "C4613579", 649.99, null, 21, 0, 1, 1, 57],
+          ["9280307", "C4613580", 649.99, null, 21, 0, 1, 2, 57],
+          ["9280308", "C4613581", 649.99, null, 21, 0, 2, 1, 57],
+          ["9280309", "C4613582", 649.99, null, 21, 0, 2, 2, 57],
+          ["9280310", "C4613583", 649.99, null, 21, 0, 0, 1, 57],
+          ["9280311", "C4613584", 649.99, null, 21, 0, 0, 2, 57],
+          ["9280312", "C4613585", 649.99, null, 21, 1, 1, 1, 58],
+          ["9280313", "C4613586", 649.99, null, 21, 1, 1, 2, 58],
+          ["9280314", "C4613587", 649.99, null, 21, 0, 1, 1, 58],
+          ["9280315", "C4613588", 649.99, null, 21, 0, 1, 2, 58],
+          ["9280316", "C4613589", 649.99, null, 21, 0, 2, 1, 58],
+          ["9280317", "C4613590", 649.99, null, 21, 0, 2, 2, 58],
+          ["9280318", "C4613591", 649.99, null, 21, 0, 0, 1, 58],
+          ["9280319", "C4613592", 649.99, null, 21, 0, 0, 2, 58],
+          ["9280320", "C4613593", 649.99, null, 21, 1, 1, 0, 52],
+          ["9280321", "C4613594", 649.99, null, 21, 1, 1, 1, 52],
+          ["9280322", "C4613595", 649.99, null, 21, 1, 1, 2, 52],
+          ["9280323", "C4613596", 649.99, null, 21, 0, 1, 0, 52],
+          ["9280324", "C4613597", 649.99, null, 21, 0, 1, 1, 52],
+          ["9280325", "C4613598", 649.99, null, 21, 0, 1, 2, 52],
+          ["9280326", "C4613599", 649.99, null, 21, 0, 2, 0, 52],
+          ["9280327", "C4613600", 649.99, null, 21, 0, 2, 1, 52],
+          ["9280328", "C4613601", 649.99, null, 21, 0, 2, 2, 52],
+          ["9280329", "C4613602", 649.99, null, 21, 0, 0, 0, 52],
+          ["9280330", "C4613603", 649.99, null, 21, 0, 0, 1, 52],
+          ["9280331", "C4613604", 649.99, null, 21, 0, 0, 2, 52],
+          ["9280332", "C4613606", 649.99, null, 21, 1, 1, 2, 53],
+          ["9280333", "C4613605", 649.99, null, 21, 1, 1, 1, 53],
+          ["9280334", "C4613607", 649.99, null, 21, 0, 1, 1, 53],
+          ["9280335", "C4613608", 649.99, null, 21, 0, 1, 2, 53],
+          ["9280336", "C4613609", 649.99, null, 21, 0, 2, 1, 53],
+          ["9280337", "C4613610", 649.99, null, 21, 0, 2, 2, 53],
+          ["9280338", "C4613611", 649.99, null, 21, 0, 0, 1, 53],
+          ["9280339", "C4613612", 649.99, null, 21, 0, 0, 2, 53],
+          ["9280340", "C4613613", 649.99, null, 21, 1, 1, 0, 45],
+          ["9280341", "C4613614", 649.99, null, 21, 1, 1, 3, 45],
+          ["9280342", "C4613616", 649.99, null, 21, 0, 1, 0, 45],
+          ["9280343", "C4613615", 649.99, null, 21, 1, 1, 1, 45],
+          ["9280344", "C4613617", 649.99, null, 21, 0, 1, 3, 45],
+          ["9280345", "C4613618", 649.99, null, 21, 0, 1, 1, 45],
+          ["9280346", "C4613619", 649.99, null, 21, 0, 2, 0, 45],
+          ["9280347", "C4613620", 649.99, null, 21, 0, 2, 3, 45],
+          ["9280348", "C4613621", 649.99, null, 21, 0, 2, 1, 45],
+          ["9280349", "C4613622", 649.99, null, 21, 0, 0, 0, 45],
+          ["9280350", "C4613623", 649.99, null, 21, 0, 0, 3, 45],
+          ["9280351", "C4613624", 649.99, null, 21, 0, 0, 1, 45],
+          ["9280352", "C4613625", 649.99, null, 21, 0, 1, 1, 46],
+          ["9280353", "C4613626", 649.99, null, 21, 0, 2, 0, 46],
+          ["9280354", "C4613627", 649.99, null, 21, 0, 2, 1, 46],
+          ["9280355", "C4613628", 649.99, null, 21, 0, 0, 0, 46],
+          ["9280356", "C4613629", 649.99, null, 21, 0, 0, 1, 46],
+          ["9280357", "C4613630", 649.99, null, 21, 1, 1, 0, 46],
+          ["9280358", "C4613631", 649.99, null, 21, 1, 1, 1, 46],
+          ["9280359", "C4613632", 649.99, null, 21, 0, 1, 0, 46],
+          ["9280360", "C4613634", 649.99, null, 21, 1, 1, 2, 67],
+          ["9280361", "C4613633", 649.99, null, 21, 1, 1, 1, 67],
+          ["9280362", "C4613635", 649.99, null, 21, 0, 1, 1, 67],
+          ["9280363", "C4613636", 649.99, null, 21, 0, 1, 2, 67],
+          ["9280364", "C4613637", 649.99, null, 21, 0, 2, 1, 67],
+          ["9280365", "C4613638", 649.99, null, 21, 0, 2, 2, 67],
+          ["9280366", "C4613639", 649.99, null, 21, 0, 0, 1, 67],
+          ["9280367", "C4613640", 649.99, null, 21, 0, 0, 2, 67],
+          ["9280368", "C4613641", 649.99, null, 21, 1, 1, 1, 68],
+          ["9280369", "C4613642", 649.99, null, 21, 1, 1, 2, 68],
+          ["9280370", "C4613643", 649.99, null, 21, 0, 1, 1, 68],
+          ["9280371", "C4613644", 649.99, null, 21, 0, 1, 2, 68],
+          ["9280373", "C4613645", 649.99, null, 21, 0, 2, 1, 68],
+          ["9280374", "C4613646", 649.99, null, 21, 0, 2, 2, 68],
+          ["9280375", "C4613647", 649.99, null, 21, 0, 0, 1, 68],
+          ["9280376", "C4613648", 649.99, null, 21, 0, 0, 2, 68],
+          ["9280378", "C4613649", 649.99, null, 21, 1, 1, 2, 72],
+          ["9280379", "C4613650", 649.99, null, 21, 0, 1, 2, 72],
+          ["9280380", "C4613651", 649.99, null, 21, 0, 2, 2, 72],
+          ["9280381", "C4613652", 649.99, null, 21, 0, 0, 2, 72],
+          ["9280382", "C4613653", 649.99, null, 21, 1, 1, 2, 73],
+          ["9280383", "C4613654", 649.99, null, 21, 0, 1, 2, 73],
+          ["9280384", "C4613655", 649.99, null, 21, 0, 2, 2, 73],
+          ["9280385", "C4613656", 649.99, null, 21, 0, 0, 2, 73],
+          ["9280396", "C4613658", 649.99, null, 21, 1, 1, 4, 0],
+          ["9280397", "C4613659", 649.99, null, 21, 0, 1, 4, 0],
+          ["9280398", "C4613660", 649.99, null, 21, 0, 2, 4, 0],
+          ["9280399", "C4613661", 649.99, null, 21, 0, 0, 4, 0],
+          ["9280400", "C4613662", 894.99, null, 21, 1, 1, 1, 29],
+          ["9280401", "C4613663", 894.99, null, 21, 1, 1, 2, 29],
+          ["9280402", "C4613664", 894.99, null, 21, 0, 1, 1, 29],
+          ["9280404", "C4613665", 894.99, null, 21, 0, 1, 2, 29],
+          ["9280405", "C4613666", 894.99, null, 21, 0, 2, 1, 29],
+          ["9280406", "C4613667", 894.99, null, 21, 0, 2, 2, 29],
+          ["9280407", "C4613668", 894.99, null, 21, 0, 0, 1, 29],
+          ["9280408", "C4613669", 894.99, null, 21, 0, 0, 2, 29],
+          ["9280409", "C4613670", 894.99, null, 21, 1, 1, 1, 50],
+          ["9280410", "C4613671", 894.99, null, 21, 0, 1, 1, 50],
+          ["9280411", "C4613672", 894.99, null, 21, 0, 2, 1, 50],
+          ["9280412", "C4613673", 894.99, null, 21, 0, 0, 1, 50],
+          ["9280414", "C4613674", 649.99, null, 21, 1, 1, 0, 27],
+          ["9280415", "C4613675", 649.99, null, 21, 1, 1, 1, 27],
+          ["9280416", "C4613676", 649.99, null, 21, 1, 1, 2, 27],
+          ["9280417", "C4613677", 649.99, null, 21, 0, 1, 0, 27],
+          ["9280418", "C4613678", 649.99, null, 21, 0, 1, 1, 27],
+          ["9280419", "C4613679", 649.99, null, 21, 0, 1, 2, 27],
+          ["9280421", "C4613680", 649.99, null, 21, 0, 2, 0, 27],
+          ["9280422", "C4613681", 649.99, null, 21, 0, 2, 1, 27],
+          ["9280423", "C4613682", 649.99, null, 21, 0, 2, 2, 27],
+          ["9280424", "C4613683", 649.99, null, 21, 0, 0, 0, 27],
+          ["9280425", "C4613684", 649.99, null, 21, 0, 0, 1, 27],
+          ["9280426", "C4613685", 649.99, null, 21, 0, 0, 2, 27],
+          ["9280427", "C4613686", 649.99, null, 21, 1, 1, 1, 28],
+          ["9280429", "C4613687", 649.99, null, 21, 1, 1, 2, 28],
+          ["9280430", "C4613688", 649.99, null, 21, 0, 1, 1, 28],
+          ["9280431", "C4613689", 649.99, null, 21, 0, 1, 2, 28],
+          ["9280432", "C4613690", 649.99, null, 21, 0, 2, 1, 28],
+          ["9280433", "C4613691", 649.99, null, 21, 0, 2, 2, 28],
+          ["9280434", "C4613692", 649.99, null, 21, 0, 0, 1, 28],
+          ["9280435", "C4613693", 649.99, null, 21, 0, 0, 2, 28],
+          ["9280436", "C4613694", 649.99, null, 21, 1, 1, 0, 1],
+          ["9280437", "C4613695", 649.99, null, 21, 1, 1, 3, 1],
+          ["9280439", "C4613696", 649.99, null, 21, 1, 1, 1, 1],
+          ["9280440", "C4613697", 649.99, null, 21, 0, 1, 0, 1],
+          ["9280441", "C4613698", 649.99, null, 21, 0, 1, 3, 1],
+          ["9280442", "C4613699", 649.99, null, 21, 0, 1, 1, 1],
+          ["9280443", "C4613700", 649.99, null, 21, 0, 2, 0, 1],
+          ["9280444", "C4613701", 649.99, null, 21, 0, 2, 3, 1],
+          ["9280445", "C4613702", 649.99, null, 21, 0, 2, 1, 1],
+          ["9280446", "C4613703", 649.99, null, 1, 0, 0, 0, 1],
+          ["9280447", "C4613704", 649.99, null, 21, 0, 0, 3, 1],
+          ["9280448", "C4613705", 649.99, null, 1, 0, 0, 1, 1],
+          ["9280449", "C4613706", 649.99, null, 21, 1, 1, 1, 33],
+          ["9280450", "C4613707", 649.99, null, 21, 1, 1, 2, 33],
+          ["9280451", "C4613708", 649.99, null, 21, 0, 1, 1, 33],
+          ["9280452", "C4613709", 649.99, null, 21, 0, 1, 2, 33],
+          ["9280453", "C4613710", 649.99, null, 21, 0, 2, 1, 33],
+          ["9280454", "C4613711", 649.99, null, 21, 0, 2, 2, 33],
+          ["9280455", "C4613712", 649.99, null, 21, 0, 0, 1, 33],
+          ["9280456", "C4613713", 649.99, null, 21, 0, 0, 2, 33],
+          ["9280457", "C4613714", 649.99, null, 21, 1, 1, 1, 34],
+          ["9280458", "C4613715", 649.99, null, 21, 1, 1, 2, 34],
+          ["9280459", "C4613716", 649.99, null, 21, 0, 1, 1, 34],
+          ["9280460", "C4613717", 649.99, null, 21, 0, 1, 2, 34],
+          ["9280461", "C4613718", 649.99, null, 21, 0, 2, 1, 34],
+          ["9280462", "C4613719", 649.99, null, 21, 0, 2, 2, 34],
+          ["9280463", "C4613720", 649.99, null, 21, 0, 0, 1, 34],
+          ["9280465", "C4613721", 649.99, null, 21, 0, 0, 2, 34],
+          ["9280490", "C4613724", 1049.99, null, 21, 1, 1, 0, 17],
+          ["9280491", "C4613725", 1049.99, null, 21, 0, 1, 0, 17],
+          ["9280492", "C4613726", 1049.99, null, 21, 0, 2, 0, 17],
+          ["9280493", "C4613727", 1049.99, null, 21, 0, 0, 0, 17],
+          ["9280494", "C4613728", 1049.99, null, 21, 1, 1, 1, 18],
+          ["9280495", "C4613729", 1049.99, null, 21, 1, 1, 2, 18],
+          ["9280496", "C4613730", 1049.99, null, 21, 0, 1, 1, 18],
+          ["9280497", "C4613731", 1049.99, null, 21, 0, 1, 2, 18],
+          ["9280498", "C4613732", 1049.99, null, 21, 0, 2, 1, 18],
+          ["9280499", "C4613733", 1049.99, null, 21, 0, 2, 2, 18],
+          ["9280500", "C4613734", 1049.99, null, 21, 0, 0, 1, 18],
+          ["9280501", "C4613735", 1049.99, null, 21, 0, 0, 2, 18],
+          ["9280502", "C4613736", 1049.99, null, 21, 1, 1, 2, 19],
+          ["9280503", "C4613737", 1049.99, null, 21, 0, 1, 2, 19],
+          ["9280504", "C4613738", 1049.99, null, 21, 0, 2, 2, 19],
+          ["9280505", "C4613739", 1049.99, null, 21, 0, 0, 2, 19],
+          ["9280506", "C4613740", 1049.99, null, 21, 1, 1, 2, 20],
+          ["9280507", "C4613741", 1049.99, null, 21, 0, 1, 2, 20],
+          ["9280508", "C4613742", 1049.99, null, 21, 0, 2, 2, 20],
+          ["9280509", "C4613743", 1049.99, null, 21, 0, 0, 2, 20],
+          ["9280510", "C4613744", 1049.99, null, 21, 1, 1, 2, 21],
+          ["9280511", "C4613745", 1049.99, null, 21, 0, 1, 2, 21],
+          ["9280512", "C4613746", 1049.99, null, 21, 0, 2, 2, 21],
+          ["9280513", "C4613747", 1049.99, null, 21, 0, 0, 2, 21],
+          ["9280514", "C4613748", 949.99, null, 21, 1, 1, 0, 30],
+          ["9280515", "C4613749", 949.99, null, 21, 1, 1, 1, 30],
+          ["9280516", "C4613750", 949.99, null, 21, 0, 1, 0, 30],
+          ["9280517", "C4613751", 949.99, null, 21, 0, 1, 1, 30],
+          ["9280518", "C4613752", 949.99, null, 21, 0, 2, 0, 30],
+          ["9280519", "C4613753", 949.99, null, 21, 0, 2, 1, 30],
+          ["9280520", "C4613754", 949.99, null, 21, 0, 0, 0, 30],
+          ["9280521", "C4613755", 949.99, null, 21, 0, 0, 1, 30],
+          ["9280522", "C4613756", 949.99, null, 21, 1, 1, 1, 31],
+          ["9280523", "C4613757", 949.99, null, 21, 1, 1, 2, 31],
+          ["9280524", "C4613758", 949.99, null, 21, 0, 1, 1, 31],
+          ["9280525", "C4613759", 949.99, null, 21, 0, 1, 2, 31],
+          ["9280526", "C4613760", 949.99, null, 21, 0, 2, 1, 31],
+          ["9280527", "C4613761", 949.99, null, 21, 0, 2, 2, 31],
+          ["9280528", "C4613762", 949.99, null, 21, 0, 0, 1, 31],
+          ["9280529", "C4613764", 949.99, null, 21, 1, 1, 1, 32],
+          ["9280530", "C4613763", 949.99, null, 21, 0, 0, 2, 31],
+          ["9280531", "C4613765", 949.99, null, 21, 1, 1, 2, 32],
+          ["9280532", "C4613766", 949.99, null, 21, 0, 1, 1, 32],
+          ["9280533", "C4613767", 949.99, null, 21, 0, 1, 2, 32],
+          ["9280534", "C4613768", 949.99, null, 21, 0, 2, 1, 32],
+          ["9280535", "C4613769", 949.99, null, 21, 0, 2, 2, 32],
+          ["9280536", "C4613770", 949.99, null, 21, 0, 0, 1, 32],
+          ["9280537", "C4613771", 949.99, null, 21, 0, 0, 2, 32],
+          ["9280538", "C4613772", 949.99, null, 21, 1, 1, 2, 8],
+          ["9280539", "C4613773", 949.99, null, 21, 0, 1, 2, 8],
+          ["9280540", "C4613774", 949.99, null, 21, 0, 2, 2, 8],
+          ["9280541", "C4613775", 949.99, null, 21, 0, 0, 2, 8],
+          ["9280542", "C4613776", 949.99, null, 21, 1, 1, 2, 9],
+          ["9280543", "C4613777", 949.99, null, 21, 0, 1, 2, 9],
+          ["9280544", "C4613778", 949.99, null, 21, 0, 2, 2, 9],
+          ["9280545", "C4613779", 949.99, null, 21, 0, 0, 2, 9],
+          ["9280549", "C4613838", 649.99, null, 21, 1, 1, 0, 74],
+          ["9280550", "C4613839", 649.99, null, 21, 1, 1, 1, 74],
+          ["9280551", "C4613840", 649.99, null, 21, 0, 1, 0, 74],
+          ["9280552", "C4613841", 649.99, null, 21, 0, 1, 1, 74],
+          ["9280553", "C4613842", 649.99, null, 21, 0, 2, 0, 74],
+          ["9280554", "C4613843", 649.99, null, 21, 0, 2, 1, 74],
+          ["9280555", "C4613844", 649.99, null, 21, 0, 0, 0, 74],
+          ["9280556", "C4613845", 649.99, null, 21, 0, 0, 1, 74],
+          ["9280557", "C4613846", 649.99, null, 21, 1, 1, 0, 75],
+          ["9280559", "C4613847", 649.99, null, 21, 1, 1, 1, 75],
+          ["9280560", "C4613848", 649.99, null, 21, 1, 1, 2, 75],
+          ["9280561", "C4613849", 649.99, null, 21, 0, 1, 0, 75],
+          ["9280562", "C4613850", 649.99, null, 21, 0, 1, 1, 75],
+          ["9280563", "C4613851", 649.99, null, 21, 0, 1, 2, 75],
+          ["9280564", "C4613852", 649.99, null, 21, 0, 2, 0, 75],
+          ["9280565", "C4613853", 649.99, null, 21, 0, 2, 1, 75],
+          ["9280566", "C4613854", 649.99, null, 21, 0, 2, 2, 75],
+          ["9280567", "C4613855", 649.99, null, 21, 0, 0, 0, 75],
+          ["9280568", "C4613856", 649.99, null, 21, 0, 0, 1, 75],
+          ["9280569", "C4613857", 649.99, null, 21, 0, 0, 2, 75],
+          ["9280570", "C4613858", 649.99, null, 21, 1, 1, 1, 76],
+          ["9280571", "C4613859", 649.99, null, 21, 1, 1, 2, 76],
+          ["9280572", "C4613860", 649.99, null, 21, 0, 1, 1, 76],
+          ["9280573", "C4613861", 649.99, null, 21, 0, 1, 2, 76],
+          ["9280574", "C4613862", 649.99, null, 21, 0, 2, 1, 76],
+          ["9280575", "C4613863", 649.99, null, 21, 0, 2, 2, 76],
+          ["9280576", "C4613864", 649.99, null, 21, 0, 0, 1, 76],
+          ["9280577", "C4613865", 649.99, null, 21, 0, 0, 2, 76],
+          ["9280578", "C4613866", 849.99, null, 21, 1, 1, 1, 4],
+          ["9280579", "C4613867", 849.99, null, 21, 1, 1, 2, 4],
+          ["9280580", "C4613868", 849.99, null, 21, 0, 1, 1, 4],
+          ["9280581", "C4613869", 849.99, null, 21, 0, 1, 2, 4],
+          ["9280582", "C4613871", 849.99, null, 21, 0, 2, 2, 4],
+          ["9280583", "C4613870", 849.99, null, 21, 0, 2, 1, 4],
+          ["9280584", "C4613872", 849.99, null, 21, 0, 0, 1, 4],
+          ["9280585", "C4613873", 849.99, null, 21, 0, 0, 2, 4],
+          ["9280586", "C4613874", 849.99, null, 21, 1, 1, 1, 5],
+          ["9280588", "C4613875", 849.99, null, 21, 1, 1, 2, 5],
+          ["9280589", "C4613876", 849.99, null, 21, 0, 1, 1, 5],
+          ["9280590", "C4613877", 849.99, null, 21, 0, 1, 2, 5],
+          ["9280591", "C4613878", 849.99, null, 21, 0, 2, 1, 5],
+          ["9280593", "C4613880", 849.99, null, 21, 0, 0, 1, 5],
+          ["9280594", "C4613881", 849.99, null, 21, 0, 0, 2, 5],
+          ["9280595", "C4613879", 849.99, null, 21, 0, 2, 2, 5],
+          ["9280596", "C4613882", 649.99, null, 21, 1, 1, 3, 62],
+          ["9280597", "C4613883", 649.99, null, 21, 0, 1, 3, 62],
+          ["9280598", "C4613884", 649.99, null, 21, 0, 2, 3, 62],
+          ["9280599", "C4613885", 649.99, null, 21, 0, 0, 3, 62],
+          ["9280600", "C4613886", 649.99, null, 21, 1, 1, 0, 63],
+          ["9280601", "C4613887", 649.99, null, 21, 1, 1, 1, 63],
+          ["9280602", "C4613888", 649.99, null, 21, 1, 1, 2, 63],
+          ["9280603", "C4613889", 649.99, null, 21, 0, 1, 0, 63],
+          ["9280604", "C4613890", 649.99, null, 21, 0, 1, 1, 63],
+          ["9280605", "C4613891", 649.99, null, 21, 0, 1, 2, 63],
+          ["9280606", "C4613892", 649.99, null, 21, 0, 2, 0, 63],
+          ["9280607", "C4613893", 649.99, null, 21, 0, 2, 1, 63],
+          ["9280608", "C4613894", 649.99, null, 21, 0, 2, 2, 63],
+          ["9280609", "C4613895", 649.99, null, 21, 0, 0, 0, 63],
+          ["9280610", "C4613896", 649.99, null, 21, 0, 0, 1, 63],
+          ["9280611", "C4613897", 649.99, null, 21, 0, 0, 2, 63],
+          ["9280612", "C4613898", 849.99, null, 21, 1, 1, 0, 10],
+          ["9280613", "C4613899", 849.99, null, 21, 1, 1, 1, 10],
+          ["9280614", "C4613900", 849.99, null, 21, 0, 1, 0, 10],
+          ["9280615", "C4613901", 849.99, null, 21, 0, 1, 1, 10],
+          ["9280616", "C4613902", 849.99, null, 21, 0, 2, 0, 10],
+          ["9280617", "C4613903", 849.99, null, 21, 0, 2, 1, 10],
+          ["9280618", "C4613904", 849.99, null, 21, 0, 0, 0, 10],
+          ["9280619", "C4613905", 849.99, null, 21, 0, 0, 1, 10],
+          ["9280620", "C4613906", 849.99, null, 21, 1, 1, 0, 11],
+          ["9280621", "C4613907", 849.99, null, 21, 1, 1, 1, 11],
+          ["9280622", "C4613908", 849.99, null, 21, 1, 1, 2, 11],
+          ["9280623", "C4613909", 849.99, null, 21, 0, 1, 0, 11],
+          ["9280624", "C4613910", 849.99, null, 21, 0, 1, 1, 11],
+          ["9280625", "C4613911", 849.99, null, 21, 0, 1, 2, 11],
+          ["9280626", "C4613912", 849.99, null, 21, 0, 2, 0, 11],
+          ["9280627", "C4613913", 849.99, null, 21, 0, 2, 1, 11],
+          ["9280628", "C4613915", 849.99, null, 21, 0, 0, 0, 11],
+          ["9280629", "C4613914", 849.99, null, 21, 0, 2, 2, 11],
+          ["9280630", "C4613916", 849.99, null, 21, 0, 0, 1, 11],
+          ["9280632", "C4613917", 849.99, null, 21, 0, 0, 2, 11],
+          ["9280633", "C4613918", 849.99, null, 21, 1, 1, 1, 12],
+          ["9280634", "C4613919", 849.99, null, 21, 1, 1, 2, 12],
+          ["9280635", "C4613920", 849.99, null, 21, 0, 1, 1, 12],
+          ["9280636", "C4613921", 849.99, null, 21, 0, 1, 2, 12],
+          ["9280638", "C4613922", 849.99, null, 21, 0, 2, 1, 12],
+          ["9280639", "C4613923", 849.99, null, 21, 0, 2, 2, 12],
+          ["9280640", "C4613924", 849.99, null, 21, 0, 0, 1, 12],
+          ["9280641", "C4613925", 849.99, null, 21, 0, 0, 2, 12],
+          ["9280642", "C4613926", 649.99, null, 21, 1, 1, 0, 69],
+          ["9280643", "C4613927", 649.99, null, 21, 1, 1, 1, 69],
+          ["9280644", "C4613929", 649.99, null, 21, 0, 1, 1, 69],
+          ["9280645", "C4613928", 649.99, null, 21, 0, 1, 0, 69],
+          ["9280646", "C4613930", 649.99, null, 21, 0, 2, 0, 69],
+          ["9280647", "C4613931", 649.99, null, 21, 0, 2, 1, 69],
+          ["9280648", "C4613932", 649.99, null, 21, 0, 0, 0, 69],
+          ["9280649", "C4613933", 649.99, null, 21, 0, 0, 1, 69],
+          ["9280655", "C4613936", 824.99, null, 21, 1, 1, 1, 24],
+          ["9280656", "C4613937", 824.99, null, 21, 0, 1, 1, 24],
+          ["9280657", "C4613938", 824.99, null, 21, 0, 2, 1, 24],
+          ["9280658", "C4613939", 824.99, null, 21, 0, 0, 1, 24],
+          ["9280660", "C4613940", 824.99, null, 21, 1, 1, 1, 25],
+          ["9280661", "C4613941", 824.99, null, 21, 1, 1, 2, 25],
+          ["9280662", "C4613942", 824.99, null, 21, 0, 1, 1, 25],
+          ["9280663", "C4613943", 824.99, null, 21, 0, 1, 2, 25],
+          ["9280664", "C4613944", 824.99, null, 21, 0, 2, 1, 25],
+          ["9280665", "C4613945", 824.99, null, 21, 0, 2, 2, 25],
+          ["9280666", "C4613946", 824.99, null, 21, 0, 0, 1, 25],
+          ["9280667", "C4613947", 824.99, null, 21, 0, 0, 2, 25],
+          ["9280668", "C4613948", 824.99, null, 21, 1, 1, 1, 26],
+          ["9280669", "C4613949", 824.99, null, 21, 1, 1, 2, 26],
+          ["9280670", "C4613950", 824.99, null, 21, 0, 1, 1, 26],
+          ["9280671", "C4613951", 824.99, null, 21, 0, 1, 2, 26],
+          ["9280672", "C4613952", 824.99, null, 21, 0, 2, 1, 26],
+          ["9280673", "C4613953", 824.99, null, 21, 0, 2, 2, 26],
+          ["9280674", "C4613954", 824.99, null, 21, 0, 0, 1, 26],
+          ["9280675", "C4613955", 824.99, null, 21, 0, 0, 2, 26],
+          ["9280677", "C4613957", 649.99, null, 21, 1, 1, 3, 35],
+          ["9280678", "C4613958", 649.99, null, 21, 0, 1, 3, 35],
+          ["9280680", "C4613959", 649.99, null, 21, 0, 2, 3, 35],
+          ["9280681", "C4613960", 649.99, null, 21, 0, 0, 3, 35],
+          ["9280700", "C4613963", 649.99, null, 21, 1, 1, 1, 6],
+          ["9280701", "C4613964", 649.99, null, 21, 0, 1, 1, 6],
+          ["9280702", "C4613965", 649.99, null, 21, 0, 2, 1, 6],
+          ["9280703", "C4613966", 649.99, null, 21, 0, 0, 1, 6],
+          ["9280704", "C4613967", 649.99, null, 21, 1, 1, 2, 6],
+          ["9280705", "C4613968", 649.99, null, 21, 0, 1, 2, 6],
+          ["9280706", "C4613969", 649.99, null, 21, 0, 2, 2, 6],
+          ["9280707", "C4613970", 649.99, null, 21, 0, 0, 2, 6],
+          ["9280708", "C4613971", 649.99, null, 21, 1, 1, 1, 2],
+          ["9280709", "C4613972", 649.99, null, 21, 0, 1, 1, 2],
+          ["9280710", "C4613973", 649.99, null, 21, 0, 2, 1, 2],
+          ["9280711", "C4613974", 649.99, null, 21, 0, 0, 1, 2],
+          ["9280712", "C4613975", 649.99, null, 21, 1, 1, 2, 3],
+          ["9280713", "C4613976", 649.99, null, 21, 0, 1, 2, 3],
+          ["9280715", "C4613977", 649.99, null, 21, 0, 2, 2, 3],
+          ["9280716", "C4613978", 649.99, null, 21, 0, 0, 2, 3],
+          ["9280742", "C4613980", 738.99, null, 21, 1, 1, 0, 7],
+          ["9280747", "C4613981", 738.99, null, 21, 1, 1, 1, 7],
+          ["9280750", "C4613982", 738.99, null, 21, 0, 1, 0, 7],
+          ["9280753", "C4613983", 738.99, null, 21, 0, 1, 1, 7],
+          ["9280755", "C4613984", 738.99, null, 21, 0, 2, 0, 7],
+          ["9280756", "C4613985", 738.99, null, 21, 0, 2, 1, 7],
+          ["9280757", "C4613986", 738.99, null, 21, 0, 0, 0, 7],
+          ["9280758", "C4613987", 738.99, null, 21, 0, 0, 1, 7],
+          ["9280759", "C4613988", 738.99, null, 21, 1, 1, 0, 13],
+          ["9280760", "C4613989", 738.99, null, 21, 1, 1, 1, 13],
+          ["9280763", "C4613990", 738.99, null, 21, 1, 1, 2, 13],
+          ["9280764", "C4613991", 738.99, null, 21, 0, 1, 0, 13],
+          ["9280765", "C4613992", 738.99, null, 21, 0, 1, 1, 13],
+          ["9280767", "C4613993", 738.99, null, 21, 0, 1, 2, 13],
+          ["9280768", "C4613994", 738.99, null, 21, 0, 2, 0, 13],
+          ["9280769", "C4613995", 738.99, null, 21, 0, 2, 1, 13],
+          ["9280771", "C4613996", 738.99, null, 21, 0, 2, 2, 13],
+          ["9280772", "C4613997", 738.99, null, 21, 0, 0, 0, 13],
+          ["9280773", "C4613998", 738.99, null, 21, 0, 0, 1, 13],
+          ["9280774", "C4613999", 738.99, null, 21, 0, 0, 2, 13],
+          ["9280775", "C4614000", 738.99, null, 21, 1, 1, 1, 14],
+          ["9280776", "C4614001", 738.99, null, 21, 1, 1, 2, 14],
+          ["9280777", "C4614002", 738.99, null, 21, 0, 1, 1, 14],
+          ["9280778", "C4614003", 738.99, null, 21, 0, 1, 2, 14],
+          ["9280779", "C4614004", 738.99, null, 21, 0, 2, 1, 14],
+          ["9280780", "C4614005", 738.99, null, 21, 0, 2, 2, 14],
+          ["9280781", "C4614006", 738.99, null, 21, 0, 0, 1, 14],
+          ["9280783", "C4614007", 738.99, null, 21, 0, 0, 2, 14],
+          ["9280784", "C4614008", 738.99, null, 21, 1, 1, 0, 15],
+          ["9280786", "C4614009", 738.99, null, 21, 1, 1, 1, 15],
+          ["9280789", "C4614010", 738.99, null, 21, 0, 1, 0, 15],
+          ["9280790", "C4614011", 738.99, null, 21, 0, 1, 1, 15],
+          ["9280792", "C4614012", 738.99, null, 21, 0, 2, 0, 15],
+          ["9280793", "C4614013", 738.99, null, 21, 0, 2, 1, 15],
+          ["9280794", "C4614014", 738.99, null, 21, 0, 0, 0, 15],
+          ["9280795", "C4614015", 738.99, null, 21, 0, 0, 1, 15],
+          ["9280796", "C4614016", 738.99, null, 21, 1, 1, 1, 22],
+          ["9280797", "C4614017", 738.99, null, 21, 1, 1, 2, 22],
+          ["9280798", "C4614018", 738.99, null, 21, 0, 1, 1, 22],
+          ["9280799", "C4614019", 738.99, null, 21, 0, 1, 2, 22],
+          ["9280800", "C4614020", 738.99, null, 21, 0, 2, 1, 22],
+          ["9280801", "C4614021", 738.99, null, 21, 0, 2, 2, 22],
+          ["9280803", "C4614022", 738.99, null, 21, 0, 0, 1, 22],
+          ["9280804", "C4614023", 738.99, null, 21, 0, 0, 2, 22],
+          ["9280805", "C4614024", 738.99, null, 21, 1, 1, 1, 23],
+          ["9280806", "C4614025", 738.99, null, 21, 1, 1, 2, 23],
+          ["9280807", "C4614026", 738.99, null, 21, 0, 1, 1, 23],
+          ["9280808", "C4614027", 738.99, null, 21, 0, 1, 2, 23],
+          ["9280809", "C4614028", 738.99, null, 21, 0, 2, 1, 23],
+          ["9280812", "C4614029", 738.99, null, 21, 0, 2, 2, 23],
+          ["9280814", "C4614030", 738.99, null, 21, 0, 0, 1, 23],
+          ["9280815", "C4614031", 738.99, null, 21, 0, 0, 2, 23],
+          ["9280816", "C4614032", 738.99, null, 21, 1, 1, 1, 16],
+          ["9280817", "C4614033", 738.99, null, 21, 1, 1, 2, 16],
+          ["9280818", "C4614034", 738.99, null, 21, 0, 1, 1, 16],
+          ["9280819", "C4614035", 738.99, null, 21, 0, 1, 2, 16],
+          ["9280820", "C4614036", 738.99, null, 21, 0, 2, 1, 16],
+          ["9280821", "C4614037", 738.99, null, 21, 0, 2, 2, 16],
+          ["9280822", "C4614038", 738.99, null, 21, 0, 0, 1, 16],
+          ["9280824", "C4614039", 738.99, null, 21, 0, 0, 2, 16]
+        ]
+      },
+      "customizations": [
+        {
+          "groupId": "30617848",
+          "label": "Grips",
+          "inputType": "select",
+          "optionType": "grips",
+          "options": [
+            {
+              "id": "622724079",
+              "name": "Golf Pride MCC Plus 4 Blue Standard",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724080",
+              "name": "Golf Pride CP2 Pro Jumbo",
+              "priceDelta": 9.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724081",
+              "name": "Golf Pride CP2 Pro Midsize",
+              "priceDelta": 9.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724082",
+              "name": "Golf Pride CP2 Pro Standard",
+              "priceDelta": 9.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724083",
+              "name": "Golf Pride CP2 Wrap Jumbo",
+              "priceDelta": 9.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724084",
+              "name": "Golf Pride CP2 Wrap Midsize",
+              "priceDelta": 9.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724085",
+              "name": "Golf Pride CP2 Wrap Standard",
+              "priceDelta": 9.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724086",
+              "name": "Golf Pride MCC Align Black/White Midsize",
+              "priceDelta": 12.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724087",
+              "name": "Golf Pride MCC Align Black/White Standard",
+              "priceDelta": 12.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724088",
+              "name": "Golf Pride MCC Blue Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724089",
+              "name": "Golf Pride MCC Black Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724090",
+              "name": "Golf Pride MCC Blue Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724091",
+              "name": "Golf Pride MCC Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724092",
+              "name": "Golf Pride MCC Green/Gold Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724093",
+              "name": "Golf Pride MCC Plus 4 Gray Standard",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724094",
+              "name": "Golf Pride MCC Plus 4 Orange Standard",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724095",
+              "name": "Golf Pride MCC Plus 4 Red Standard",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724096",
+              "name": "Golf Pride MCC Plus 4 Align Midsize",
+              "priceDelta": 12.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724097",
+              "name": "Golf Pride MCC Plus 4 Align Standard",
+              "priceDelta": 12.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724098",
+              "name": "Golf Pride MCC Plus 4 Blue Midsize",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724099",
+              "name": "Golf Pride MCC Plus 4 Gray Jumbo",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724100",
+              "name": "Golf Pride MCC Plus 4 Gray Midsize",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724101",
+              "name": "Golf Pride MCC Red Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724102",
+              "name": "Golf Pride MCC Red Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724103",
+              "name": "Golf Pride MCC White Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724104",
+              "name": "Golf Pride MCC White Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724105",
+              "name": "Golf Pride Tour Velvet 360",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724106",
+              "name": "Golf Pride Tour Velvet 360 ZipCore Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724107",
+              "name": "Golf Pride Tour Velvet 360 Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724108",
+              "name": "Golf Pride Tour Velvet Align Midsize",
+              "priceDelta": 12.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724109",
+              "name": "Golf Pride Tour Velvet Align Standard",
+              "priceDelta": 12.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724110",
+              "name": "Golf Pride Tour Velvet Cord Standard",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724111",
+              "name": "Golf Pride Tour Velvet Jumbo",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724112",
+              "name": "Golf Pride Tour Velvet Midsize",
+              "priceDelta": 6.49,
+              "isDefault": false
+            },
+            {
+              "id": "622724113",
+              "name": "Golf Pride Tour Velvet Plus 4 Midsize",
+              "priceDelta": 4,
+              "isDefault": false
+            },
+            {
+              "id": "622724114",
+              "name": "Golf Pride Tour Velvet Plus 4 Standard",
+              "priceDelta": 6.49,
+              "isDefault": false
+            },
+            {
+              "id": "622724115",
+              "name": "Golf Pride Tour Velvet Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724116",
+              "name": "Golf Pride Tour Wrap 2G Black Midsize",
+              "priceDelta": 7.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724117",
+              "name": "Golf Pride Tour Wrap 2G Black Standard",
+              "priceDelta": 7.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724118",
+              "name": "Golf Pride Tour Wrap 2G Red Standard",
+              "priceDelta": 7.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724119",
+              "name": "Golf Pride Tour Wrap 2G White Standard",
+              "priceDelta": 7.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724120",
+              "name": "Golf Pride Tour Wrap Microsuede Undersized",
+              "priceDelta": 10,
+              "isDefault": false
+            },
+            {
+              "id": "622724121",
+              "name": "Golf Pride Z-Grip Cord Midsize",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724122",
+              "name": "Golf Pride Z-Grip Cord Standard",
+              "priceDelta": 11.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724123",
+              "name": "Iomic Sticky MID",
+              "priceDelta": 15.5,
+              "isDefault": false
+            },
+            {
+              "id": "622724124",
+              "name": "Iomic Sticky iXx 2.0 Red Standard",
+              "priceDelta": 13.5,
+              "isDefault": false
+            },
+            {
+              "id": "622724125",
+              "name": "Iomic Sticky 2.3 Black Standard",
+              "priceDelta": 12.95,
+              "isDefault": false
+            },
+            {
+              "id": "622724126",
+              "name": "Jumbo Max JMX Ultralite Black X-Large",
+              "priceDelta": 15.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724127",
+              "name": "Jumbo Max JMX Ultralite Black Medium",
+              "priceDelta": 15.99,
+              "isDefault": false
+            },
+            {
+              "id": "622724128",
+              "name": "Lamkin Crossline Cord Standard",
+              "priceDelta": 11,
+              "isDefault": false
+            },
+            {
+              "id": "622724129",
+              "name": "Lamkin Crossline Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724130",
+              "name": "Lamkin Crossline Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724131",
+              "name": "Lamkin Crossline 360 Genesis Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724132",
+              "name": "Lamkin Crossline 360 Genesis Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724133",
+              "name": "Lamkin Crossline 360 Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724134",
+              "name": "Lamkin UTX Blue Standard",
+              "priceDelta": 10.5,
+              "isDefault": false
+            },
+            {
+              "id": "622724135",
+              "name": "Lamkin UTx Gray Standard",
+              "priceDelta": 10.5,
+              "isDefault": false
+            },
+            {
+              "id": "622724136",
+              "name": "Lamkin St+2 Hybrid Midsize",
+              "priceDelta": 11.5,
+              "isDefault": false
+            },
+            {
+              "id": "622724137",
+              "name": "Lamkin ST+2 Hybrid Standard",
+              "priceDelta": 11.5,
+              "isDefault": false
+            },
+            {
+              "id": "622724138",
+              "name": "Lamkin UTx Gray Midsize",
+              "priceDelta": 10.5,
+              "isDefault": false
+            },
+            {
+              "id": "622724139",
+              "name": "Lamkin UTX Green Standard",
+              "priceDelta": 10.5,
+              "isDefault": false
+            },
+            {
+              "id": "622724140",
+              "name": "Winn Dri-Tac Gray Ladies",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724141",
+              "name": "Winn Dri-Tac Gray Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724142",
+              "name": "Winn Dri-Tac Gray Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724143",
+              "name": "Winn Dri-Tac Lite Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724144",
+              "name": "Winn Dri-Tac Lite Oversize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724145",
+              "name": "Winn Dri-Tac Lite Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724146",
+              "name": "Winn Excel Black Midsize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724147",
+              "name": "Winn Excel Black Oversize",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724148",
+              "name": "Winn Excel Black Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724149",
+              "name": "Womens Lamkin ST Soft Undersize",
+              "priceDelta": 0,
+              "isDefault": false
+            }
+          ]
+        },
+        {
+          "groupId": "30617849",
+          "label": "Install Grips / Grip Size",
+          "inputType": "select",
+          "optionType": "grips",
+          "options": [
+            {
+              "id": "622724150",
+              "name": "Do Not Install Grips - Include In Box",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724151",
+              "name": "+1 Wrap",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724152",
+              "name": "+2 Wraps",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724153",
+              "name": "+2 Wraps Bottom Hand: +1 Wrap Top Hand",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724154",
+              "name": "+3 Wraps",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724155",
+              "name": "+3 Wraps Bottom Hand: +2 Wraps Top Hand",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724156",
+              "name": "+4 Wraps",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724157",
+              "name": "+4 Wraps Bottom Hand: +2 Wraps Top Hand",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724158",
+              "name": "+5 Wraps",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724159",
+              "name": "+6 Wraps",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724160",
+              "name": "Standard (1 Wrap)",
+              "priceDelta": 0,
+              "isDefault": false
+            }
+          ]
+        },
+        {
+          "groupId": "30617850",
+          "label": "Length Adjustment",
+          "inputType": "select",
+          "optionType": "select",
+          "options": [
+            {
+              "id": "622724161",
+              "name": "- 1.00\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724162",
+              "name": "- 1.25\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724163",
+              "name": "- 1.50\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724164",
+              "name": "- 1.75\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724165",
+              "name": "- .25\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724166",
+              "name": "- 2.00\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724167",
+              "name": "- .50\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724169",
+              "name": "- .75\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724170",
+              "name": "+ 1.00\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724173",
+              "name": "+ 1.25\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724175",
+              "name": "+ 1.50\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724178",
+              "name": "+ 1.75\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724181",
+              "name": "+ .25\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724184",
+              "name": "+ 2.00\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724186",
+              "name": "+ .50\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724189",
+              "name": "+ .75\"",
+              "priceDelta": 0,
+              "isDefault": false
+            },
+            {
+              "id": "622724192",
+              "name": "Standard",
+              "priceDelta": 0,
+              "isDefault": false
+            }
+          ]
+        }
+      ],
+      "pricing": {
+        "model": "per_variant",
+        "defaultClubCount": 1,
+        "clubSelection": null
+      },
+      "media": {
+        "images": ["https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR.jpg", "https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR_2.jpg", "https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR_3.jpg", "https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR_4.jpg", "https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR_5.jpg", "https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR_6.jpg", "https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR_7.jpg"],
+        "videos": ["https://www.youtube.com/watch?v=ThtESvbOyBI"]
+      },
+      "meta": {
+        "resolvedVia": "root_slug",
+        "fetchedAt": "2026-11-11T14:01:58.830Z"
+      }
+    }
+  ]
+}
