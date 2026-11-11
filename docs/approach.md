@@ -34,15 +34,17 @@ gives the same answer) and `tried_urls` (every URL requested, in order).
 | Run | Wall time | Requests | Retries | Network p50 / p95 | Result |
 |---|---|---|---|---|---|
 | Live #1 | 484 s | 1,884 (+40 cached) | 1 | 1.9 s / 4.4 s | 944 ok / 16 unmatched / 0 failed |
-| Live #2 (`--refresh`) | 401 s | 1,923 | 0 | 1.3 s / 3.8 s | 944 ok / 16 unmatched / 0 failed |
-| Live #3, final code (`--refresh`) | 446 s | 1,931 | 8 | 1.1 s / 4.2 s | 944 ok / 16 unmatched / 0 failed |
-| Live #4, final code (`--refresh`) | 394 s | 1,924 | 1 | 1.3 s / 3.8 s | 944 ok / 16 unmatched / 0 failed |
-| Live #5, final code (`--refresh`) | 451 s | 1,925 | 2 | 1.7 s / 4.5 s | 944 ok / 16 unmatched / 0 failed — this is `data/output.json` |
+| Live #2 | 401 s | 1,923 | 0 | 1.3 s / 3.8 s | 944 ok / 16 unmatched / 0 failed |
+| Live #3 | 446 s | 1,931 | 8 | 1.1 s / 4.2 s | 944 ok / 16 unmatched / 0 failed |
+| Live #4 | 394 s | 1,924 | 1 | 1.3 s / 3.8 s | 944 ok / 16 unmatched / 0 failed |
+| Live #5 | 451 s | 1,925 | 2 | 1.7 s / 4.5 s | 944 ok / 16 unmatched / 0 failed |
+| **Live #6, final code** | **447 s** | **1,923** | **0** | **1.5 s / 4.4 s** | **944 ok / 16 unmatched / 0 failed — this is `data/output.json`** |
 | From cache | ~23 s | 0 | 0 | — | same products |
 
-All live runs produced the same products and unmatched list; the time difference is origin latency
-and the proxy exit node. `data/output.json → metadata` holds the numbers of run #5, the one that
-wrote it (runs #1 and #2 used earlier code with the same request pattern).
+All six live runs (`--refresh` from #2 on) produced the same products and the same unmatched rows;
+the time difference is origin latency and the proxy exit node. The code evolved between runs
+(output format, statuses) but the request pattern did not: about 2 requests per product.
+`data/output.json → metadata` holds the numbers of run #6, made with the final code.
 
 Measured with `performance.now()`: per network request (connect to full body, cached responses
 excluded) and per product parse/build (HTML parse + JSON extraction + build + schema validation).
