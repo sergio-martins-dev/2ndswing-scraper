@@ -44,7 +44,10 @@ test('writeOutputs: json + gzip copy, products.csv summary, unmatched.csv, optio
   const dir = await tmp();
   const products = [product('pro-s4-sts', 'PRO S4 STS'), product('link-2dot2-put', 'LINK 2.2 PUT')];
   const output: Output = { metadata: metadata(10, 1000), products };
-  const unmatched = [{ parentItem: 'AIRBREAK PMT', name: 'PuttOUT, "AirBreak"', category: 'Putting Mat', reason: 'not_found' as const, detail: 'HTTP 404', triedUrls: ['a', 'b'] }];
+  const unmatched = [
+    { parentItem: 'AIRBREAK PMT', name: 'PuttOUT, "AirBreak"', category: 'Putting Mat', reason: 'not_found' as const, detail: 'HTTP 404', triedUrls: ['a', 'b'] },
+    { parentItem: 'KM2 PUT', name: 'Miura KM-2 Putter', category: 'Putter', reason: 'http_error' as const, detail: 'timeout', triedUrls: ['c'] },
+  ];
 
   const files = await writeOutputs(dir, output, unmatched, { flatVariants: true });
   assert.deepEqual(files.map((f) => f.slice(dir.length + 1)), ['output.json', 'output.json.gz', 'products.csv', 'unmatched.csv', 'variants.csv']);
@@ -62,9 +65,11 @@ test('writeOutputs: json + gzip copy, products.csv summary, unmatched.csv, optio
 
   const unmatchedCsv: Record<string, string>[] = parse(await readFile(join(dir, 'unmatched.csv'), 'utf8'), { columns: true });
   assert.deepEqual(unmatchedCsv[0], {
-    parent_item: 'AIRBREAK PMT', name: 'PuttOUT, "AirBreak"', category: 'Putting Mat',
-    reason: 'not_found', detail: 'HTTP 404', tried_urls: 'a | b',
+    parent_item: 'AIRBREAK PMT', reason: 'not_found', retryable: 'false', check_url: 'b',
+    name: 'PuttOUT, "AirBreak"', category: 'Putting Mat', detail: 'HTTP 404', tried_urls: 'a | b',
   });
+  assert.equal(unmatchedCsv[1]!.retryable, 'true'); // network failure: worth re-running
+  assert.equal(unmatchedCsv[1]!.check_url, 'c');
 
   const variants: Record<string, string>[] = parse(await readFile(join(dir, 'variants.csv'), 'utf8'), { columns: true });
   assert.equal(variants.length, products[0]!.variants.rows.length + products[1]!.variants.rows.length);

@@ -91,12 +91,19 @@ export const UNMATCHED_REASONS = [
   'schema_error',
 ] as const;
 
+/**
+ * Only transient failures are worth re-running. The other reasons describe the site's state
+ * (archived, 404, redirect) or a parser problem: running again gives the same answer.
+ */
+export const RETRYABLE_REASONS: ReadonlySet<Unmatched['reason']> = new Set(['http_error']);
+
 export type Unmatched = {
   parentItem: string;
   name: string;
   category: string;
   reason: (typeof UNMATCHED_REASONS)[number];
   detail: string;
+  /** Every URL requested, in order. The last one decided the outcome. */
   triedUrls: string[];
 };
 

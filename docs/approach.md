@@ -25,7 +25,9 @@ Site search is not used: `robots.txt` disallows `/catalogsearch/`, and it was th
 | `not_found` | 1 | `AIRBREAK PMT`: 404 at the slug, absent from the model sitemaps |
 | `redirected_to_model_page` | 1 | `STAFF MOD TG NEW WGS`: redirects to a model page that lists used units only |
 
-Each row of `unmatched.csv` lists the URLs tried, so they can be checked by hand.
+Each row of `unmatched.csv` has `check_url` (the URL that decided the outcome, to open by hand),
+`retryable` (`true` only for network failures; the reasons above are the site's state and a re-run
+gives the same answer) and `tried_urls` (every URL requested, in order).
 
 ## Runtime
 

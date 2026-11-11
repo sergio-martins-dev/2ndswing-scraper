@@ -6,7 +6,7 @@ import { once } from 'node:events';
 import type { Summary } from './lib/metrics.ts';
 import { fromVariantMatrix } from './parsers/variants.ts';
 import { configurationPrice, type PriceCheck } from './pricing.ts';
-import type { Product, Unmatched } from './schema.ts';
+import { RETRYABLE_REASONS, type Product, type Unmatched } from './schema.ts';
 
 export type Output = {
   metadata: {
@@ -32,7 +32,7 @@ export type Output = {
 /**
  * output.json      full model (variant matrices kept one row per line) + output.json.gz
  * products.csv     one row per product — quick overview for spreadsheets
- * unmatched.csv    every CSV row that did not produce a product, with the reason
+ * unmatched.csv    every CSV row that did not produce a product: reason, retryable, URL to check by hand
  * variants.csv     optional (flatVariants): one row per purchasable child, labels expanded (~150 MB)
  */
 export async function writeOutputs(
@@ -117,8 +117,11 @@ async function writeVariantsCsv(path: string, products: Product[]): Promise<void
 
 function unmatchedRows(items: Unmatched[]): (string | number)[][] {
   return [
-    ['parent_item', 'name', 'category', 'reason', 'detail', 'tried_urls'],
-    ...items.map((u) => [u.parentItem, u.name, u.category, u.reason, u.detail, u.triedUrls.join(' | ')]),
+    ['parent_item', 'reason', 'retryable', 'check_url', 'name', 'category', 'detail', 'tried_urls'],
+    ...items.map((u) => [
+      u.parentItem, u.reason, String(RETRYABLE_REASONS.has(u.reason)), u.triedUrls.at(-1) ?? '',
+      u.name, u.category, u.detail, u.triedUrls.join(' | '),
+    ]),
   ];
 }
 

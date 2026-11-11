@@ -1,1 +1,1 @@
-parent_item,name,category,reason,detail,tried_urls
+parent_item,reason,retryable,check_url,name,category,detail,tried_urls
