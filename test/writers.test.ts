@@ -13,14 +13,14 @@ import { compactJson, writeOutputs, type Output } from '../src/writers.ts';
 import { fixture } from './helpers.ts';
 
 const BASE = 'https://www.2ndswing.com';
-const items = await loadCsv('test/fixtures/input-sample.csv');
+const { items } = await loadCsv('test/fixtures/input-sample.csv');
 const meta = { resolvedVia: 'root_slug', fetchedAt: '2026-11-11T00:00:00.000Z' } as const;
 const product = (slug: string, sku: string) =>
   buildProduct(items.find((i) => i.parentItem === sku)!, parseProductPage(fixture(slug)), null, BASE, meta);
 
 const metadata = (network: number, runtimeMs: number): Output['metadata'] => ({
   scrapedAt: `2026-11-1${network ? 0 : 1}T00:00:00.000Z`,
-  totalInput: 2, successful: 2, unmatched: 1, failed: 0, totalVariants: 0,
+  totalInput: 2, inputDuplicates: [], successful: 2, unmatched: 1, failed: 0, totalVariants: 0,
   runtimeMs, productsPerSecond: 1, concurrency: 8, proxy: network > 0,
   networkMs: summarize(network ? [1000, 2000] : []), parseMs: summarize([10]),
   requests: { network, fromCache: network ? 0 : 4, retries: 0 },

@@ -12,6 +12,8 @@ export type Output = {
   metadata: {
     scrapedAt: string;
     totalInput: number;
+    /** Parent Items repeated in the CSV; only their first row is scraped. */
+    inputDuplicates: string[];
     successful: number;
     unmatched: number;
     failed: number;

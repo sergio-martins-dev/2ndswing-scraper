@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { parseCli, UsageError, USAGE } from './cli.ts';
 import { config } from './config.ts';
-import { loadCsv } from './lib/csv.ts';
+import { CsvError, loadCsv } from './lib/csv.ts';
 import { summarize } from './lib/metrics.ts';
 import { GeoBlockedError, HttpClient } from './services/http.client.ts';
 import { checkListedPrices } from './pricing.ts';
@@ -16,7 +16,9 @@ async function main(): Promise<void> {
   const proxyUrl = process.env.PROXY_URL || undefined;
   const { concurrency } = args;
 
-  let items = await loadCsv(args.input);
+  const input = await loadCsv(args.input);
+  if (input.duplicates.length) log(`Skipped ${input.duplicates.length} repeated Parent Item row(s): ${input.duplicates.join(', ')}`);
+  let items = input.items;
   if (args.only.length) items = items.filter((i) => args.only.includes(i.parentItem));
   if (args.limit !== null) items = items.slice(0, args.limit);
   if (items.length === 0) throw new UsageError('No products selected: check --only / --limit / --input.');
@@ -48,6 +50,7 @@ async function main(): Promise<void> {
       metadata: {
         scrapedAt: new Date().toISOString(),
         totalInput: items.length,
+        inputDuplicates: input.duplicates,
         successful: result.products.length,
         unmatched: result.unmatched.length,
         failed: result.failed.length,
@@ -95,7 +98,7 @@ main().catch((error) => {
     process.exitCode = 2;
     return;
   }
-  if (error instanceof GeoBlockedError) log(`\n${error.message}`);
+  if (error instanceof GeoBlockedError || error instanceof CsvError) log(`\n${error.message}`);
   else log(`\nFatal: ${error instanceof Error ? error.stack : String(error)}`);
   process.exitCode = 1;
 });
