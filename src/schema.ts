@@ -1,0 +1,90 @@
+import { z } from 'zod';
+
+const money = z.number().nonnegative().finite();
+
+export const ProductSchema = z.object({
+  parentItem: z.string().min(1),
+  name: z.string().min(1),
+  brand: z.string(),
+  category: z.string(),
+  url: z.url(),
+  productId: z.string().nullable(),
+  /** Price shown on the page (ld+json). For iron sets it already includes the default club count. */
+  listedPrice: money.nullable(),
+  currency: z.literal('USD'),
+  availability: z.string().nullable(),
+  description: z.string().nullable(),
+  specs: z.array(z.record(z.string(), z.string())),
+  attributes: z.array(
+    z.object({
+      code: z.string(),
+      label: z.string(),
+      options: z.array(z.object({ id: z.string(), label: z.string() })),
+    }),
+  ),
+  /**
+   * Every purchasable child product, as a compact matrix (some products have 20k+ valid children).
+   * `fields` = VARIANT_BASE_FIELDS followed by one attribute code per column; attribute cells hold
+   * the index of the option in `attributes[i].options`.
+   */
+  variants: z
+    .object({
+      fields: z.array(z.string()),
+      rows: z.array(z.array(z.union([z.string(), z.number(), z.null()]))).min(1),
+    })
+    .refine((m) => m.rows.every((r) => r.length === m.fields.length), 'every row must match fields'),
+  customizations: z.array(
+    z.object({
+      groupId: z.string(),
+      label: z.string(),
+      inputType: z.enum(['select', 'checkbox']),
+      optionType: z.string(),
+      options: z.array(z.object({ id: z.string(), name: z.string(), priceDelta: z.number(), isDefault: z.boolean() })),
+    }),
+  ),
+  pricing: z.object({
+    model: z.enum(['per_variant', 'per_club']),
+    defaultClubs: z.array(z.string()),
+    defaultClubCount: z.number().int().positive(),
+    clubSelection: z
+      .object({
+        groupId: z.string(),
+        label: z.string(),
+        options: z.array(z.object({ id: z.string(), name: z.string(), includedByDefault: z.boolean() })),
+      })
+      .nullable(),
+    formula: z.string(),
+  }),
+  media: z.object({ images: z.array(z.url()), videos: z.array(z.url()) }),
+  meta: z.object({
+    resolvedVia: z.enum(['root_slug', 'model_page']),
+    fetchedAt: z.string(),
+    httpMs: z.number().nonnegative(),
+    parseMs: z.number().nonnegative(),
+    fromCache: z.boolean(),
+  }),
+});
+
+export type Product = z.infer<typeof ProductSchema>;
+
+export const VARIANT_BASE_FIELDS = ['childId', 'sku', 'price', 'regularPrice', 'leadTimeDays'] as const;
+
+export const UNMATCHED_REASONS = [
+  'not_found',
+  'archive_page_or_discontinued',
+  'redirected_to_model_page',
+  'model_page_without_sku',
+  'sku_mismatch',
+  'http_error',
+  'parse_error',
+  'schema_error',
+] as const;
+
+export type Unmatched = {
+  parentItem: string;
+  name: string;
+  category: string;
+  reason: (typeof UNMATCHED_REASONS)[number];
+  detail: string;
+  triedUrls: string[];
+};

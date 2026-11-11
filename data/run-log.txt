@@ -1,0 +1,67 @@
+=== pass 1 · proxy session 6a58a3 · 2026-11-10T23:40:59-03:00
+Scraping 960 products (concurrency 8, proxy on, cache on)
+[25/960] ok        EXOTICS MILLED WGS
+[50/960] ok        UL 3 CLUB BOX
+[75/960] ok        RTZ 2 BS FF WGS
+[100/960] ok        SPDR ZT MAX LONG PUT
+[125/960] ok        QUADMAX LM
+[150/960] ok        GTS 2 DVR
+[175/960] ok        AO2 BLUE DST
+[200/960] ok        G LE4 FWG
+[225/960] ok        2026 BB28 AL PUT
+[250/960] ok        2026 PHANTOM 9R PUT
+[275/960] ok        SM11 RAW WGS
+[300/960] ok        QUANTUM MAX FAST FWG
+[325/960] ok        2026 KING MAX W LIS
+[328/960] unmatched LAUNCH PRO CB INDOOR LM
+[329/960] unmatched LAUNCH PRO CIRCLE B LM
+[350/960] ok        HL HL 04 PUT
+[375/960] ok        QUANTUM TD MAX DVR
+[400/960] ok        ANTIDOTE SB2 LONG PUT
+[425/960] ok        MIZUNO PRO S BAG
+[450/960] ok        MG5 TW WGS
+[455/960] unmatched AIRBREAK PMT
+[475/960] ok        APEX TIFUSION 250 LIS
+[500/960] ok        2025 T100 LIS
+[517/960] unmatched 702 MB F LIS
+[525/960] ok        STACK RADAR ACC
+[550/960] ok        PRIME 13 FWG
+[575/960] ok        V12 SHORT SLANT PUT
+[600/960] ok        2025 P790 STS
+[625/960] ok        2025 DYNAPWR CARBON DVR
+[650/960] ok        PLD M ANSER 4D S PUT
+[675/960] ok        G440 HL SFT FWG
+[700/960] ok        2025 QUEEN B 6 SS PUT
+[725/960] ok        PUTT MASTER AID
+[750/960] ok        PRODI G JR LIS
+[775/960] ok        TEAM SIZE 2 BOX
+[800/960] ok        2024 INF GP NEW PUT
+[825/960] ok        AI SMOKE NEW STS
+[830/960] unmatched 2024 TR STAF NEW BAG
+[847/960] unmatched PN 13D NEW SIM
+[850/960] ok        APEX CB 24 NEW STS
+[851/960] unmatched PN 13 NEW SIM
+[866/960] unmatched LINKSMASTER BAG
+[869/960] unmatched DELUXE HD NEW BAG
+[870/960] unmatched ULTRA-LITE S NEW BAG
+[871/960] unmatched HIGH ROLLER NEW BAG
+[872/960] unmatched VERSA NEW BAG
+[875/960] unmatched 2023 LITE NEW BAG
+[889/960] unmatched MEMBERS BAG
+[891/960] unmatched KM2 PUT
+[900/960] ok        MEZZ.1 MAX NEW PUT
+[925/960] ok        FIRST PM NEW ACC
+[931/960] unmatched STAFF MOD TG NEW WGS
+[950/960] ok        26FT PM NEW ACC
+[960/960] ok        DEVOTION HB DST
+┌──────────┬─────────────────────────────────────────────┐
+│ (index)  │ value                                       │
+├──────────┼─────────────────────────────────────────────┤
+│ products │ '944 ok / 16 unmatched / 0 failed (of 960)' │
+│ runtime  │ '484.3 s (1.95 products/s)'                 │
+│ network  │ 'p50 1920 ms · p95 4412 ms · n=1883'        │
+│ parse    │ 'p50 12 ms · p95 41.9 ms'                   │
+│ requests │ '1884 network · 40 cache · 1 retries'       │
+└──────────┴─────────────────────────────────────────────┘
+Wrote data/output.json, data/variants.csv, data/unmatched.csv
+=== pass 1 done · failed=0 · 2026-11-10T23:49:07-03:00
