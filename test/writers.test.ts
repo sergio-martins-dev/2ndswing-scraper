@@ -13,7 +13,7 @@ import { compactJson, writeOutputs, type Output } from '../src/writers.ts';
 import { fixture } from './helpers.ts';
 
 const BASE = 'https://www.2ndswing.com';
-const items = await loadCsv('data/input.csv');
+const items = await loadCsv('test/fixtures/input-sample.csv');
 const meta = { resolvedVia: 'root_slug', fetchedAt: '2026-11-11T00:00:00.000Z' } as const;
 const product = (slug: string, sku: string) =>
   buildProduct(items.find((i) => i.parentItem === sku)!, parseProductPage(fixture(slug)), null, BASE, meta);

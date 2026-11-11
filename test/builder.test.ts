@@ -9,7 +9,7 @@ import { fixture } from './helpers.ts';
 
 const BASE = 'https://www.2ndswing.com';
 const meta = { resolvedVia: 'root_slug', fetchedAt: '2026-11-11T00:00:00.000Z' } as const;
-const items = await loadCsv('data/input.csv');
+const items = await loadCsv('test/fixtures/input-sample.csv');
 const item = (sku: string) => items.find((i) => i.parentItem === sku)!;
 
 const cases: [slug: string, sku: string][] = [

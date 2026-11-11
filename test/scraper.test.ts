@@ -1,6 +1,5 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { setTimeout as sleep } from 'node:timers/promises';
 import type { CsvItem } from '../src/lib/csv.ts';
 import { GeoBlockedError, type FetchResult } from '../src/services/http.client.ts';
 import { scrapeAll } from '../src/services/scraper.ts';
@@ -14,14 +13,14 @@ const putter = item('TRTL MAX S2S PUT', 'Odyssey TRTL Max S2S Putter', 'Putter')
 const ironSet = item('PRO S4 STS', 'Mizuno Pro S-4 Iron Set', 'Iron Set');
 const missing = item('AIRBREAK PMT', 'PuttOUT AirBreak Putting Mat', 'Putting Mat');
 
-type Route = { status?: number; body?: string; delayMs?: number; fromCache?: boolean; throws?: Error };
+type Route = { status?: number; body?: string; waitFor?: Promise<void>; fromCache?: boolean; throws?: Error };
 
 /** Fake HTTP client: unknown URLs answer 404 (sitemap included, so the model index is empty). */
 function fakeHttp(routes: Record<string, Route>) {
   return {
     async get(url: string): Promise<FetchResult> {
       const r = routes[url] ?? { status: 404, body: '' };
-      if (r.delayMs) await sleep(r.delayMs);
+      await r.waitFor;
       if (r.throws) throw r.throws;
       return {
         url, status: r.status ?? 200, body: r.body ?? '', ms: r.fromCache ? 0 : 50,
@@ -34,8 +33,10 @@ function fakeHttp(routes: Record<string, Route>) {
 const gallery = (names: string[]): Route => ({ body: JSON.stringify({ imageNames: names }) });
 
 test('scrapes, classifies and keeps CSV order regardless of completion order', async () => {
+  // The first CSV row only answers once the other two are done, so it completes last.
+  let othersDone!: () => void;
   const http = fakeHttp({
-    [`${BASE}/trtl-max-s2s-put`]: { body: fixture('trtl-max-s2s-put'), delayMs: 30 }, // finishes last
+    [`${BASE}/trtl-max-s2s-put`]: { body: fixture('trtl-max-s2s-put'), waitFor: new Promise((resolve) => (othersDone = resolve)) },
     [`${BASE}/gallery/TRTL%20MAX%20S2S%20PUT.json`]: gallery(['TRTL MAX S2S PUT.jpg', 'TRTL MAX S2S PUT_2.jpg']),
     [`${BASE}/pro-s4-sts`]: { body: fixture('pro-s4-sts'), fromCache: true },
     [`${BASE}/gallery/PRO%20S4%20STS.json`]: gallery(['PRO S4 STS.jpg']),
@@ -44,7 +45,10 @@ test('scrapes, classifies and keeps CSV order regardless of completion order', a
   const result = await scrapeAll([putter, missing, ironSet], http, {
     baseUrl: BASE,
     concurrency: 3,
-    onProgress: (_done, _total, it, status) => progress.push(`${it.parentItem}:${status}`),
+    onProgress: (_done, _total, it, status) => {
+      progress.push(`${it.parentItem}:${status}`);
+      if (progress.length === 2) othersDone();
+    },
   });
 
   assert.deepEqual(result.products.map((p) => p.parentItem), ['TRTL MAX S2S PUT', 'PRO S4 STS']);
@@ -56,7 +60,7 @@ test('scrapes, classifies and keeps CSV order regardless of completion order', a
   const [trtl, pro] = result.products;
   assert.equal(trtl!.media.images.length, 2);
   assert.equal(pro!.pricing.model, 'per_club');
-  assert.ok(result.parseMs.length === 2);
+  assert.equal(result.parseMs.length, 2);
 });
 
 test('network timings exclude cached responses', async () => {
@@ -98,15 +102,13 @@ test('a geo-block drains the queue instead of trying every remaining product', a
   const http = {
     async get(url: string): Promise<FetchResult> {
       calls++;
-      await sleep(5);
+      await Promise.resolve();
       throw new GeoBlockedError(url);
     },
   };
   const many = Array.from({ length: 50 }, (_, i) => item(`SKU ${i}`, `Product ${i}`, 'Putter'));
-  const started = performance.now();
   await assert.rejects(scrapeAll(many, http, { baseUrl: BASE, concurrency: 2 }), GeoBlockedError);
   assert.ok(calls <= 2, `expected only the in-flight requests, got ${calls}`);
-  assert.ok(performance.now() - started < 1000);
 });
 
 test('failed rows record the URL that was tried', async () => {
