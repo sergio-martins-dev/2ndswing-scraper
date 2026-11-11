@@ -33,10 +33,12 @@ Each row of `unmatched.csv` lists the URLs tried, so they can be checked by hand
 |---|---|---|---|---|---|
 | Live #1 | 484 s | 1,884 (+40 cached) | 1 | 1.9 s / 4.4 s | 944 ok / 16 unmatched / 0 failed |
 | Live #2 (`--refresh`) | 401 s | 1,923 | 0 | 1.3 s / 3.8 s | 944 ok / 16 unmatched / 0 failed |
-| From cache | ~23 s | 0 | 0 | — | identical output |
+| Live #3, final code (`--refresh`) | 446 s | 1,931 | 8 | 1.1 s / 4.2 s | 944 ok / 16 unmatched / 0 failed — this is `data/output.json` |
+| From cache | ~23 s | 0 | 0 | — | same products |
 
-Both live runs produced the same products and unmatched list; the difference is origin latency
-and the proxy exit node. `data/output.json → metadata` holds the numbers of the run that wrote it.
+All live runs produced the same products and unmatched list; the time difference is origin latency
+and the proxy exit node. `data/output.json → metadata` holds the numbers of run #3, the one that
+wrote it (runs #1 and #2 used earlier code with the same request pattern).
 
 Measured with `performance.now()`: per network request (connect to full body, cached responses
 excluded) and per product parse/build (HTML parse + JSON extraction + build + schema validation).
