@@ -64,10 +64,20 @@ test('specs: colspan fills every covered column', () => {
 
 test('specs: a bullet list becomes one record; unlabeled items are numbered', () => {
   const html = `<div id="specs"><h4>Specs</h4><ul>
-    <li><span>Magnification: 6x </span></li><li>5.4 lbs</li><li>Range:  5 - 1,300 yards</li></ul></div>`;
-  assert.deepEqual(parseProductPage(html).specs, [{ Magnification: '6x', 'Item 2': '5.4 lbs', Range: '5 - 1,300 yards' }]);
+    <li><span>Magnification: 6x </span></li><li>5.4 lbs</li><li>Range:  5 - 1,300 yards</li>
+    <li>Weight: 8 oz</li><li>Weight: 227 g</li><li>Bluetooth</li></ul></div>`;
+  assert.deepEqual(parseProductPage(html).specs, [{
+    Magnification: '6x', 'Item 1': '5.4 lbs', Range: '5 - 1,300 yards', Weight: '8 oz', 'Weight (2)': '227 g', 'Item 2': 'Bluetooth',
+  }]);
 });
 
 test('specs: no table and no list gives an empty list', () => {
   assert.deepEqual(parseProductPage('<div id="specs"><p> </p></div>').specs, []);
+});
+
+test('ld+json with "brand": null does not fail the page', () => {
+  const html = `<script type="application/ld+json">{"@type":"Product","sku":"X","name":"N","brand":null,"offers":{"price":"10"}}</script>`;
+  const ld = parseProductPage(html).ld!;
+  assert.equal(ld.sku, 'X');
+  assert.equal(ld.brand, null);
 });

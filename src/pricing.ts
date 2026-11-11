@@ -23,13 +23,14 @@ export type PriceCheck = { checked: number; matched: number; mismatches: string[
 
 /**
  * Self-check run after every scrape: the price the page shows (ld+json) must equal the cheapest
- * valid configuration computed from our data. Products without a listed price (out of stock) or
- * without variants are skipped.
+ * valid configuration computed from the configurable matrix and the pricing rule. Only products
+ * with attributes are checked: a simple product's single variant is priced from that same ld+json
+ * field, so it would match by construction. Out-of-stock products (no listed price) are skipped.
  */
 export function checkListedPrices(products: Product[]): PriceCheck {
   const result: PriceCheck = { checked: 0, matched: 0, mismatches: [] };
   for (const p of products) {
-    if (p.listedPrice === null || p.variants.rows.length === 0) continue;
+    if (p.listedPrice === null || p.attributes.length === 0 || p.variants.rows.length === 0) continue;
     const priceIdx = p.variants.fields.indexOf('price');
     let cheapest = Infinity;
     for (const row of p.variants.rows) cheapest = Math.min(cheapest, Number(row[priceIdx]));

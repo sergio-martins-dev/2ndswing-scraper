@@ -75,7 +75,8 @@ per_club:     total = (variant.price + Σ selected priceDelta) × clubCount
 - The "Irons In Set" checkbox group sets `clubCount`. It is kept in `pricing.clubSelection`, not in
   `customizations`, so it is never added as an upcharge on top of the multiplier.
 - `metadata.priceCheck` re-checks the rule on every run: listed price = cheapest configuration
-  with the default clubs.
+  with the default clubs, for every in-stock configurable product (simple products are skipped:
+  their only price comes from the same ld+json field).
 
 Simple products (GPS, bags…) have no `spConfig`: one variant priced from ld+json, or none when the
 page publishes price 0 (out of stock).

@@ -64,7 +64,7 @@ type LdNode = {
   '@graph'?: LdNode[];
   sku?: unknown;
   name?: unknown;
-  brand?: string | { name?: unknown };
+  brand?: string | { name?: unknown } | null;
   category?: unknown;
   description?: unknown;
   image?: unknown;
@@ -146,8 +146,8 @@ function parseDescription($: cheerio.CheerioAPI): string | null {
 
 /**
  * Clubs publish a table (one record per row). Bags, GPS units and accessories often publish a bullet
- * list instead ("Magnification: 6x", "5.4 lbs"): it becomes a single record, unlabeled items keyed
- * "Item N".
+ * list instead ("Magnification: 6x", "5.4 lbs"): it becomes a single record. Unlabeled items are
+ * keyed "Item 1", "Item 2"...; a repeated label gets a suffix ("Weight (2)") instead of overwriting.
  */
 function parseSpecs($: cheerio.CheerioAPI): Record<string, string>[] {
   const [header, ...body] = tableGrid($, '#specs table').filter((r) => r.some(Boolean));
@@ -159,11 +159,14 @@ function parseSpecs($: cheerio.CheerioAPI): Record<string, string>[] {
     .filter(Boolean);
   if (items.length === 0) return [];
   const record: Record<string, string> = {};
-  items.forEach((text, i) => {
+  let unlabeled = 0;
+  for (const text of items) {
     const match = /^([^:]{1,40}):\s*(.+)$/.exec(text);
-    if (match) record[match[1]!.trim()] = match[2]!;
-    else record[`Item ${i + 1}`] = text;
-  });
+    const label = match ? match[1]!.trim() : `Item ${++unlabeled}`;
+    let key = label;
+    for (let n = 2; key in record; n++) key = `${label} (${n})`;
+    record[key] = match ? match[2]! : text;
+  }
   return [record];
 }
 
@@ -211,7 +214,7 @@ function parseLdProduct($: cheerio.CheerioAPI): LdProduct | null {
     return {
       sku: str(product.sku),
       name: str(product.name),
-      brand: str(typeof product.brand === 'object' ? product.brand.name : product.brand),
+      brand: str(typeof product.brand === 'object' ? product.brand?.name : product.brand),
       category: str(product.category),
       description: str(product.description),
       price: offer?.price != null && offer.price !== '' ? Number(offer.price) : null,

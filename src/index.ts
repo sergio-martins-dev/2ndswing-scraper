@@ -80,7 +80,7 @@ function printSummary({ metadata: m }: Output, files: string[]): void {
     network: { value: `p50 ${m.networkMs.p50} ms · p95 ${m.networkMs.p95} ms · n=${m.networkMs.count}` },
     parse: { value: `p50 ${m.parseMs.p50} ms · p95 ${m.parseMs.p95} ms` },
     requests: { value: `${m.requests.network} network · ${m.requests.fromCache} cache · ${m.requests.retries} retries` },
-    'price check': { value: `listed price = cheapest configuration for ${m.priceCheck.matched}/${m.priceCheck.checked}${m.priceCheck.mismatches.length ? ` (mismatch: ${m.priceCheck.mismatches.slice(0, 5).join(', ')})` : ''}` },
+    'price check': { value: `listed price = cheapest configuration for ${m.priceCheck.matched}/${m.priceCheck.checked} configurable products${m.priceCheck.mismatches.length ? ` (mismatch: ${m.priceCheck.mismatches.slice(0, 5).join(', ')})` : ''}` },
   });
   log(`Wrote ${files.join(', ')}`);
 }

@@ -111,6 +111,7 @@ export class HttpClient {
     if (!path) return null;
     try {
       const entry = JSON.parse(await readFile(path, 'utf8')) as FetchResult;
+      if (!entry.fetchedAt) return null; // entry from an older format: fetch again
       return { ...entry, ms: 0, fromCache: true, attempts: 0 };
     } catch {
       return null;
