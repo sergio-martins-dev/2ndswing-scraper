@@ -8,7 +8,7 @@ every valid configuration with its exact price, fitting upcharges, specs and med
 |---|---|
 | Products | **944 / 960** scraped, 16 classified as unmatched, 0 failed |
 | Valid configurations | **444,686** child SKUs, each with its price |
-| Runtime | **~7 min** live (6.6–8.1 min over four runs), ~23 s from the disk cache |
+| Runtime | **~7 min** live (6.6–8.1 min over five runs), ~23 s from the disk cache |
 | Price check | listed price = cheapest configuration computed from the matrix and pricing rule, for **846 / 846** configurable products (`metadata.priceCheck`) |
 
 ## How to run
