@@ -64,6 +64,7 @@ test('archived model page (real fixture) -> archive_page_or_discontinued', async
   const r = await resolver.resolve(item('2024 TR STAF NEW BAG', 'TaylorMade 2024 Tour Staff Bag', 'Staff Bag'));
   assert.ok(!r.ok);
   assert.equal(r.unmatched.reason, 'archive_page_or_discontinued');
+  assert.equal(r.unmatched.detail, 'archived model page "TaylorMade 2024 Tour Staff Bag (2024 TR STAF NEW BAG)": This product is no longer available');
   assert.deepEqual(r.unmatched.triedUrls, [`${BASE}/2024-tr-staf-new-bag`, modelUrl]);
 });
 
@@ -116,4 +117,18 @@ test('product URL that redirects to an active model page -> redirected_to_model_
   const r = await resolver.resolve(item('STAFF MOD TG NEW WGS', 'Wilson Staff Staff Model Tour Grind Wedge', 'Wedge'));
   assert.ok(!r.ok);
   assert.equal(r.unmatched.reason, 'redirected_to_model_page');
+});
+
+test('archived page showing a different SKU says so in the detail', async () => {
+  const modelUrl = `${BASE}/accessories/stand-bags/izzo-versa-stand-bag`;
+  const html = `<html><body class="productarchive-model-pmparchive"><span data-ui-id="page-title-wrapper">Izzo Versa Stand Bag (VERSA BAG)</span>
+    <p class="out-of-stock-message">This product is no longer available, but you can browse more Izzo items.</p></body></html>`;
+  const http = fakeHttp({ [modelUrl]: [200, html] });
+  const resolver = new Resolver(http, BASE, models({ 'izzo-versa-stand-bag': modelUrl }));
+  const r = await resolver.resolve(item('VERSA NEW BAG', 'Izzo Versa Stand Bag', 'Stand Bag'));
+  assert.ok(!r.ok);
+  assert.equal(
+    r.unmatched.detail,
+    'archived model page "Izzo Versa Stand Bag (VERSA BAG)": This product is no longer available; the page shows SKU "VERSA BAG", not "VERSA NEW BAG"',
+  );
 });

@@ -97,8 +97,9 @@ Full example and field notes: [docs/data-model.md](docs/data-model.md).
 
 ## What is not captured
 
-- **16 unmatched** (`unmatched.csv`): 14 SKUs only exist as archived model pages, 1 is a 404, 1
-  redirects to a page with used units only.
+- **16 unmatched** (`unmatched.csv`): 14 are discontinued (archived page: "This product is no
+  longer available"), 1 is a 404, 1 is listed on its model page but its product link redirects
+  back to that page.
 - **5 out-of-stock** products publish price 0 and no configurations: kept with `listedPrice: null`
   and no variants (no $0 configuration is invented).
 - **Used inventory** (individual items with condition grades) is out of scope: the CSV lists new models.

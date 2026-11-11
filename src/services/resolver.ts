@@ -60,7 +60,7 @@ export class Resolver {
 
     const $ = cheerio.load(model.body);
     if (/\bpmparchive\b/.test($('body').attr('class') ?? '')) {
-      return fail(item, 'archive_page_or_discontinued', 'model page is an archive page without an active SKU', tried);
+      return fail(item, 'archive_page_or_discontinued', archiveDetail($, item), tried);
     }
 
     const link = $('a[href]')
@@ -86,7 +86,7 @@ export class Resolver {
     if (accepted) return accepted;
     // The product URL exists but redirects to its model page: the new SKU is not on sale right now.
     if (res.url.replace(/\/+$/, '') !== url.replace(/\/+$/, '') && !/"@type":\s*"Product"/.test(res.body)) {
-      return { ok: false, reason: 'redirected_to_model_page', detail: `${url} redirects to ${res.url} (no active SKU)` };
+      return { ok: false, reason: 'redirected_to_model_page', detail: `${url} redirects to the model page ${res.url}: no product page to read` };
     }
     return { ok: false, reason: 'sku_mismatch', detail: `page at ${url} is not ${item.parentItem}` };
   }
@@ -118,6 +118,22 @@ export async function loadModelIndex(http: HttpGetter, baseUrl: string): Promise
     }
   }
   return index;
+}
+
+/**
+ * Evidence from the archived page itself: its title (which ends with the SKU in parentheses) and
+ * the site's notice, e.g. 'archived model page "Miura KM-2 Putter (KM2 PUT)": This product is no
+ * longer available'. A SKU in the title that differs from the CSV is called out.
+ */
+function archiveDetail($: cheerio.CheerioAPI, item: CsvItem): string {
+  // The page has two titles; the one in the product box carries the SKU.
+  const title = $('[data-ui-id="page-title-wrapper"]').last().text().trim();
+  const notice = $('.out-of-stock-message').first().text().replace(/\s+/g, ' ').trim().split(/[,.]/)[0];
+  const pageSku = /\(([^()]+)\)\s*$/.exec(title)?.[1];
+  return [
+    `archived model page${title ? ` "${title}"` : ''}: ${notice || 'no active product'}`,
+    pageSku && pageSku !== item.parentItem ? `; the page shows SKU "${pageSku}", not "${item.parentItem}"` : '',
+  ].join('');
 }
 
 function locs(xml: string): string[] {

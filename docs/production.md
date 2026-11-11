@@ -24,7 +24,9 @@ CSV upload ─► diff vs. catalog ─► queue ─► workers (this scraper, st
 ```
 
 1. **New and changed rows.** Diff the CSV against the catalog by `parent_item`. New SKUs go first;
-   existing ones are refreshed; rows that disappear are marked inactive, not deleted. A queue
+   existing ones are refreshed; rows that disappear are marked inactive, not deleted. Unmatched
+   rows are re-checked every day without the response cache (a discontinued product can come
+   back), and an unmatched → scraped transition is recorded as an event. A queue
    (Cloud Tasks, SQS) gives per-item retries and a dead-letter queue.
 2. **Identity by the site's ids, never by labels.** `products` keyed by `parent_item`, `variants`
    by `child_id`. Writes are UPSERTs, so a renamed option or a new price updates the existing row
