@@ -1,8 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseProductPage } from '../src/parsers/magento-init.ts';
-import { configurationPrice, parseCustomizations } from '../src/parsers/customizations.ts';
+import { parseCustomizations } from '../src/parsers/customizations.ts';
 import { parseVariants } from '../src/parsers/variants.ts';
+import { configurationPrice } from '../src/pricing.ts';
 import { fixture } from './helpers.ts';
 
 const load = (slug: string) => {
@@ -13,7 +14,8 @@ const load = (slug: string) => {
 test('iron set: per-club pricing with 7 default clubs', () => {
   const { pricing } = load('pro-s4-sts');
   assert.equal(pricing.model, 'per_club');
-  assert.deepEqual(pricing.defaultClubs, ['4 Iron', '5 Iron', '6 Iron', '7 Iron', '8 Iron', '9 Iron', 'PW']);
+  const defaults = pricing.clubSelection!.options.filter((o) => o.includedByDefault).map((o) => o.name);
+  assert.deepEqual(defaults, ['4 Iron', '5 Iron', '6 Iron', '7 Iron', '8 Iron', '9 Iron', 'PW']);
   assert.equal(pricing.defaultClubCount, 7);
 });
 

@@ -157,7 +157,7 @@ Each product in `output.json` (abridged):
     { "label": "Grips", "options": [{ "name": "Golf Pride MCC Plus 4 Blue Standard", "priceDelta": 11.99, "isDefault": false }, ...] },
     { "label": "Length Adjustment", "options": [...] }
   ],
-  "pricing": { "model": "per_variant", "formula": "total = variant.price + sum(selected customization priceDelta)", ... },
+  "pricing": { "model": "per_variant", "defaultClubCount": 1, "clubSelection": null },
   "specs": [{ "Loft": "9°", "Length": "45.75\"", "Lie": "59°", "Head Volume": "460cc", "Swing Weight": "D3", "Hand": "RH Only" }, ...],
   "media": { "images": ["https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR.jpg", ...],
              "videos": ["https://www.youtube.com/watch?v=ThtESvbOyBI"] },

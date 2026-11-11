@@ -24,6 +24,7 @@ const metadata = (network: number, runtimeMs: number): Output['metadata'] => ({
   runtimeMs, productsPerSecond: 1, concurrency: 8, proxy: network > 0,
   networkMs: summarize(network ? [1000, 2000] : []), parseMs: summarize([10]),
   requests: { network, fromCache: network ? 0 : 4, retries: 0 },
+  priceCheck: { checked: 0, matched: 0, mismatches: [] },
 });
 
 async function tmp(): Promise<string> {

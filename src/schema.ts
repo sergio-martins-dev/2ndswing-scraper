@@ -45,7 +45,6 @@ export const ProductSchema = z.object({
   ),
   pricing: z.object({
     model: z.enum(['per_variant', 'per_club']),
-    defaultClubs: z.array(z.string()),
     defaultClubCount: z.number().int().positive(),
     clubSelection: z
       .object({
@@ -54,7 +53,6 @@ export const ProductSchema = z.object({
         options: z.array(z.object({ id: z.string(), name: z.string(), includedByDefault: z.boolean() })),
       })
       .nullable(),
-    formula: z.string(),
   }),
   media: z.object({ images: z.array(z.url()), videos: z.array(z.url()) }),
   /** Provenance: how the page was found and when it was downloaded. Run timings live in metadata. */

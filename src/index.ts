@@ -4,6 +4,7 @@ import { config } from './config.ts';
 import { loadCsv } from './lib/csv.ts';
 import { summarize } from './lib/metrics.ts';
 import { GeoBlockedError, HttpClient } from './services/http.client.ts';
+import { checkListedPrices } from './pricing.ts';
 import { scrapeAll } from './services/scraper.ts';
 import { writeOutputs, type Output } from './writers.ts';
 
@@ -58,6 +59,7 @@ async function main(): Promise<void> {
         networkMs: summarize(result.networkMs),
         parseMs: summarize(result.parseMs),
         requests: { ...http.stats },
+        priceCheck: checkListedPrices(result.products),
       },
       products: result.products,
     };
@@ -78,6 +80,7 @@ function printSummary({ metadata: m }: Output, files: string[]): void {
     network: { value: `p50 ${m.networkMs.p50} ms · p95 ${m.networkMs.p95} ms · n=${m.networkMs.count}` },
     parse: { value: `p50 ${m.parseMs.p50} ms · p95 ${m.parseMs.p95} ms` },
     requests: { value: `${m.requests.network} network · ${m.requests.fromCache} cache · ${m.requests.retries} retries` },
+    'price check': { value: `listed price = cheapest configuration for ${m.priceCheck.matched}/${m.priceCheck.checked}${m.priceCheck.mismatches.length ? ` (mismatch: ${m.priceCheck.mismatches.slice(0, 5).join(', ')})` : ''}` },
   });
   log(`Wrote ${files.join(', ')}`);
 }

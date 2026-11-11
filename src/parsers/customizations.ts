@@ -20,22 +20,15 @@ export type ClubSelection = {
 
 export type Pricing = {
   model: 'per_variant' | 'per_club';
-  defaultClubs: string[];
+  /** Clubs bought when the shopper changes nothing (iron sets); 1 otherwise. */
   defaultClubCount: number;
   clubSelection: ClubSelection | null;
-  formula: string;
 };
 
-const FORMULA = {
-  per_variant: 'total = variant.price + sum(selected customization priceDelta)',
-  per_club: 'total = (variant.price + sum(selected customization priceDelta)) * clubCount',
-} as const;
-
 /**
- * Reads the fitting options (grips, length/lie/loft, ferrule, ...) and the pricing rule.
- * Rule source: the site's own SecondSwing_Ironset/js/ironset-options.js — for iron sets every
- * selected upcharge is repriced as `base_amount * checkedClubs`, and each checked club adds the
- * variant's per-club price. `per_club_price` in the JSON is a price string, not a flag, so it is ignored.
+ * Reads the fitting options (grips, length/lie/loft, ferrule, ...) and the pricing model
+ * (see configurationPrice in pricing.ts). `per_club_price` in the JSON is a price string, not a
+ * flag, so it is ignored: the site reprices every upcharge per checked club for iron sets.
  */
 export function parseCustomizations(page: Pick<ParsedPage, 'ironset' | 'optionLabels' | 'optionInputTypes'>): {
   customizations: Customization[];
@@ -74,32 +67,16 @@ export function parseCustomizations(page: Pick<ParsedPage, 'ironset' | 'optionLa
     });
   }
 
-  const defaultClubs = perClub
-    ? clubSelection?.options.filter((o) => o.includedByDefault).map((o) => o.name) ??
-      (ironset?.clubInformation?.included_clubs ?? []).filter(Boolean)
-    : [];
-  const model = perClub ? 'per_club' : 'per_variant';
+  const defaultClubs = clubSelection
+    ? clubSelection.options.filter((o) => o.includedByDefault).length
+    : (ironset?.clubInformation?.included_clubs ?? []).filter(Boolean).length;
 
   return {
     customizations,
     pricing: {
-      model,
-      defaultClubs,
-      defaultClubCount: perClub ? defaultClubs.length || Number(ironset?.clubInformation?.total_included_clubs ?? 1) : 1,
+      model: perClub ? 'per_club' : 'per_variant',
+      defaultClubCount: perClub ? defaultClubs || Number(ironset?.clubInformation?.total_included_clubs ?? 1) : 1,
       clubSelection,
-      formula: FORMULA[model],
     },
   };
-}
-
-/** Price of one concrete configuration, following the site's rule. */
-export function configurationPrice(
-  variantPrice: number,
-  selectedDeltas: number[],
-  pricing: Pick<Pricing, 'model' | 'defaultClubCount'>,
-  clubCount = pricing.defaultClubCount,
-): number {
-  const unit = variantPrice + selectedDeltas.reduce((sum, d) => sum + d, 0);
-  const total = pricing.model === 'per_club' ? unit * clubCount : unit;
-  return Math.round(total * 100) / 100;
 }

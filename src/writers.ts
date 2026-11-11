@@ -4,8 +4,8 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { once } from 'node:events';
 import type { Summary } from './lib/metrics.ts';
-import { configurationPrice } from './parsers/customizations.ts';
 import { fromVariantMatrix } from './parsers/variants.ts';
+import { configurationPrice, type PriceCheck } from './pricing.ts';
 import type { Product, Unmatched } from './schema.ts';
 
 export type Output = {
@@ -23,6 +23,8 @@ export type Output = {
     networkMs: Summary;
     parseMs: Summary;
     requests: { network: number; fromCache: number; retries: number };
+    /** listedPrice vs cheapest computed configuration, see pricing.ts. */
+    priceCheck: PriceCheck;
   };
   products: Product[];
 };
