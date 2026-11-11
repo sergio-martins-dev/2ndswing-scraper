@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { Agent, ProxyAgent, fetch, type Dispatcher } from 'undici';
@@ -111,9 +111,7 @@ export class HttpClient {
     if (!path) return null;
     try {
       const entry = JSON.parse(await readFile(path, 'utf8')) as FetchResult;
-      // Older cache entries have no fetchedAt; the file's mtime is when it was fetched.
-      const fetchedAt = entry.fetchedAt ?? (await stat(path)).mtime.toISOString();
-      return { ...entry, ms: 0, fromCache: true, attempts: 0, fetchedAt };
+      return { ...entry, ms: 0, fromCache: true, attempts: 0 };
     } catch {
       return null;
     }

@@ -4,3 +4,4 @@ node_modules/
 # Large or local-only outputs
 data/variants.csv
 data/run-log.txt
+data/partial/

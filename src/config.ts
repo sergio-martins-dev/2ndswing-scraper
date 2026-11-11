@@ -8,6 +8,11 @@ export const config = {
   timeoutMs: 30_000,
   maxRetries: 3,
   backoffBaseMs: 1_000,
+  /**
+   * Plain browser-like headers, no cookies or session. A browser User-Agent is kept because the
+   * CDN's bot rules were only tested with one; the crawl stays polite through concurrency 8,
+   * retries with backoff, honouring Retry-After and a disk cache that avoids repeat requests.
+   */
   headers: {
     'user-agent':
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',

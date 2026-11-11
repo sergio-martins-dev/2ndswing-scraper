@@ -53,6 +53,25 @@ export type LdProduct = {
   image: string | null;
 };
 
+/** The `x-magento-init` block that configures the add-to-cart form. */
+type MagentoInit = {
+  '#product_addtocart_form'?: { configurable?: { spConfig?: SpConfig }; ironsetOptions?: IronsetConfig };
+};
+
+/** The schema.org fields read from `application/ld+json` (values are not trusted to be strings). */
+type LdNode = {
+  '@type'?: string;
+  '@graph'?: LdNode[];
+  sku?: unknown;
+  name?: unknown;
+  brand?: string | { name?: unknown };
+  category?: unknown;
+  description?: unknown;
+  image?: unknown;
+  offers?: LdOffer | LdOffer[];
+};
+type LdOffer = { price?: unknown; priceCurrency?: unknown; availability?: unknown };
+
 export type ParsedPage = {
   productId: string | null;
   canonical: string | null;
@@ -82,11 +101,10 @@ export function parseProductPage(html: string): ParsedPage {
   let spConfig: SpConfig | null = null;
   let ironset: IronsetConfig | null = null;
   $('script[type="text/x-magento-init"]').each((_, el) => {
-    const json = safeJson($(el).text());
-    const form = json?.['#product_addtocart_form'];
+    const form = (safeJson($(el).text()) as MagentoInit | null)?.['#product_addtocart_form'];
     if (!form || typeof form !== 'object') return;
-    if (form.configurable?.spConfig) spConfig = form.configurable.spConfig as SpConfig;
-    if (form.ironsetOptions?.optionConfig) ironset = form.ironsetOptions as IronsetConfig;
+    if (form.configurable?.spConfig) spConfig = form.configurable.spConfig;
+    if (form.ironsetOptions?.optionConfig) ironset = form.ironsetOptions;
   });
 
   const optionLabels: Record<string, string> = {};
@@ -127,7 +145,7 @@ function parseDescription($: cheerio.CheerioAPI): string | null {
 }
 
 function parseSpecs($: cheerio.CheerioAPI): Record<string, string>[] {
-  const [header, ...body] = tableGrid($, $('#specs table').first()).filter((r) => r.some(Boolean));
+  const [header, ...body] = tableGrid($, '#specs table').filter((r) => r.some(Boolean));
   if (!header) return [];
   return body.map((cells) => Object.fromEntries(header.map((h, i) => [h || `col${i}`, cells[i] ?? ''])));
 }
@@ -137,9 +155,9 @@ function parseSpecs($: cheerio.CheerioAPI): Record<string, string>[] {
  * position they cover. Spec tables often merge the first column ("Type", "Club") across rows;
  * reading cells by index would shift the remaining values one column to the left.
  */
-function tableGrid($: cheerio.CheerioAPI, table: cheerio.Cheerio<any>): string[][] {
+function tableGrid($: cheerio.CheerioAPI, selector: string): string[][] {
   const grid: string[][] = [];
-  table.find('tr').each((rowIndex, tr) => {
+  $(selector).first().find('tr').each((rowIndex, tr) => {
     const row = (grid[rowIndex] ??= []);
     let col = 0;
     $(tr)
@@ -168,15 +186,15 @@ function parseVideos($: cheerio.CheerioAPI): string[] {
 
 function parseLdProduct($: cheerio.CheerioAPI): LdProduct | null {
   for (const el of $('script[type="application/ld+json"]').toArray()) {
-    const json = safeJson($(el).text());
-    const nodes = Array.isArray(json) ? json : json?.['@graph'] ?? [json];
-    const product = nodes.find((n: { '@type'?: string } | null) => n?.['@type'] === 'Product');
+    const json = safeJson($(el).text()) as LdNode | LdNode[] | null;
+    const nodes = Array.isArray(json) ? json : (json?.['@graph'] ?? [json]);
+    const product = nodes.find((n) => n?.['@type'] === 'Product');
     if (!product) continue;
     const offer = Array.isArray(product.offers) ? product.offers[0] : product.offers;
     return {
       sku: str(product.sku),
       name: str(product.name),
-      brand: str(typeof product.brand === 'object' ? product.brand?.name : product.brand),
+      brand: str(typeof product.brand === 'object' ? product.brand.name : product.brand),
       category: str(product.category),
       description: str(product.description),
       price: offer?.price != null && offer.price !== '' ? Number(offer.price) : null,
@@ -188,7 +206,7 @@ function parseLdProduct($: cheerio.CheerioAPI): LdProduct | null {
   return null;
 }
 
-function safeJson(text: string): any {
+function safeJson(text: string): unknown {
   try {
     return JSON.parse(text);
   } catch {

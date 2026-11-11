@@ -13,7 +13,6 @@ export function siteSlug(raw: string): string {
     .replace(/\./g, 'dot')
     .replace(/\+/g, 'plus')
     .replace(/"/g, 'in')
-    .replace(/&/g, 'and')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
