@@ -1,4 +1,5 @@
 import type { CsvItem } from '../lib/csv.ts';
+import { siteSlug } from '../lib/slug.ts';
 import { parseCustomizations } from '../parsers/customizations.ts';
 import type { ParsedPage } from '../parsers/magento-init.ts';
 import { parseVariants, type VariantMatrix } from '../parsers/variants.ts';
@@ -41,7 +42,7 @@ export function buildProduct(
     name: page.ld?.name ?? item.name,
     brand: page.ld?.brand ?? item.brand,
     category: page.ld?.category ?? item.category,
-    url: page.canonical ?? pageUrl ?? `${baseUrl}/${item.parentItem}`,
+    url: page.canonical ?? pageUrl ?? `${baseUrl}/${siteSlug(item.parentItem)}`,
     productId: page.productId,
     // Out-of-stock pages publish price 0; that is "no price", not a free product.
     listedPrice: page.ld?.price ? page.ld.price : null,

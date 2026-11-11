@@ -99,3 +99,10 @@ test('without a canonical link the fetched page URL is used, never the home page
   const product = buildProduct(item('FENIX 9 PRO SOLAR GPSW'), parseProductPage(html), null, BASE, meta, `${BASE}/fenix-9-pro-solar-gpsw`);
   assert.equal(product.url, `${BASE}/fenix-9-pro-solar-gpsw`);
 });
+
+test('without canonical or page URL the fallback is the slug URL, which stays schema-valid', () => {
+  const html = fixture('fenix-9-pro-solar-gpsw').replace(/<link rel="canonical"[^>]*>/, '');
+  const product = buildProduct(item('FENIX 9 PRO SOLAR GPSW'), parseProductPage(html), null, BASE, meta);
+  assert.equal(product.url, `${BASE}/fenix-9-pro-solar-gpsw`);
+  assert.ok(ProductSchema.safeParse(product).success);
+});

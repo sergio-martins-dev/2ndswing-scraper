@@ -62,7 +62,8 @@ async function main(): Promise<void> {
         runtimeMs,
         productsPerSecond: Math.round((result.products.length / (runtimeMs / 1000)) * 100) / 100,
         concurrency,
-        proxy: Boolean(proxyUrl),
+        // true only when network requests actually went through the proxy (not for cache-only runs)
+        proxy: Boolean(proxyUrl) && http.stats.network > 0,
         networkMs: summarize(result.networkMs),
         parseMs: summarize(result.parseMs),
         requests: { ...http.stats },
