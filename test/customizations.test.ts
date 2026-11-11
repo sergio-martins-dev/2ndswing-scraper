@@ -29,7 +29,7 @@ test('iron set: "Irons In Set" is the club selector, not an upcharge group', () 
 
 test('iron set: default configuration reproduces the listed price ($215 x 7 = $1,505)', () => {
   const { page, pricing } = load('pro-s4-sts');
-  const cheapest = Math.min(...parseVariants(page.spConfig!).variants.map((v) => v.price));
+  const cheapest = Math.min(...parseVariants(page.spConfig!).variants.rows.map((row) => Number(row[2])));
   assert.equal(cheapest, 215);
   assert.equal(configurationPrice(cheapest, [], pricing), 1505);
   assert.equal(page.ld?.price, 1505);

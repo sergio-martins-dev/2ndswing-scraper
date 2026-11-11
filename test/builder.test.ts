@@ -58,15 +58,17 @@ test('gallery URL keeps dots and encodes spaces', () => {
   assert.equal(galleryUrl(BASE, 'MEZZ.1 MAX CB PUT'), `${BASE}/gallery/MEZZ.1%20MAX%20CB%20PUT.json`);
 });
 
-test('variant matrix: attribute cells index into attributes[].options and round-trip exactly', () => {
+test('variant matrix: one row per child, attribute cells decode to the selected labels', () => {
   const page = parseProductPage(fixture('zxi-rkt-max-dvr'));
   const product = buildProduct(item('ZXI RKT MAX DVR'), page, null, BASE, meta);
   assert.deepEqual(product.variants.fields, [
     'childId', 'sku', 'price', 'regularPrice', 'leadTimeDays', 'g2_dexterity', 'g2_club_loft', 'g2_shaft_flex', 'g2_shaft_type',
   ]);
   assert.equal(product.variants.rows.length, 660);
-  const original = parseVariants(page.spConfig!).variants;
-  assert.deepEqual(fromVariantMatrix(product.attributes, product.variants), original);
+  assert.deepEqual(product.variants, parseVariants(page.spConfig!).variants);
+  const decoded = fromVariantMatrix(product.attributes, product.variants);
+  assert.ok(decoded.every((v) => Object.keys(v.selections).length === 4));
+  assert.ok(decoded.some((v) => v.selections.g2_dexterity === 'Left Handed' && v.price === 649.99));
 });
 
 test('out-of-stock page with price 0: no $0 variant, listedPrice null, still schema-valid', () => {

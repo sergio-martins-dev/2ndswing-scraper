@@ -1,8 +1,8 @@
 import type { CsvItem } from '../lib/csv.ts';
 import { parseCustomizations } from '../parsers/customizations.ts';
 import type { ParsedPage } from '../parsers/magento-init.ts';
-import { parseVariants, toVariantMatrix, type Variant } from '../parsers/variants.ts';
-import type { Product } from '../schema.ts';
+import { parseVariants, type VariantMatrix } from '../parsers/variants.ts';
+import { VARIANT_BASE_FIELDS, type Product } from '../schema.ts';
 
 export type BuildMeta = Product['meta'];
 
@@ -50,7 +50,7 @@ export function buildProduct(
     description: page.description,
     specs: page.specs,
     attributes,
-    variants: toVariantMatrix(attributes, variants),
+    variants,
     customizations,
     pricing,
     media: { images, videos: page.videos },
@@ -62,18 +62,10 @@ export function buildProduct(
  * Simple (non-configurable) products: one purchasable unit priced from ld+json.
  * No price (out of stock pages publish 0) means nothing purchasable: no synthetic $0 variant.
  */
-function simpleVariant(item: CsvItem, page: ParsedPage): Variant[] {
-  if (!page.ld?.price || page.ld.price <= 0) return [];
-  return [
-    {
-      childId: page.productId ?? item.parentItem,
-      sku: page.ld.sku ?? item.parentItem,
-      selections: {},
-      price: page.ld.price,
-      regularPrice: null,
-      leadTimeDays: null,
-    },
-  ];
+function simpleVariant(item: CsvItem, page: ParsedPage): VariantMatrix {
+  const fields = [...VARIANT_BASE_FIELDS];
+  if (!page.ld?.price || page.ld.price <= 0) return { fields, rows: [] };
+  return { fields, rows: [[page.productId ?? item.parentItem, page.ld.sku ?? item.parentItem, page.ld.price, null, null]] };
 }
 
 /** ld+json image URLs contain raw spaces; encode them, keeping the original if it is malformed. */

@@ -1,10 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseProductPage } from '../src/parsers/magento-init.ts';
-import { parseVariants } from '../src/parsers/variants.ts';
+import type { SpConfig } from '../src/parsers/magento-init.ts';
+import { fromVariantMatrix, parseVariants } from '../src/parsers/variants.ts';
 import { fixture } from './helpers.ts';
 
-const variantsOf = (slug: string) => parseVariants(parseProductPage(fixture(slug)).spConfig!);
+const variantsOf = (slug: string) => {
+  const { attributes, variants } = parseVariants(parseProductPage(fixture(slug)).spConfig!);
+  return { attributes, matrix: variants, variants: fromVariantMatrix(attributes, variants) };
+};
 
 test('driver: 660 valid children out of 2x3x7x83 theoretical combinations', () => {
   const { attributes, variants } = variantsOf('zxi-rkt-max-dvr');
@@ -50,4 +54,23 @@ test('complete set uses product-specific attributes (subcategory, gender)', () =
   const codes = attributes.map((a) => a.code);
   assert.ok(codes.includes('g2_subcategory'));
   assert.ok(codes.includes('g2_club_gender'));
+});
+
+test('matrix cells index attributes[].options; options sharing a label stay distinct', () => {
+  const sp: SpConfig = {
+    productId: '1',
+    attributes: {
+      '10': {
+        id: '10', code: 'g2_shaft_flex', label: 'Flex', position: 0,
+        options: [{ id: 'a', label: 'Stiff', products: ['c1'] }, { id: 'b', label: 'Stiff', products: ['c2'] }],
+      },
+    },
+    index: { c1: { '10': 'a' }, c2: { '10': 'b' } },
+    optionPrices: {},
+    prices: { finalPrice: { amount: 100 } },
+    sku: { c1: 'C1', c2: 'C2' },
+  };
+  const { variants } = parseVariants(sp);
+  assert.deepEqual(variants.fields, ['childId', 'sku', 'price', 'regularPrice', 'leadTimeDays', 'g2_shaft_flex']);
+  assert.deepEqual(variants.rows, [['c1', 'C1', 100, null, null, 0], ['c2', 'C2', 100, null, null, 1]]);
 });

@@ -1,29 +1,9 @@
+import type { Product } from '../schema.ts';
 import { priceAmount, type IronsetConfig, type ParsedPage } from './magento-init.ts';
 
-export type Customization = {
-  groupId: string;
-  label: string;
-  inputType: 'select' | 'checkbox';
-  optionType: string;
-  options: { id: string; name: string; priceDelta: number; isDefault: boolean }[];
-};
-
-/**
- * Iron sets are priced per club. The "Irons In Set" checkbox group is NOT an upcharge: it decides
- * how many clubs are bought (the multiplier), so it lives here and never in `customizations`.
- */
-export type ClubSelection = {
-  groupId: string;
-  label: string;
-  options: { id: string; name: string; includedByDefault: boolean }[];
-};
-
-export type Pricing = {
-  model: 'per_variant' | 'per_club';
-  /** Clubs bought when the shopper changes nothing (iron sets); 1 otherwise. */
-  defaultClubCount: number;
-  clubSelection: ClubSelection | null;
-};
+export type Customization = Product['customizations'][number];
+export type ClubSelection = NonNullable<Product['pricing']['clubSelection']>;
+export type Pricing = Product['pricing'];
 
 /**
  * Reads the fitting options (grips, length/lie/loft, ferrule, ...) and the pricing model

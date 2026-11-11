@@ -43,9 +43,15 @@ export const ProductSchema = z.object({
       options: z.array(z.object({ id: z.string(), name: z.string(), priceDelta: z.number(), isDefault: z.boolean() })),
     }),
   ),
+  /** How a configuration is priced; the rule itself is in src/pricing.ts. */
   pricing: z.object({
     model: z.enum(['per_variant', 'per_club']),
+    /** Clubs bought when the shopper changes nothing (iron sets); 1 otherwise. */
     defaultClubCount: z.number().int().positive(),
+    /**
+     * Iron sets only: the "Irons In Set" checkbox group. It is not an upcharge — it decides how
+     * many clubs are bought (the multiplier), so it never appears in `customizations`.
+     */
     clubSelection: z
       .object({
         groupId: z.string(),
