@@ -1,8 +1,11 @@
 # Data model
 
-`output.json` = `{ metadata, products[] }`. The schema is `src/schema.ts` (zod); every product is
-validated before it is written. `data/sample/` shows three real records and their expanded
-`variants.csv`.
+`output.json` = `{ metadata, products[], unmatched[] }`: every input row ends up in `products` or in
+`unmatched` (reason, `retryable`, `checkUrl` to open by hand, all URLs tried; same rows as
+`unmatched.csv`). `metadata.unmatchedByReason` counts them.
+
+The schema is `src/schema.ts` (zod); every product is validated before it is written.
+`data/sample/` shows three real records and their expanded `variants.csv`.
 
 ## One product (abridged)
 

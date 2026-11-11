@@ -107,6 +107,32 @@ export type Unmatched = {
   triedUrls: string[];
 };
 
+/** What output.json and unmatched.csv publish for a row that did not become a product. */
+export type UnmatchedRecord = Pick<Unmatched, 'parentItem' | 'name' | 'category' | 'reason'> & {
+  retryable: boolean;
+  /** The request that decided the outcome (archived model page, 404, redirecting URL): open it by hand. */
+  checkUrl: string | null;
+} & Pick<Unmatched, 'detail' | 'triedUrls'>;
+
+export function toUnmatchedRecord(u: Unmatched): UnmatchedRecord {
+  return {
+    parentItem: u.parentItem,
+    name: u.name,
+    category: u.category,
+    reason: u.reason,
+    retryable: RETRYABLE_REASONS.has(u.reason),
+    checkUrl: u.triedUrls.at(-1) ?? null,
+    detail: u.detail,
+    triedUrls: u.triedUrls,
+  };
+}
+
+export function countByReason(rows: Pick<Unmatched, 'reason'>[]): Partial<Record<Unmatched['reason'], number>> {
+  const counts: Partial<Record<Unmatched['reason'], number>> = {};
+  for (const { reason } of rows) counts[reason] = (counts[reason] ?? 0) + 1;
+  return counts;
+}
+
 export function toUnmatched(
   item: CsvItem,
   reason: Unmatched['reason'],

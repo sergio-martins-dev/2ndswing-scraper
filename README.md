@@ -38,7 +38,7 @@ A 406 stops the run at once with that message.
 **Cache.** 200/404 responses are kept in `.cache/`, so re-runs and parser changes do not hit the
 site. A fresh clone has no cache: its first run is live.
 
-**Outputs** (`data/`): `output.json` (full model + run metadata, ~47 MB; `.gz` ~5 MB),
+**Outputs** (`data/`): `output.json` (products, every row not scraped, run metadata; ~47 MB, `.gz` ~5 MB),
 `products.csv` (one row per product), `unmatched.csv` (every row not scraped: reason, `retryable`,
 and `check_url`, the one link to open by hand). `data/sample/` has 3 products (driver, iron set,
 GPS watch) with `variants.csv` expanded, for reading the model by eye.

@@ -6,6 +6,7 @@ import { summarize } from './lib/metrics.ts';
 import { GeoBlockedError, HttpClient } from './services/http.client.ts';
 import { checkListedPrices } from './pricing.ts';
 import { scrapeAll } from './services/scraper.ts';
+import { countByReason, toUnmatchedRecord } from './schema.ts';
 import { writeOutputs, type Output } from './writers.ts';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
@@ -46,6 +47,8 @@ async function main(): Promise<void> {
     });
 
     const runtimeMs = Math.round(performance.now() - started);
+    const order = new Map(items.map((item, i) => [item.parentItem, i]));
+    const notScraped = [...result.unmatched, ...result.failed].sort((a, b) => order.get(a.parentItem)! - order.get(b.parentItem)!);
     const output: Output = {
       metadata: {
         scrapedAt: new Date().toISOString(),
@@ -54,6 +57,7 @@ async function main(): Promise<void> {
         successful: result.products.length,
         unmatched: result.unmatched.length,
         failed: result.failed.length,
+        unmatchedByReason: countByReason(notScraped),
         totalVariants: result.products.reduce((n, p) => n + p.variants.rows.length, 0),
         runtimeMs,
         productsPerSecond: Math.round((result.products.length / (runtimeMs / 1000)) * 100) / 100,
@@ -65,10 +69,9 @@ async function main(): Promise<void> {
         priceCheck: checkListedPrices(result.products),
       },
       products: result.products,
+      unmatched: notScraped.map(toUnmatchedRecord),
     };
-    const files = await writeOutputs(args.out, output, [...result.unmatched, ...result.failed], {
-      flatVariants: args.variantsCsv,
-    });
+    const files = await writeOutputs(args.out, output, { flatVariants: args.variantsCsv });
     printSummary(output, files);
   } finally {
     await http.close();

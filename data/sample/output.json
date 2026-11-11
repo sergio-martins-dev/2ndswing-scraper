@@ -1,13 +1,15 @@
 {
   "metadata": {
-    "scrapedAt": "2026-11-11T18:19:38.636Z",
+    "scrapedAt": "2026-11-11T19:26:22.451Z",
     "totalInput": 3,
+    "inputDuplicates": [],
     "successful": 3,
     "unmatched": 0,
     "failed": 0,
+    "unmatchedByReason": {},
     "totalVariants": 813,
-    "runtimeMs": 158,
-    "productsPerSecond": 18.99,
+    "runtimeMs": 165,
+    "productsPerSecond": 18.18,
     "concurrency": 8,
     "proxy": true,
     "networkMs": {
@@ -19,10 +21,10 @@
     },
     "parseMs": {
       "count": 3,
-      "mean": 33.6,
-      "p50": 33.8,
-      "p95": 36.2,
-      "max": 36.2
+      "mean": 34.9,
+      "p50": 36.2,
+      "p95": 42.3,
+      "max": 42.3
     },
     "requests": {
       "network": 0,
@@ -67,7 +69,7 @@
       },
       "meta": {
         "resolvedVia": "root_slug",
-        "fetchedAt": "2026-11-11T18:12:09.428Z"
+        "fetchedAt": "2026-11-11T18:59:36.934Z"
       }
     },
     {
@@ -1220,7 +1222,7 @@
       },
       "meta": {
         "resolvedVia": "root_slug",
-        "fetchedAt": "2026-11-11T18:12:09.584Z"
+        "fetchedAt": "2026-11-11T18:59:37.576Z"
       }
     },
     {
@@ -2973,8 +2975,9 @@
       },
       "meta": {
         "resolvedVia": "root_slug",
-        "fetchedAt": "2026-11-11T18:12:10.243Z"
+        "fetchedAt": "2026-11-11T18:59:40.412Z"
       }
     }
-  ]
+  ],
+  "unmatched": []
 }

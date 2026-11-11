@@ -6,7 +6,7 @@ import { once } from 'node:events';
 import type { Summary } from './lib/metrics.ts';
 import { fromVariantMatrix } from './parsers/variants.ts';
 import { configurationPrice, type PriceCheck } from './pricing.ts';
-import { RETRYABLE_REASONS, type Product, type Unmatched } from './schema.ts';
+import type { Product, Unmatched, UnmatchedRecord } from './schema.ts';
 
 export type Output = {
   metadata: {
@@ -17,6 +17,8 @@ export type Output = {
     successful: number;
     unmatched: number;
     failed: number;
+    /** unmatched + failed rows by reason; the rows themselves are in `unmatched` below. */
+    unmatchedByReason: Partial<Record<Unmatched['reason'], number>>;
     totalVariants: number;
     runtimeMs: number;
     productsPerSecond: number;
@@ -29,6 +31,8 @@ export type Output = {
     priceCheck: PriceCheck;
   };
   products: Product[];
+  /** Every input row that did not become a product (unmatched or failed), in CSV order. */
+  unmatched: UnmatchedRecord[];
 };
 
 /**
@@ -37,19 +41,14 @@ export type Output = {
  * unmatched.csv    every CSV row that did not produce a product: reason, retryable, URL to check by hand
  * variants.csv     optional (flatVariants): one row per purchasable child, labels expanded (~150 MB)
  */
-export async function writeOutputs(
-  dir: string,
-  output: Output,
-  notScraped: Unmatched[],
-  { flatVariants = false } = {},
-): Promise<string[]> {
+export async function writeOutputs(dir: string, output: Output, { flatVariants = false } = {}): Promise<string[]> {
   await mkdir(dir, { recursive: true });
   const files = [join(dir, 'output.json'), join(dir, 'output.json.gz'), join(dir, 'products.csv'), join(dir, 'unmatched.csv')];
   const json = compactJson(output);
   await writeFile(files[0]!, json);
   await writeFile(files[1]!, gzipSync(json, { level: 9 }));
   await writeFile(files[2]!, productsCsv(output.products));
-  await writeFile(files[3]!, toCsv(unmatchedRows(notScraped)));
+  await writeFile(files[3]!, toCsv(unmatchedRows(output.unmatched)));
   if (flatVariants) {
     files.push(join(dir, 'variants.csv'));
     await writeVariantsCsv(files[4]!, output.products);
@@ -117,12 +116,11 @@ async function writeVariantsCsv(path: string, products: Product[]): Promise<void
   await once(out, 'finish');
 }
 
-function unmatchedRows(items: Unmatched[]): (string | number)[][] {
+function unmatchedRows(items: UnmatchedRecord[]): (string | number)[][] {
   return [
     ['parent_item', 'reason', 'retryable', 'check_url', 'name', 'category', 'detail', 'tried_urls'],
     ...items.map((u) => [
-      u.parentItem, u.reason, String(RETRYABLE_REASONS.has(u.reason)), u.triedUrls.at(-1) ?? '',
-      u.name, u.category, u.detail, u.triedUrls.join(' | '),
+      u.parentItem, u.reason, String(u.retryable), u.checkUrl ?? '', u.name, u.category, u.detail, u.triedUrls.join(' | '),
     ]),
   ];
 }

@@ -9,6 +9,7 @@ import { buildProduct } from '../src/builders/product.ts';
 import { loadCsv } from '../src/lib/csv.ts';
 import { summarize } from '../src/lib/metrics.ts';
 import { parseProductPage } from '../src/parsers/magento-init.ts';
+import { countByReason, toUnmatchedRecord } from '../src/schema.ts';
 import { compactJson, writeOutputs, type Output } from '../src/writers.ts';
 import { fixture } from './helpers.ts';
 
@@ -20,7 +21,7 @@ const product = (slug: string, sku: string) =>
 
 const metadata = (network: number, runtimeMs: number): Output['metadata'] => ({
   scrapedAt: `2026-11-1${network ? 0 : 1}T00:00:00.000Z`,
-  totalInput: 2, inputDuplicates: [], successful: 2, unmatched: 1, failed: 0, totalVariants: 0,
+  totalInput: 2, inputDuplicates: [], successful: 2, unmatched: 1, failed: 0, unmatchedByReason: {}, totalVariants: 0,
   runtimeMs, productsPerSecond: 1, concurrency: 8, proxy: network > 0,
   networkMs: summarize(network ? [1000, 2000] : []), parseMs: summarize([10]),
   requests: { network, fromCache: network ? 0 : 4, retries: 0 },
@@ -43,18 +44,24 @@ test('compactJson keeps objects indented but arrays of primitives on one line', 
 test('writeOutputs: json + gzip copy, products.csv summary, unmatched.csv, optional variants.csv', async () => {
   const dir = await tmp();
   const products = [product('pro-s4-sts', 'PRO S4 STS'), product('link-2dot2-put', 'LINK 2.2 PUT')];
-  const output: Output = { metadata: metadata(10, 1000), products };
   const unmatched = [
     { parentItem: 'AIRBREAK PMT', name: 'PuttOUT, "AirBreak"', category: 'Putting Mat', reason: 'not_found' as const, detail: 'HTTP 404', triedUrls: ['a', 'b'] },
     { parentItem: 'KM2 PUT', name: 'Miura KM-2 Putter', category: 'Putter', reason: 'http_error' as const, detail: 'timeout', triedUrls: ['c'] },
-  ];
+  ].map(toUnmatchedRecord);
+  const output: Output = { metadata: metadata(10, 1000), products, unmatched };
 
-  const files = await writeOutputs(dir, output, unmatched, { flatVariants: true });
+  const files = await writeOutputs(dir, output, { flatVariants: true });
   assert.deepEqual(files.map((f) => f.slice(dir.length + 1)), ['output.json', 'output.json.gz', 'products.csv', 'unmatched.csv', 'variants.csv']);
 
   const json = await readFile(join(dir, 'output.json'), 'utf8');
   assert.equal(gunzipSync(await readFile(join(dir, 'output.json.gz'))).toString('utf8'), json);
-  assert.equal(JSON.parse(json).products.length, 2);
+  const parsed = JSON.parse(json) as Output;
+  assert.equal(parsed.products.length, 2);
+  assert.deepEqual(parsed.unmatched[0], {
+    parentItem: 'AIRBREAK PMT', name: 'PuttOUT, "AirBreak"', category: 'Putting Mat', reason: 'not_found',
+    retryable: false, checkUrl: 'b', detail: 'HTTP 404', triedUrls: ['a', 'b'],
+  });
+  assert.equal(parsed.unmatched[1]!.retryable, true);
 
   const productsCsv: Record<string, string>[] = parse(await readFile(join(dir, 'products.csv'), 'utf8'), { columns: true });
   const pro = productsCsv.find((r) => r.parent_item === 'PRO S4 STS')!;
@@ -83,7 +90,7 @@ test('variants.csv is not written by default; empty variant lists do not break p
   const dir = await tmp();
   const outOfStock = product('fenix-9-pro-solar-gpsw', 'FENIX 9 PRO SOLAR GPSW');
   outOfStock.variants.rows = [];
-  const files = await writeOutputs(dir, { metadata: metadata(1, 1), products: [outOfStock] }, []);
+  const files = await writeOutputs(dir, { metadata: metadata(1, 1), products: [outOfStock], unmatched: [] });
   assert.ok(!files.some((f) => f.endsWith('variants.csv')));
   const [row]: Record<string, string>[] = parse(await readFile(join(dir, 'products.csv'), 'utf8'), { columns: true });
   assert.equal(row!.min_variant_price, '');
@@ -96,9 +103,14 @@ test('products.csv handles a product with 200k variants (no call-stack overflow)
   const big = product('link-2dot2-put', 'LINK 2.2 PUT');
   const template = big.variants.rows[0]!;
   big.variants.rows = Array.from({ length: 200_000 }, (_, i) => template.map((v, c) => (c === 2 ? 100 + (i % 7) : v)));
-  await writeOutputs(dir, { metadata: metadata(1, 1), products: [big] }, []);
+  await writeOutputs(dir, { metadata: metadata(1, 1), products: [big], unmatched: [] });
   const [row]: Record<string, string>[] = parse(await readFile(join(dir, 'products.csv'), 'utf8'), { columns: true });
   assert.equal(row!.min_variant_price, '100');
   assert.equal(row!.max_variant_price, '106');
   await rm(dir, { recursive: true, force: true });
+});
+
+test('countByReason groups unmatched and failed rows', () => {
+  const rows = [{ reason: 'not_found' }, { reason: 'archive_page_or_discontinued' }, { reason: 'archive_page_or_discontinued' }] as const;
+  assert.deepEqual(countByReason([...rows]), { not_found: 1, archive_page_or_discontinued: 2 });
 });
