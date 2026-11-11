@@ -13,7 +13,7 @@ every valid configuration with its exact price, fitting upcharges, specs and med
 
 ## How to run
 
-Node.js **>= 20.12**.
+Node.js **>= 22.19** (Node 22 or 24 LTS; `undici` 8 needs it). `nvm use` picks it from `.nvmrc`.
 
 ```bash
 npm install
