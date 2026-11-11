@@ -9,7 +9,7 @@ import { buildProduct } from '../src/builders/product.ts';
 import { loadCsv } from '../src/lib/csv.ts';
 import { summarize } from '../src/lib/metrics.ts';
 import { parseProductPage } from '../src/parsers/magento-init.ts';
-import { countByReason, toUnmatchedRecord } from '../src/schema.ts';
+import { inputStatus, toUnmatchedRecord } from '../src/schema.ts';
 import { compactJson, writeOutputs, type Output } from '../src/writers.ts';
 import { fixture } from './helpers.ts';
 
@@ -21,7 +21,7 @@ const product = (slug: string, sku: string) =>
 
 const metadata = (network: number, runtimeMs: number): Output['metadata'] => ({
   scrapedAt: `2026-11-1${network ? 0 : 1}T00:00:00.000Z`,
-  totalInput: 2, inputDuplicates: [], successful: 2, unmatched: 1, failed: 0, unmatchedByReason: {}, totalVariants: 0,
+  totalInput: 2, inputDuplicates: [], successful: 2, unmatched: 1, failed: 0, inputStatus: {}, totalVariants: 0,
   runtimeMs, productsPerSecond: 1, concurrency: 8, proxy: network > 0,
   networkMs: summarize(network ? [1000, 2000] : []), parseMs: summarize([10]),
   requests: { network, fromCache: network ? 0 : 4, retries: 0 },
@@ -110,7 +110,10 @@ test('products.csv handles a product with 200k variants (no call-stack overflow)
   await rm(dir, { recursive: true, force: true });
 });
 
-test('countByReason groups unmatched and failed rows', () => {
-  const rows = [{ reason: 'not_found' }, { reason: 'archive_page_or_discontinued' }, { reason: 'archive_page_or_discontinued' }] as const;
-  assert.deepEqual(countByReason([...rows]), { not_found: 1, archive_page_or_discontinued: 2 });
+test('inputStatus gives every input row one status: availability for products, reason otherwise', () => {
+  const products = [{ availability: 'InStock' }, { availability: 'InStock' }, { availability: 'OutOfStock' }, { availability: null }];
+  const notScraped = [{ reason: 'discontinued' }, { reason: 'not_found' }, { reason: 'discontinued' }, { reason: 'http_error' }] as const;
+  const status = inputStatus(products, [...notScraped]);
+  assert.deepEqual(status, { in_stock: 2, out_of_stock: 1, unknown_availability: 1, discontinued: 2, not_found: 1, http_error: 1 });
+  assert.equal(Object.values(status).reduce((a, b) => a + b, 0), products.length + notScraped.length);
 });

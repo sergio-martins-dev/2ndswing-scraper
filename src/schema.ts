@@ -82,8 +82,8 @@ export const VARIANT_BASE_FIELDS = ['childId', 'sku', 'price', 'regularPrice', '
 
 export const UNMATCHED_REASONS = [
   'not_found',
-  'archive_page_or_discontinued',
-  'redirected_to_model_page',
+  'discontinued',
+  'product_page_unavailable',
   'model_page_without_sku',
   'sku_mismatch',
   'http_error',
@@ -127,9 +127,16 @@ export function toUnmatchedRecord(u: Unmatched): UnmatchedRecord {
   };
 }
 
-export function countByReason(rows: Pick<Unmatched, 'reason'>[]): Partial<Record<Unmatched['reason'], number>> {
-  const counts: Partial<Record<Unmatched['reason'], number>> = {};
-  for (const { reason } of rows) counts[reason] = (counts[reason] ?? 0) + 1;
+/**
+ * One status per input row, so the counts add up to the CSV size: scraped products by
+ * availability (in_stock, out_of_stock), the rest by reason (discontinued, not_found, ...).
+ * This is what metrics and automatic actions (publish, hide price, deactivate, retry) key on.
+ */
+export function inputStatus(products: Pick<Product, 'availability'>[], notScraped: Pick<Unmatched, 'reason'>[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+  const add = (status: string) => (counts[status] = (counts[status] ?? 0) + 1);
+  for (const p of products) add(p.availability ? p.availability.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase() : 'unknown_availability');
+  for (const u of notScraped) add(u.reason);
   return counts;
 }
 

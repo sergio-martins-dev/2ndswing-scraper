@@ -6,7 +6,7 @@ import { once } from 'node:events';
 import type { Summary } from './lib/metrics.ts';
 import { fromVariantMatrix } from './parsers/variants.ts';
 import { configurationPrice, type PriceCheck } from './pricing.ts';
-import type { Product, Unmatched, UnmatchedRecord } from './schema.ts';
+import type { Product, UnmatchedRecord } from './schema.ts';
 
 export type Output = {
   metadata: {
@@ -17,8 +17,8 @@ export type Output = {
     successful: number;
     unmatched: number;
     failed: number;
-    /** unmatched + failed rows by reason; the rows themselves are in `unmatched` below. */
-    unmatchedByReason: Partial<Record<Unmatched['reason'], number>>;
+    /** One status per input row (in_stock, out_of_stock, discontinued, not_found, ...); sums to totalInput. */
+    inputStatus: Record<string, number>;
     totalVariants: number;
     runtimeMs: number;
     productsPerSecond: number;

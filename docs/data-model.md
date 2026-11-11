@@ -2,7 +2,12 @@
 
 `output.json` = `{ metadata, products[], unmatched[] }`: every input row ends up in `products` or in
 `unmatched` (reason, `retryable`, `checkUrl` to open by hand, all URLs tried; same rows as
-`unmatched.csv`). `metadata.unmatchedByReason` counts them.
+`unmatched.csv`).
+
+`metadata.inputStatus` gives every input row one status and sums to `totalInput`:
+`{ "in_stock": 939, "out_of_stock": 5, "discontinued": 14, "not_found": 1, "product_page_unavailable": 1 }`.
+Products are counted by availability, the rest by reason; it is the key for metrics and for
+automatic actions (publish, hide the price, deactivate, retry the `retryable` ones).
 
 The schema is `src/schema.ts` (zod); every product is validated before it is written.
 `data/sample/` shows three real records and their expanded `variants.csv`.

@@ -60,7 +60,7 @@ export class Resolver {
 
     const $ = cheerio.load(model.body);
     if (/\bpmparchive\b/.test($('body').attr('class') ?? '')) {
-      return fail(item, 'archive_page_or_discontinued', archiveDetail($, item), tried);
+      return fail(item, 'discontinued', archiveDetail($, item), tried);
     }
 
     const link = $('a[href]')
@@ -86,7 +86,7 @@ export class Resolver {
     if (accepted) return accepted;
     // The product URL exists but redirects to its model page: the new SKU is not on sale right now.
     if (res.url.replace(/\/+$/, '') !== url.replace(/\/+$/, '') && !/"@type":\s*"Product"/.test(res.body)) {
-      return { ok: false, reason: 'redirected_to_model_page', detail: `${url} redirects to the model page ${res.url}: no product page to read` };
+      return { ok: false, reason: 'product_page_unavailable', detail: `${url} redirects to the model page ${res.url}: no product page to read` };
     }
     return { ok: false, reason: 'sku_mismatch', detail: `page at ${url} is not ${item.parentItem}` };
   }

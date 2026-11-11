@@ -6,7 +6,7 @@ import { summarize } from './lib/metrics.ts';
 import { GeoBlockedError, HttpClient } from './services/http.client.ts';
 import { checkListedPrices } from './pricing.ts';
 import { scrapeAll } from './services/scraper.ts';
-import { countByReason, toUnmatchedRecord } from './schema.ts';
+import { inputStatus, toUnmatchedRecord } from './schema.ts';
 import { writeOutputs, type Output } from './writers.ts';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
@@ -57,7 +57,7 @@ async function main(): Promise<void> {
         successful: result.products.length,
         unmatched: result.unmatched.length,
         failed: result.failed.length,
-        unmatchedByReason: countByReason(notScraped),
+        inputStatus: inputStatus(result.products, notScraped),
         totalVariants: result.products.reduce((n, p) => n + p.variants.rows.length, 0),
         runtimeMs,
         productsPerSecond: Math.round((result.products.length / (runtimeMs / 1000)) * 100) / 100,
@@ -81,6 +81,7 @@ async function main(): Promise<void> {
 function printSummary({ metadata: m }: Output, files: string[]): void {
   console.table({
     products: { value: `${m.successful} ok / ${m.unmatched} unmatched / ${m.failed} failed (of ${m.totalInput})` },
+    status: { value: Object.entries(m.inputStatus).map(([s, n]) => `${s} ${n}`).join(' · ') },
     variants: { value: `${m.totalVariants} purchasable child SKUs` },
     runtime: { value: `${(m.runtimeMs / 1000).toFixed(1)} s (${m.productsPerSecond} products/s)` },
     network: { value: `p50 ${m.networkMs.p50} ms · p95 ${m.networkMs.p95} ms · n=${m.networkMs.count}` },

@@ -21,9 +21,9 @@ Site search is not used: `robots.txt` disallows `/catalogsearch/`, and it was th
 
 | Reason | Count | Meaning |
 |---|---|---|
-| `archive_page_or_discontinued` | 14 | Archived model page saying "This product is no longer available"; `detail` quotes it |
+| `discontinued` | 14 | Archived model page saying "This product is no longer available"; `detail` quotes it |
 | `not_found` | 1 | `AIRBREAK PMT`: 404 at the slug, absent from the model sitemaps |
-| `redirected_to_model_page` | 1 | `STAFF MOD TG NEW WGS`: the model page shows it as NEW ("Starting at $999.99"), but its product link redirects back to the model page |
+| `product_page_unavailable` | 1 | `STAFF MOD TG NEW WGS`: the model page shows it as NEW ("Starting at $999.99"), but its product link redirects back to the model page |
 
 Each row of `unmatched.csv` has `check_url` (the URL that decided the outcome, to open by hand),
 `retryable` (`true` only for network failures; the reasons above are the site's state and a re-run

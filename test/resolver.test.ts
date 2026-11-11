@@ -57,13 +57,13 @@ test('root 404 -> model page listing the product link -> product page', async ()
   assert.deepEqual(http.calls, [`${BASE}/trtl-max-s2s-put`, modelUrl, productUrl]);
 });
 
-test('archived model page (real fixture) -> archive_page_or_discontinued', async () => {
+test('archived model page (real fixture) -> discontinued', async () => {
   const modelUrl = `${BASE}/accessories/staff-bags/taylormade-2024-tour-staff-bag`;
   const http = fakeHttp({ [modelUrl]: [200, fixture('model-page-staff-bag')] });
   const resolver = new Resolver(http, BASE, models({ 'taylormade-2024-tour-staff-bag': modelUrl }));
   const r = await resolver.resolve(item('2024 TR STAF NEW BAG', 'TaylorMade 2024 Tour Staff Bag', 'Staff Bag'));
   assert.ok(!r.ok);
-  assert.equal(r.unmatched.reason, 'archive_page_or_discontinued');
+  assert.equal(r.unmatched.reason, 'discontinued');
   assert.equal(r.unmatched.detail, 'archived model page "TaylorMade 2024 Tour Staff Bag (2024 TR STAF NEW BAG)": This product is no longer available');
   assert.deepEqual(r.unmatched.triedUrls, [`${BASE}/2024-tr-staf-new-bag`, modelUrl]);
 });
@@ -109,14 +109,14 @@ test('sitemap index is loaded once and rewrites /media/ to /pub/media/', async (
   assert.ok(!http.calls.some((u) => u.includes('blog-posts')));
 });
 
-test('product URL that redirects to an active model page -> redirected_to_model_page', async () => {
+test('product URL that redirects to an active model page -> product_page_unavailable', async () => {
   const modelUrl = `${BASE}/golf-clubs/wedges/wilson-staff-staff-model-tour-grind-wedge`;
   const modelHtml = '<html><body class="categorymodel-model-view"><a href="/x">used unit</a></body></html>';
   const http = fakeHttp({ [`${BASE}/staff-mod-tg-new-wgs`]: [200, modelHtml, modelUrl] });
   const resolver = new Resolver(http, BASE, models({}));
   const r = await resolver.resolve(item('STAFF MOD TG NEW WGS', 'Wilson Staff Staff Model Tour Grind Wedge', 'Wedge'));
   assert.ok(!r.ok);
-  assert.equal(r.unmatched.reason, 'redirected_to_model_page');
+  assert.equal(r.unmatched.reason, 'product_page_unavailable');
 });
 
 test('archived page showing a different SKU says so in the detail', async () => {
