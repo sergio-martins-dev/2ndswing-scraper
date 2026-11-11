@@ -2,10 +2,9 @@ import * as cheerio from 'cheerio';
 import type { CsvItem } from '../lib/csv.ts';
 import { siteSlug } from '../lib/slug.ts';
 import { parseProductPage, type ParsedPage } from '../parsers/magento-init.ts';
-import type { Unmatched } from '../schema.ts';
-import type { FetchResult } from './http.client.ts';
+import { toUnmatched, type Unmatched } from '../schema.ts';
+import type { FetchResult, HttpGetter } from './http.client.ts';
 
-type Getter = { get(url: string): Promise<FetchResult> };
 
 export type Resolved = {
   ok: true;
@@ -32,9 +31,9 @@ export class Resolver {
   private modelIndex: Promise<ModelIndex> | null = null;
 
   constructor(
-    private readonly http: Getter,
+    private readonly http: HttpGetter,
     private readonly baseUrl: string,
-    private readonly loadModels: (http: Getter, baseUrl: string) => Promise<ModelIndex> = loadModelIndex,
+    private readonly loadModels: (http: HttpGetter, baseUrl: string) => Promise<ModelIndex> = loadModelIndex,
   ) {}
 
   async resolve(item: CsvItem): Promise<Resolution> {
@@ -102,7 +101,7 @@ export class Resolver {
 }
 
 /** Reads the model landing-page URLs from the sitemap index (product models + archived models). */
-export async function loadModelIndex(http: Getter, baseUrl: string): Promise<ModelIndex> {
+export async function loadModelIndex(http: HttpGetter, baseUrl: string): Promise<ModelIndex> {
   const index: ModelIndex = new Map();
   const root = await http.get(`${baseUrl}/pub/media/sitemap/sitemap.xml`);
   if (root.status !== 200) return index;
@@ -126,8 +125,5 @@ function locs(xml: string): string[] {
 }
 
 function fail(item: CsvItem, reason: Unmatched['reason'], detail: string, triedUrls: string[]): Resolution {
-  return {
-    ok: false,
-    unmatched: { parentItem: item.parentItem, name: item.name, category: item.category, reason, detail, triedUrls },
-  };
+  return { ok: false, unmatched: toUnmatched(item, reason, detail, triedUrls) };
 }

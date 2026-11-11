@@ -1,4 +1,4 @@
-import type { IronsetConfig, MagentoPrices, ParsedPage } from './magento-init.ts';
+import { priceAmount, type IronsetConfig, type ParsedPage } from './magento-init.ts';
 
 export type Customization = {
   groupId: string;
@@ -68,7 +68,7 @@ export function parseCustomizations(page: Pick<ParsedPage, 'ironset' | 'optionLa
       options: entries.map(([id, o]) => ({
         id,
         name: o.name.trim(),
-        priceDelta: finalAmount(o.prices),
+        priceDelta: priceAmount(o.prices),
         isDefault: Boolean(o.is_default),
       })),
     });
@@ -102,9 +102,4 @@ export function configurationPrice(
   const unit = variantPrice + selectedDeltas.reduce((sum, d) => sum + d, 0);
   const total = pricing.model === 'per_club' ? unit * clubCount : unit;
   return Math.round(total * 100) / 100;
-}
-
-function finalAmount(prices: MagentoPrices): number {
-  const value = Number(prices.finalPrice?.amount ?? 0);
-  return Number.isFinite(value) ? Math.round(value * 100) / 100 : 0;
 }

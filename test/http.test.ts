@@ -4,7 +4,7 @@ import { createServer, type Server } from 'node:http';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { GeoBlockedError, HttpClient } from '../src/services/http.client.ts';
+import { backoffMs, GeoBlockedError, HttpClient, RetryableStatusError } from '../src/services/http.client.ts';
 
 let server: Server;
 let base: string;
@@ -116,4 +116,29 @@ test('second call is served from the disk cache (200 and 404)', async () => {
   assert.equal(hits['/missing'], missingBefore);
   assert.deepEqual(second.stats, { network: 0, fromCache: 2, retries: 0 });
   await second.close();
+});
+
+test('readCache=false (--refresh) always hits the network and rewrites the cache', async () => {
+  const warm = client(cacheDir);
+  await warm.get(`${base}/ok`);
+  await warm.close();
+  const before = hits['/ok']!;
+
+  const refresh = new HttpClient({ headers: {}, timeoutMs: 300, maxRetries: 0, backoffBaseMs: 5, cacheDir, readCache: false });
+  const r = await refresh.get(`${base}/ok`);
+  assert.equal(r.fromCache, false);
+  assert.equal(hits['/ok'], before + 1);
+  assert.deepEqual(refresh.stats, { network: 1, fromCache: 0, retries: 0 });
+  await refresh.close();
+});
+
+test('Retry-After is honoured but capped at 60 s; HTTP dates are understood', () => {
+  const err = (h: string) => new RetryableStatusError(429, h);
+  assert.equal(backoffMs(1000, 1, err('5')), 5000);
+  assert.equal(backoffMs(1000, 1, err('3600')), 60_000);
+  const inTen = new Date(Date.now() + 10_000).toUTCString();
+  const ms = backoffMs(1000, 1, err(inTen));
+  assert.ok(ms > 8000 && ms <= 10_000, String(ms));
+  const fallback = backoffMs(1000, 2, err('soon'));
+  assert.ok(fallback >= 2000 && fallback <= 2600, String(fallback));
 });

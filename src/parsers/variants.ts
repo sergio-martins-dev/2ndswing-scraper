@@ -1,4 +1,5 @@
-import type { MagentoPrices, SpConfig } from './magento-init.ts';
+import { priceAmount, type SpConfig } from './magento-init.ts';
+import { VARIANT_BASE_FIELDS } from '../schema.ts';
 
 export type Attribute = { code: string; label: string; options: { id: string; label: string }[] };
 
@@ -38,8 +39,8 @@ export function parseVariants(sp: SpConfig): { attributes: Attribute[]; variants
       if (optionId !== undefined) selections[a.code] = optionLabel.get(`${a.id}:${optionId}`) ?? optionId;
     }
     const prices = sp.optionPrices[childId] ?? sp.prices;
-    const price = amount(prices, 'finalPrice');
-    const old = amount(prices, 'oldPrice');
+    const price = priceAmount(prices);
+    const old = priceAmount(prices, 'oldPrice');
     return {
       childId,
       sku: sp.sku[childId] ?? childId,
@@ -55,7 +56,7 @@ export function parseVariants(sp: SpConfig): { attributes: Attribute[]; variants
 
 export type VariantMatrix = { fields: string[]; rows: (string | number | null)[][] };
 
-const BASE_FIELDS = ['childId', 'sku', 'price', 'regularPrice', 'leadTimeDays'];
+const BASE_FIELDS: readonly string[] = VARIANT_BASE_FIELDS;
 
 /**
  * Compact form of the variant list: one row per child, attribute cells are indexes into
@@ -97,11 +98,6 @@ export function fromVariantMatrix(attributes: Attribute[], matrix: VariantMatrix
       selections,
     };
   });
-}
-
-function amount(prices: MagentoPrices | undefined, key: string): number {
-  const value = Number(prices?.[key]?.amount);
-  return Number.isFinite(value) ? Math.round(value * 100) / 100 : 0;
 }
 
 /** `leadtimes` is keyed by attribute then child; every attribute repeats the same value. */

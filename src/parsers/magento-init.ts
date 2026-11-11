@@ -3,6 +3,12 @@ import * as cheerio from 'cheerio';
 /** Price triple Magento uses everywhere (`basePrice`, `finalPrice`, `oldPrice`). */
 export type MagentoPrices = Record<string, { amount: number | string; base_amount?: number }>;
 
+/** Reads `prices[key].amount` as a 2-decimal number; 0 when missing or not numeric. */
+export function priceAmount(prices: MagentoPrices | undefined, key = 'finalPrice'): number {
+  const value = Number(prices?.[key]?.amount);
+  return Number.isFinite(value) ? Math.round(value * 100) / 100 : 0;
+}
+
 /** Shape of `#product_addtocart_form.configurable.spConfig` (only the fields we read). */
 export type SpConfig = {
   productId: string;
@@ -121,12 +127,36 @@ function parseDescription($: cheerio.CheerioAPI): string | null {
 }
 
 function parseSpecs($: cheerio.CheerioAPI): Record<string, string>[] {
-  const rows = $('#specs table tr')
-    .map((_, tr) => [$(tr).find('th, td').map((__, c) => $(c).text().replace(/\s+/g, ' ').trim()).get()])
-    .get() as string[][];
-  const [header, ...body] = rows.filter((r) => r.some(Boolean));
+  const [header, ...body] = tableGrid($, $('#specs table').first()).filter((r) => r.some(Boolean));
   if (!header) return [];
   return body.map((cells) => Object.fromEntries(header.map((h, i) => [h || `col${i}`, cells[i] ?? ''])));
+}
+
+/**
+ * Expands a table into a rectangular grid, copying merged cells (rowspan/colspan) into every
+ * position they cover. Spec tables often merge the first column ("Type", "Club") across rows;
+ * reading cells by index would shift the remaining values one column to the left.
+ */
+function tableGrid($: cheerio.CheerioAPI, table: cheerio.Cheerio<any>): string[][] {
+  const grid: string[][] = [];
+  table.find('tr').each((rowIndex, tr) => {
+    const row = (grid[rowIndex] ??= []);
+    let col = 0;
+    $(tr)
+      .find('th, td')
+      .each((_, cell) => {
+        while (row[col] !== undefined) col++; // skip slots filled by a rowspan from above
+        const text = $(cell).text().replace(/\s+/g, ' ').trim();
+        const rowspan = Math.max(1, Number($(cell).attr('rowspan')) || 1);
+        const colspan = Math.max(1, Number($(cell).attr('colspan')) || 1);
+        for (let r = 0; r < rowspan; r++) {
+          const target = (grid[rowIndex + r] ??= []);
+          for (let c = 0; c < colspan; c++) target[col + c] = text;
+        }
+        col += colspan;
+      });
+  });
+  return grid.map((row) => Array.from(row, (cell) => cell ?? ''));
 }
 
 function parseVideos($: cheerio.CheerioAPI): string[] {

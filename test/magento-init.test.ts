@@ -39,3 +39,25 @@ test('iron set custom-option groups have visible labels and input types', () => 
   assert.equal(page.ironset?.isIronsetProduct, 1);
   assert.equal(page.ironset?.clubInformation?.total_included_clubs, 7);
 });
+
+test('specs: rowspan in the first column is propagated instead of shifting values left', () => {
+  const html = `<div id="specs"><table>
+    <tr><td>Type</td><td>Flex</td><td>Weight</td></tr>
+    <tr><td rowspan="3">Diamana BB 83 HY</td><td>Regular</td><td>83g</td></tr>
+    <tr><td>Stiff</td><td>84g</td></tr>
+    <tr><td>X-Stiff</td><td>88g</td></tr>
+  </table></div>`;
+  assert.deepEqual(parseProductPage(html).specs, [
+    { Type: 'Diamana BB 83 HY', Flex: 'Regular', Weight: '83g' },
+    { Type: 'Diamana BB 83 HY', Flex: 'Stiff', Weight: '84g' },
+    { Type: 'Diamana BB 83 HY', Flex: 'X-Stiff', Weight: '88g' },
+  ]);
+});
+
+test('specs: colspan fills every covered column', () => {
+  const html = `<div id="specs"><table>
+    <tr><td>Club</td><td>Loft</td><td>Lie</td></tr>
+    <tr><td>7 Iron</td><td colspan="2">Adjustable</td></tr>
+  </table></div>`;
+  assert.deepEqual(parseProductPage(html).specs, [{ Club: '7 Iron', Loft: 'Adjustable', Lie: 'Adjustable' }]);
+});

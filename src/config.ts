@@ -8,8 +8,6 @@ export const config = {
   timeoutMs: 30_000,
   maxRetries: 3,
   backoffBaseMs: 1_000,
-  /** Optional: 2ndswing.com answers 406 to non-US traffic. http(s):// or socks5:// */
-  proxyUrl: process.env.PROXY_URL || undefined,
   headers: {
     'user-agent':
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',

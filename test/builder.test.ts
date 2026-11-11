@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { buildProduct, galleryUrl } from '../src/builders/product.ts';
 import { loadCsv } from '../src/lib/csv.ts';
 import { parseProductPage } from '../src/parsers/magento-init.ts';
-import { ProductSchema } from '../src/schema.ts';
+import { ValidProductSchema as ProductSchema } from '../src/schema.ts';
 import { fromVariantMatrix, parseVariants } from '../src/parsers/variants.ts';
 import { fixture } from './helpers.ts';
 
@@ -67,4 +67,33 @@ test('variant matrix: attribute cells index into attributes[].options and round-
   assert.equal(product.variants.rows.length, 660);
   const original = parseVariants(page.spConfig!).variants;
   assert.deepEqual(fromVariantMatrix(product.attributes, product.variants), original);
+});
+
+test('out-of-stock page with price 0: no $0 variant, listedPrice null, still schema-valid', () => {
+  const html = fixture('fenix-9-pro-solar-gpsw')
+    .replace(/"price":"1099\.99"/, '"price":"0"')
+    .replace('https:\\/\\/schema.org\\/InStock', 'https:\\/\\/schema.org\\/OutOfStock');
+  const product = buildProduct(item('FENIX 9 PRO SOLAR GPSW'), parseProductPage(html), null, BASE, meta);
+  assert.equal(product.availability, 'OutOfStock');
+  assert.equal(product.listedPrice, null);
+  assert.equal(product.variants.rows.length, 0);
+  assert.ok(ProductSchema.safeParse(product).success);
+});
+
+test('schema rejects an in-stock product without variants', () => {
+  const product = buildProduct(item('FENIX 9 PRO SOLAR GPSW'), parseProductPage(fixture('fenix-9-pro-solar-gpsw')), null, BASE, meta);
+  product.variants.rows = [];
+  assert.equal(ProductSchema.safeParse(product).success, false);
+});
+
+test('a malformed ld+json image URL is kept as-is instead of failing the product', () => {
+  const html = fixture('fenix-9-pro-solar-gpsw').replace(/"image":"[^"]*"/, '"image":"https:\\/\\/www.2ndswing.com\\/images\\/standard\\/BAD%ZZ.jpg"');
+  const product = buildProduct(item('FENIX 9 PRO SOLAR GPSW'), parseProductPage(html), null, BASE, meta);
+  assert.deepEqual(product.media.images, ['https://www.2ndswing.com/images/standard/BAD%ZZ.jpg']);
+});
+
+test('without a canonical link the fetched page URL is used, never the home page', () => {
+  const html = fixture('fenix-9-pro-solar-gpsw').replace(/<link rel="canonical"[^>]*>/, '');
+  const product = buildProduct(item('FENIX 9 PRO SOLAR GPSW'), parseProductPage(html), null, BASE, meta, `${BASE}/fenix-9-pro-solar-gpsw`);
+  assert.equal(product.url, `${BASE}/fenix-9-pro-solar-gpsw`);
 });

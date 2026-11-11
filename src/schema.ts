@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { CsvItem } from './lib/csv.ts';
 
 const money = z.number().nonnegative().finite();
 
@@ -30,7 +31,7 @@ export const ProductSchema = z.object({
   variants: z
     .object({
       fields: z.array(z.string()),
-      rows: z.array(z.array(z.union([z.string(), z.number(), z.null()]))).min(1),
+      rows: z.array(z.array(z.union([z.string(), z.number(), z.null()]))),
     })
     .refine((m) => m.rows.every((r) => r.length === m.fields.length), 'every row must match fields'),
   customizations: z.array(
@@ -65,6 +66,11 @@ export const ProductSchema = z.object({
   }),
 });
 
+export const ValidProductSchema = ProductSchema.refine(
+  (p) => p.variants.rows.length > 0 || p.availability !== 'InStock',
+  { message: 'an in-stock product must have at least one purchasable variant', path: ['variants', 'rows'] },
+);
+
 export type Product = z.infer<typeof ProductSchema>;
 
 export const VARIANT_BASE_FIELDS = ['childId', 'sku', 'price', 'regularPrice', 'leadTimeDays'] as const;
@@ -88,3 +94,12 @@ export type Unmatched = {
   detail: string;
   triedUrls: string[];
 };
+
+export function toUnmatched(
+  item: CsvItem,
+  reason: Unmatched['reason'],
+  detail: string,
+  triedUrls: string[] = [],
+): Unmatched {
+  return { parentItem: item.parentItem, name: item.name, category: item.category, reason, detail, triedUrls };
+}

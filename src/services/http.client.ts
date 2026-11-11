@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { Agent, ProxyAgent, fetch, type Dispatcher } from 'undici';
@@ -12,7 +12,12 @@ export type FetchResult = {
   ms: number;
   fromCache: boolean;
   attempts: number;
+  /** When the response was fetched from the network (original time for cached responses). */
+  fetchedAt: string;
 };
+
+/** What the pipeline needs from an HTTP client (lets tests pass a fake). */
+export type HttpGetter = { get(url: string): Promise<FetchResult> };
 
 export type HttpClientOptions = {
   headers: Record<string, string>;
@@ -21,6 +26,8 @@ export type HttpClientOptions = {
   backoffBaseMs: number;
   /** Directory for the raw-response cache; null disables caching. */
   cacheDir: string | null;
+  /** false = always hit the network but still write fresh responses (--refresh). */
+  readCache?: boolean;
   proxyUrl?: string;
   connections?: number;
 };
@@ -45,7 +52,7 @@ export class HttpClient {
   }
 
   async get(url: string): Promise<FetchResult> {
-    const cached = await this.readCache(url);
+    const cached = this.opts.readCache === false ? null : await this.readCache(url);
     if (cached) {
       this.stats.fromCache++;
       return cached;
@@ -73,6 +80,7 @@ export class HttpClient {
           ms: Math.round(performance.now() - started),
           fromCache: false,
           attempts: attempt,
+          fetchedAt: new Date().toISOString(),
         };
         if (res.status === 406) throw new GeoBlockedError(url);
         if (RETRYABLE.has(res.status)) {
@@ -103,7 +111,9 @@ export class HttpClient {
     if (!path) return null;
     try {
       const entry = JSON.parse(await readFile(path, 'utf8')) as FetchResult;
-      return { ...entry, ms: 0, fromCache: true, attempts: 0 };
+      // Older cache entries have no fetchedAt; the file's mtime is when it was fetched.
+      const fetchedAt = entry.fetchedAt ?? (await stat(path)).mtime.toISOString();
+      return { ...entry, ms: 0, fromCache: true, attempts: 0, fetchedAt };
     } catch {
       return null;
     }
@@ -113,11 +123,11 @@ export class HttpClient {
     const path = this.cachePath(url);
     if (!path) return;
     await mkdir(this.opts.cacheDir!, { recursive: true });
-    await writeFile(path, JSON.stringify({ url: result.url, status: result.status, body: result.body }));
+    await writeFile(path, JSON.stringify({ url: result.url, status: result.status, body: result.body, fetchedAt: result.fetchedAt }));
   }
 }
 
-class RetryableStatusError extends Error {
+export class RetryableStatusError extends Error {
   constructor(
     readonly status: number,
     readonly retryAfter: string | null,
@@ -126,11 +136,15 @@ class RetryableStatusError extends Error {
   }
 }
 
-/** Exponential backoff with jitter; honours Retry-After (seconds) when the server sends it. */
-function backoffMs(baseMs: number, retry: number, lastError: unknown): number {
+/** Longest wait accepted from a Retry-After header; beyond that the item is retried on our own schedule. */
+const MAX_RETRY_AFTER_MS = 60_000;
+
+/** Exponential backoff with jitter; honours Retry-After (seconds or HTTP date), capped at 60 s. */
+export function backoffMs(baseMs: number, retry: number, lastError: unknown): number {
   if (lastError instanceof RetryableStatusError && lastError.retryAfter) {
-    const seconds = Number(lastError.retryAfter);
-    if (Number.isFinite(seconds)) return seconds * 1000;
+    const header = lastError.retryAfter;
+    const seconds = /^\d+$/.test(header.trim()) ? Number(header) : (Date.parse(header) - Date.now()) / 1000;
+    if (Number.isFinite(seconds)) return Math.min(Math.max(0, seconds * 1000), MAX_RETRY_AFTER_MS);
   }
   const exp = baseMs * 2 ** (retry - 1);
   return exp + Math.random() * exp * 0.3;

@@ -1,42 +1,34 @@
 import { existsSync } from 'node:fs';
-import { parseArgs } from 'node:util';
+import { parseCli, UsageError, USAGE } from './cli.ts';
 import { config } from './config.ts';
 import { loadCsv } from './lib/csv.ts';
 import { summarize } from './lib/metrics.ts';
 import { GeoBlockedError, HttpClient } from './services/http.client.ts';
 import { scrapeAll } from './services/scraper.ts';
-import { writeOutputs, type Output } from './writers.ts';
+import { keepCollectionMetrics, writeOutputs, type Output } from './writers.ts';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
 
-const { values: args } = parseArgs({
-  options: {
-    input: { type: 'string', default: config.inputCsv },
-    out: { type: 'string', default: config.outDir },
-    limit: { type: 'string' },
-    only: { type: 'string', multiple: true },
-    concurrency: { type: 'string', default: String(config.concurrency) },
-    'no-cache': { type: 'boolean', default: false },
-    'variants-csv': { type: 'boolean', default: false },
-  },
-});
-
 async function main(): Promise<void> {
   const started = performance.now();
+  const args = parseCli(process.argv.slice(2), config);
   const proxyUrl = process.env.PROXY_URL || undefined;
-  const concurrency = Math.max(1, Number(args.concurrency));
+  const { concurrency } = args;
 
-  let items = await loadCsv(args.input!);
-  if (args.only?.length) items = items.filter((i) => args.only!.includes(i.parentItem));
-  if (args.limit) items = items.slice(0, Number(args.limit));
-  log(`Scraping ${items.length} products (concurrency ${concurrency}, proxy ${proxyUrl ? 'on' : 'off'}, cache ${args['no-cache'] ? 'off' : 'on'})`);
+  let items = await loadCsv(args.input);
+  if (args.only.length) items = items.filter((i) => args.only.includes(i.parentItem));
+  if (args.limit !== null) items = items.slice(0, args.limit);
+  if (items.length === 0) throw new UsageError('No products selected: check --only / --limit / --input.');
+  const cacheMode = args.noCache ? 'off' : args.refresh ? 'refresh' : 'on';
+  log(`Scraping ${items.length} products (concurrency ${concurrency}, proxy ${proxyUrl ? 'on' : 'off'}, cache ${cacheMode}) -> ${args.out}/`);
 
   const http = new HttpClient({
     headers: config.headers,
     timeoutMs: config.timeoutMs,
     maxRetries: config.maxRetries,
     backoffBaseMs: config.backoffBaseMs,
-    cacheDir: args['no-cache'] ? null : config.cacheDir,
+    cacheDir: args.noCache ? null : config.cacheDir,
+    readCache: !args.refresh,
     proxyUrl,
     connections: concurrency,
   });
@@ -69,8 +61,9 @@ async function main(): Promise<void> {
       },
       products: result.products,
     };
-    const files = await writeOutputs(args.out!, output, [...result.unmatched, ...result.failed], {
-      flatVariants: args['variants-csv'],
+    await keepCollectionMetrics(output, args.out);
+    const files = await writeOutputs(args.out, output, [...result.unmatched, ...result.failed], {
+      flatVariants: args.variantsCsv,
     });
     printSummary(output, files);
   } finally {
@@ -82,7 +75,10 @@ function printSummary({ metadata: m }: Output, files: string[]): void {
   console.table({
     products: { value: `${m.successful} ok / ${m.unmatched} unmatched / ${m.failed} failed (of ${m.totalInput})` },
     variants: { value: `${m.totalVariants} purchasable child SKUs` },
-    runtime: { value: `${(m.runtimeMs / 1000).toFixed(1)} s (${m.productsPerSecond} products/s)` },
+    runtime: { value: `${(m.runtimeMs / 1000).toFixed(1)} s (${m.productsPerSecond} products/s)${m.cachedRun ? ' — network collection' : ''}` },
+    ...(m.cachedRun && {
+      'cached run': { value: `${(m.cachedRun.runtimeMs / 1000).toFixed(1)} s (${m.cachedRun.productsPerSecond} products/s), ${m.cachedRun.requests.fromCache} cache hits` },
+    }),
     network: { value: `p50 ${m.networkMs.p50} ms · p95 ${m.networkMs.p95} ms · n=${m.networkMs.count}` },
     parse: { value: `p50 ${m.parseMs.p50} ms · p95 ${m.parseMs.p95} ms` },
     requests: { value: `${m.requests.network} network · ${m.requests.fromCache} cache · ${m.requests.retries} retries` },
@@ -95,6 +91,11 @@ function log(line: string): void {
 }
 
 main().catch((error) => {
+  if (error instanceof UsageError) {
+    log(`${error.message}\n\n${USAGE}`);
+    process.exitCode = 2;
+    return;
+  }
   if (error instanceof GeoBlockedError) log(`\n${error.message}`);
   else log(`\nFatal: ${error instanceof Error ? error.stack : String(error)}`);
   process.exitCode = 1;

@@ -1,3 +1,6 @@
 node_modules/
 .cache/
 .env
+# Large or local-only outputs
+data/variants.csv
+data/run-log.txt

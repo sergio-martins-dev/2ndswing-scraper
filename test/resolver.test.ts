@@ -18,7 +18,7 @@ function fakeHttp(routes: Record<string, [number, string, string?]>) {
     async get(url: string): Promise<FetchResult> {
       calls.push(url);
       const [status, body, finalUrl] = routes[url] ?? [404, '<html><body>not found</body></html>'];
-      return { url: finalUrl ?? url, status, body, ms: 1, fromCache: false, attempts: 1 };
+      return { url: finalUrl ?? url, status, body, ms: 1, fromCache: false, attempts: 1, fetchedAt: '2026-11-11T00:00:00.000Z' };
     },
   };
 }

@@ -1,11 +1,10 @@
 import pLimit from 'p-limit';
 import { buildProduct, galleryUrl } from '../builders/product.ts';
 import type { CsvItem } from '../lib/csv.ts';
-import { ProductSchema, type Product, type Unmatched } from '../schema.ts';
-import { GeoBlockedError, type FetchResult } from './http.client.ts';
+import { siteSlug } from '../lib/slug.ts';
+import { toUnmatched, ValidProductSchema, type Product, type Unmatched } from '../schema.ts';
+import { GeoBlockedError, type HttpGetter } from './http.client.ts';
 import { Resolver } from './resolver.ts';
-
-type Getter = { get(url: string): Promise<FetchResult> };
 
 export type ScrapeResult = {
   products: Product[];
@@ -27,9 +26,9 @@ export type ScrapeOptions = {
  * Runs every CSV row through resolve -> gallery -> build -> validate with bounded concurrency.
  * One bad product never stops the run; a geo-block (406) does, because every request would fail.
  */
-export async function scrapeAll(items: CsvItem[], http: Getter, opts: ScrapeOptions): Promise<ScrapeResult> {
+export async function scrapeAll(items: CsvItem[], http: HttpGetter, opts: ScrapeOptions): Promise<ScrapeResult> {
   const networkMs: number[] = [];
-  const timed: Getter = {
+  const timed: HttpGetter = {
     async get(url) {
       const res = await http.get(url);
       if (!res.fromCache) networkMs.push(res.ms);
@@ -40,15 +39,28 @@ export async function scrapeAll(items: CsvItem[], http: Getter, opts: ScrapeOpti
   const result: ScrapeResult = { products: [], unmatched: [], failed: [], networkMs, parseMs: [] };
   const limit = pLimit(opts.concurrency);
   let done = 0;
+  let abort: GeoBlockedError | null = null;
 
-  await Promise.all(
+  // On a geo-block every queued task returns immediately (the `abort` check), the few in-flight
+  // ones hit the same 406 (never retried), and the error is reported once all have settled.
+  // (p-limit's clearQueue() is not used: it leaves the dropped tasks' promises pending forever.)
+  const settled = await Promise.allSettled(
     items.map((item) =>
       limit(async () => {
-        const status = await scrapeOne(item, timed, resolver, opts.baseUrl, result);
-        opts.onProgress?.(++done, items.length, item, status);
+        if (abort) return;
+        try {
+          const status = await scrapeOne(item, timed, resolver, opts.baseUrl, result);
+          opts.onProgress?.(++done, items.length, item, status);
+        } catch (error) {
+          if (!(error instanceof GeoBlockedError)) throw error;
+          abort ??= error;
+        }
       }),
     ),
   );
+  if (abort) throw abort;
+  const unexpected = settled.find((s): s is PromiseRejectedResult => s.status === 'rejected');
+  if (unexpected) throw unexpected.reason; // a bug, not a per-product failure: do not hide it
 
   // Keep the CSV order in the output, regardless of completion order.
   const order = new Map(items.map((item, i) => [item.parentItem, i]));
@@ -62,13 +74,13 @@ export async function scrapeAll(items: CsvItem[], http: Getter, opts: ScrapeOpti
 
 async function scrapeOne(
   item: CsvItem,
-  http: Getter,
+  http: HttpGetter,
   resolver: Resolver,
   baseUrl: string,
   out: ScrapeResult,
 ): Promise<'ok' | 'unmatched' | 'failed'> {
-  const failure = (reason: Unmatched['reason'], detail: string): 'failed' => {
-    out.failed.push({ parentItem: item.parentItem, name: item.name, category: item.category, reason, detail, triedUrls: [] });
+  const failure = (reason: Unmatched['reason'], detail: string, triedUrls: string[]): 'failed' => {
+    out.failed.push(toUnmatched(item, reason, detail, triedUrls));
     return 'failed';
   };
 
@@ -77,7 +89,7 @@ async function scrapeOne(
     resolution = await resolver.resolve(item);
   } catch (error) {
     if (error instanceof GeoBlockedError) throw error;
-    return failure('http_error', message(error));
+    return failure('http_error', message(error), [`${baseUrl}/${siteSlug(item.parentItem)}`]);
   }
   if (!resolution.ok) {
     out.unmatched.push(resolution.unmatched);
@@ -91,21 +103,21 @@ async function scrapeOne(
   try {
     product = buildProduct(item, resolution.page, gallery.images, baseUrl, {
       resolvedVia: resolution.via,
-      fetchedAt: new Date().toISOString(),
+      fetchedAt: resolution.fetch.fetchedAt,
       httpMs: resolution.fetch.ms + gallery.ms,
       parseMs: 0,
       fromCache: resolution.fetch.fromCache,
-    });
+    }, resolution.fetch.url);
   } catch (error) {
-    return failure('parse_error', message(error));
+    return failure('parse_error', message(error), [resolution.fetch.url]);
   }
   const parseMs = Math.round((resolution.parseMs + performance.now() - started) * 10) / 10;
   product.meta.parseMs = parseMs;
 
-  const valid = ProductSchema.safeParse(product);
+  const valid = ValidProductSchema.safeParse(product);
   if (!valid.success) {
     const issues = valid.error.issues.slice(0, 3).map((i) => `${i.path.join('.')}: ${i.message}`);
-    return failure('schema_error', issues.join('; '));
+    return failure('schema_error', issues.join('; '), [resolution.fetch.url]);
   }
   out.parseMs.push(parseMs);
   out.products.push(valid.data);
@@ -113,7 +125,7 @@ async function scrapeOne(
 }
 
 /** Gallery is optional enrichment: any failure falls back to the ld+json image. */
-async function fetchGallery(http: Getter, baseUrl: string, parentItem: string): Promise<{ images: string[] | null; ms: number }> {
+async function fetchGallery(http: HttpGetter, baseUrl: string, parentItem: string): Promise<{ images: string[] | null; ms: number }> {
   try {
     const res = await http.get(galleryUrl(baseUrl, parentItem));
     if (res.status !== 200) return { images: null, ms: res.ms };

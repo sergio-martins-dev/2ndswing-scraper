@@ -1,8 +1,10 @@
 import { createWriteStream } from 'node:fs';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { gzipSync } from 'node:zlib';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { once } from 'node:events';
 import type { Summary } from './lib/metrics.ts';
+import { configurationPrice } from './parsers/customizations.ts';
 import { fromVariantMatrix } from './parsers/variants.ts';
 import type { Product, Unmatched } from './schema.ts';
 
@@ -21,12 +23,20 @@ export type Output = {
     networkMs: Summary;
     parseMs: Summary;
     requests: { network: number; fromCache: number; retries: number };
+    /** Present when this file was regenerated from the disk cache (no network). */
+    cachedRun?: {
+      generatedAt: string;
+      runtimeMs: number;
+      productsPerSecond: number;
+      parseMs: Summary;
+      requests: { network: number; fromCache: number; retries: number };
+    };
   };
   products: Product[];
 };
 
 /**
- * output.json      full model (variant matrices kept one row per line)
+ * output.json      full model (variant matrices kept one row per line) + output.json.gz
  * products.csv     one row per product — quick overview for spreadsheets
  * unmatched.csv    every CSV row that did not produce a product, with the reason
  * variants.csv     optional (flatVariants): one row per purchasable child, labels expanded (~150 MB)
@@ -38,15 +48,52 @@ export async function writeOutputs(
   { flatVariants = false } = {},
 ): Promise<string[]> {
   await mkdir(dir, { recursive: true });
-  const files = [join(dir, 'output.json'), join(dir, 'products.csv'), join(dir, 'unmatched.csv')];
-  await writeFile(files[0]!, compactJson(output));
-  await writeFile(files[1]!, productsCsv(output.products));
-  await writeFile(files[2]!, toCsv(unmatchedRows(notScraped)));
+  const files = [join(dir, 'output.json'), join(dir, 'output.json.gz'), join(dir, 'products.csv'), join(dir, 'unmatched.csv')];
+  const json = compactJson(output);
+  await writeFile(files[0]!, json);
+  await writeFile(files[1]!, gzipSync(json, { level: 9 }));
+  await writeFile(files[2]!, productsCsv(output.products));
+  await writeFile(files[3]!, toCsv(unmatchedRows(notScraped)));
   if (flatVariants) {
     files.push(join(dir, 'variants.csv'));
-    await writeVariantsCsv(files[3]!, output.products);
+    await writeVariantsCsv(files[4]!, output.products);
   }
   return files;
+}
+
+/**
+ * A run served entirely from the disk cache says nothing about network cost. In that case keep the
+ * timings of the last network run over the same input and report this run under `cachedRun`.
+ */
+export async function keepCollectionMetrics(output: Output, outDir: string): Promise<void> {
+  const current = output.metadata;
+  if (current.requests.network > 0) return;
+  let previous: Output['metadata'] | undefined;
+  try {
+    previous = JSON.parse(await readFile(join(outDir, 'output.json'), 'utf8')).metadata;
+  } catch {
+    return; // no previous collection to carry over
+  }
+  // Only inherit from a network run over the same input; an old or partial file is ignored.
+  if (!previous?.requests?.network || previous.totalInput !== current.totalInput) return;
+  output.metadata = {
+    ...current,
+    scrapedAt: previous.scrapedAt,
+    runtimeMs: previous.runtimeMs,
+    productsPerSecond: previous.productsPerSecond,
+    concurrency: previous.concurrency,
+    proxy: previous.proxy,
+    networkMs: previous.networkMs,
+    parseMs: previous.parseMs,
+    requests: previous.requests,
+    cachedRun: {
+      generatedAt: new Date().toISOString(),
+      runtimeMs: current.runtimeMs,
+      productsPerSecond: current.productsPerSecond,
+      parseMs: current.parseMs,
+      requests: current.requests,
+    },
+  };
 }
 
 /** Pretty JSON, but arrays of primitives (matrix rows, URL lists) stay on one line. */
@@ -63,12 +110,20 @@ function productsCsv(products: Product[]): string {
     'variant_count', 'attributes', 'customization_groups', 'pricing_model', 'default_club_count',
     'image_count', 'video_count', 'availability',
   ];
-  const priceIdx = 2;
   const rows = products.map((p) => {
-    const prices = p.variants.rows.map((r) => Number(r[priceIdx]));
+    const priceIdx = p.variants.fields.indexOf('price');
+    // A loop, not Math.min(...prices): spreading 100k+ values overflows the call stack.
+    let min = Infinity;
+    let max = -Infinity;
+    for (const row of p.variants.rows) {
+      const price = Number(row[priceIdx]);
+      if (price < min) min = price;
+      if (price > max) max = price;
+    }
+    const hasPrices = p.variants.rows.length > 0;
     return [
       p.parentItem, p.name, p.brand, p.category, p.url, p.listedPrice ?? '',
-      Math.min(...prices), Math.max(...prices), p.variants.rows.length,
+      hasPrices ? min : '', hasPrices ? max : '', p.variants.rows.length,
       p.attributes.map((a) => `${a.label} (${a.options.length})`).join('; '),
       p.customizations.map((c) => `${c.label} (${c.options.length})`).join('; '),
       p.pricing.model, p.pricing.defaultClubCount, p.media.images.length, p.media.videos.length, p.availability ?? '',
@@ -87,14 +142,13 @@ async function writeVariantsCsv(path: string, products: Product[]): Promise<void
     'lead_time_days', 'pricing_model', 'default_club_count', 'default_configuration_total',
   ]]));
   for (const p of products) {
-    const mult = p.pricing.model === 'per_club' ? p.pricing.defaultClubCount : 1;
     const labels = new Map(p.attributes.map((a) => [a.code, a.label]));
     for (const v of fromVariantMatrix(p.attributes, p.variants)) {
       await write(toCsv([[
         p.parentItem, p.name, p.category, v.childId, v.sku,
         Object.entries(v.selections).map(([code, value]) => `${labels.get(code) ?? code}: ${value}`).join('; '),
         v.price, v.regularPrice ?? '', v.leadTimeDays ?? '', p.pricing.model, p.pricing.defaultClubCount,
-        Math.round(v.price * mult * 100) / 100,
+        configurationPrice(v.price, [], p.pricing),
       ]]));
     }
   }
