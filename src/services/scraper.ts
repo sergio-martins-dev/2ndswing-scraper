@@ -96,23 +96,17 @@ async function scrapeOne(
     return 'unmatched';
   }
 
-  const gallery = await fetchGallery(http, baseUrl, item.parentItem);
+  const galleryImages = await fetchGallery(http, baseUrl, item.parentItem);
 
   const started = performance.now();
   let product: Product;
   try {
-    product = buildProduct(item, resolution.page, gallery.images, baseUrl, {
-      resolvedVia: resolution.via,
-      fetchedAt: resolution.fetch.fetchedAt,
-      httpMs: resolution.fetch.ms + gallery.ms,
-      parseMs: 0,
-      fromCache: resolution.fetch.fromCache,
-    }, resolution.fetch.url);
+    const meta = { resolvedVia: resolution.via, fetchedAt: resolution.fetch.fetchedAt };
+    product = buildProduct(item, resolution.page, galleryImages, baseUrl, meta, resolution.fetch.url);
   } catch (error) {
     return failure('parse_error', message(error), [resolution.fetch.url]);
   }
   const parseMs = Math.round((resolution.parseMs + performance.now() - started) * 10) / 10;
-  product.meta.parseMs = parseMs;
 
   const valid = ValidProductSchema.safeParse(product);
   if (!valid.success) {
@@ -125,16 +119,15 @@ async function scrapeOne(
 }
 
 /** Gallery is optional enrichment: any failure falls back to the ld+json image. */
-async function fetchGallery(http: HttpGetter, baseUrl: string, parentItem: string): Promise<{ images: string[] | null; ms: number }> {
+async function fetchGallery(http: HttpGetter, baseUrl: string, parentItem: string): Promise<string[] | null> {
   try {
     const res = await http.get(galleryUrl(baseUrl, parentItem));
-    if (res.status !== 200) return { images: null, ms: res.ms };
+    if (res.status !== 200) return null;
     const names = (JSON.parse(res.body) as { imageNames?: unknown }).imageNames;
-    const images = Array.isArray(names) ? names.filter((n): n is string => typeof n === 'string' && n !== '') : null;
-    return { images, ms: res.ms };
+    return Array.isArray(names) ? names.filter((n): n is string => typeof n === 'string' && n !== '') : null;
   } catch (error) {
     if (error instanceof GeoBlockedError) throw error;
-    return { images: null, ms: 0 };
+    return null;
   }
 }
 

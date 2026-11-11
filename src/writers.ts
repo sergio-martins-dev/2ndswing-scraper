@@ -1,6 +1,6 @@
 import { createWriteStream } from 'node:fs';
 import { gzipSync } from 'node:zlib';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { once } from 'node:events';
 import type { Summary } from './lib/metrics.ts';
@@ -23,14 +23,6 @@ export type Output = {
     networkMs: Summary;
     parseMs: Summary;
     requests: { network: number; fromCache: number; retries: number };
-    /** Present when this file was regenerated from the disk cache (no network). */
-    cachedRun?: {
-      generatedAt: string;
-      runtimeMs: number;
-      productsPerSecond: number;
-      parseMs: Summary;
-      requests: { network: number; fromCache: number; retries: number };
-    };
   };
   products: Product[];
 };
@@ -59,41 +51,6 @@ export async function writeOutputs(
     await writeVariantsCsv(files[4]!, output.products);
   }
   return files;
-}
-
-/**
- * A run served entirely from the disk cache says nothing about network cost. In that case keep the
- * timings of the last network run over the same input and report this run under `cachedRun`.
- */
-export async function keepCollectionMetrics(output: Output, outDir: string): Promise<void> {
-  const current = output.metadata;
-  if (current.requests.network > 0) return;
-  let previous: Output['metadata'] | undefined;
-  try {
-    previous = JSON.parse(await readFile(join(outDir, 'output.json'), 'utf8')).metadata;
-  } catch {
-    return; // no previous collection to carry over
-  }
-  // Only inherit from a network run over the same input; an old or partial file is ignored.
-  if (!previous?.requests?.network || previous.totalInput !== current.totalInput) return;
-  output.metadata = {
-    ...current,
-    scrapedAt: previous.scrapedAt,
-    runtimeMs: previous.runtimeMs,
-    productsPerSecond: previous.productsPerSecond,
-    concurrency: previous.concurrency,
-    proxy: previous.proxy,
-    networkMs: previous.networkMs,
-    parseMs: previous.parseMs,
-    requests: previous.requests,
-    cachedRun: {
-      generatedAt: new Date().toISOString(),
-      runtimeMs: current.runtimeMs,
-      productsPerSecond: current.productsPerSecond,
-      parseMs: current.parseMs,
-      requests: current.requests,
-    },
-  };
 }
 
 /** Pretty JSON, but arrays of primitives (matrix rows, URL lists) stay on one line. */

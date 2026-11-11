@@ -8,7 +8,7 @@ import { fromVariantMatrix, parseVariants } from '../src/parsers/variants.ts';
 import { fixture } from './helpers.ts';
 
 const BASE = 'https://www.2ndswing.com';
-const meta = { resolvedVia: 'root_slug', fetchedAt: '2026-11-11T00:00:00.000Z', httpMs: 1, parseMs: 1, fromCache: true } as const;
+const meta = { resolvedVia: 'root_slug', fetchedAt: '2026-11-11T00:00:00.000Z' } as const;
 const items = await loadCsv('data/input.csv');
 const item = (sku: string) => items.find((i) => i.parentItem === sku)!;
 

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
@@ -9,12 +9,12 @@ import { buildProduct } from '../src/builders/product.ts';
 import { loadCsv } from '../src/lib/csv.ts';
 import { summarize } from '../src/lib/metrics.ts';
 import { parseProductPage } from '../src/parsers/magento-init.ts';
-import { compactJson, keepCollectionMetrics, writeOutputs, type Output } from '../src/writers.ts';
+import { compactJson, writeOutputs, type Output } from '../src/writers.ts';
 import { fixture } from './helpers.ts';
 
 const BASE = 'https://www.2ndswing.com';
 const items = await loadCsv('data/input.csv');
-const meta = { resolvedVia: 'root_slug', fetchedAt: '2026-11-11T00:00:00.000Z', httpMs: 1, parseMs: 1, fromCache: false } as const;
+const meta = { resolvedVia: 'root_slug', fetchedAt: '2026-11-11T00:00:00.000Z' } as const;
 const product = (slug: string, sku: string) =>
   buildProduct(items.find((i) => i.parentItem === sku)!, parseProductPage(fixture(slug)), null, BASE, meta);
 
@@ -82,50 +82,6 @@ test('variants.csv is not written by default; empty variant lists do not break p
   const [row]: Record<string, string>[] = parse(await readFile(join(dir, 'products.csv'), 'utf8'), { columns: true });
   assert.equal(row!.min_variant_price, '');
   assert.equal(row!.variant_count, '0');
-  await rm(dir, { recursive: true, force: true });
-});
-
-test('keepCollectionMetrics: a cache-only run keeps the last network metrics and adds cachedRun', async () => {
-  const dir = await tmp();
-  const live = metadata(1884, 484276);
-  await writeFile(join(dir, 'output.json'), JSON.stringify({ metadata: live, products: [] }));
-
-  const output: Output = { metadata: metadata(0, 22000), products: [] };
-  await keepCollectionMetrics(output, dir);
-  assert.equal(output.metadata.runtimeMs, 484276);
-  assert.deepEqual(output.metadata.requests, live.requests);
-  assert.deepEqual(output.metadata.networkMs, live.networkMs);
-  assert.equal(output.metadata.scrapedAt, live.scrapedAt);
-  assert.equal(output.metadata.cachedRun?.runtimeMs, 22000);
-  assert.equal(output.metadata.cachedRun?.requests.fromCache, 4);
-  await rm(dir, { recursive: true, force: true });
-});
-
-test('keepCollectionMetrics leaves metadata alone for network runs or without a previous file', async () => {
-  const dir = await tmp();
-  const network: Output = { metadata: metadata(5, 1000), products: [] };
-  await keepCollectionMetrics(network, dir);
-  assert.equal(network.metadata.cachedRun, undefined);
-
-  const cachedNoHistory: Output = { metadata: metadata(0, 22000), products: [] };
-  await keepCollectionMetrics(cachedNoHistory, dir);
-  assert.equal(cachedNoHistory.metadata.runtimeMs, 22000);
-  assert.equal(cachedNoHistory.metadata.cachedRun, undefined);
-  await rm(dir, { recursive: true, force: true });
-});
-
-test('keepCollectionMetrics ignores a previous file from a different input or an older schema', async () => {
-  const dir = await tmp();
-  await writeFile(join(dir, 'output.json'), JSON.stringify({ metadata: { ...metadata(1884, 484276), totalInput: 960 }, products: [] }));
-  const partial: Output = { metadata: { ...metadata(0, 900), totalInput: 20 }, products: [] };
-  await keepCollectionMetrics(partial, dir);
-  assert.equal(partial.metadata.runtimeMs, 900);
-  assert.equal(partial.metadata.cachedRun, undefined);
-
-  await writeFile(join(dir, 'output.json'), JSON.stringify({ metadata: { scrapedAt: 'x' }, products: [] }));
-  const cached: Output = { metadata: metadata(0, 900), products: [] };
-  await keepCollectionMetrics(cached, dir); // must not throw
-  assert.equal(cached.metadata.runtimeMs, 900);
   await rm(dir, { recursive: true, force: true });
 });
 

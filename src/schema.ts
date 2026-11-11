@@ -57,12 +57,10 @@ export const ProductSchema = z.object({
     formula: z.string(),
   }),
   media: z.object({ images: z.array(z.url()), videos: z.array(z.url()) }),
+  /** Provenance: how the page was found and when it was downloaded. Run timings live in metadata. */
   meta: z.object({
     resolvedVia: z.enum(['root_slug', 'model_page']),
     fetchedAt: z.string(),
-    httpMs: z.number().nonnegative(),
-    parseMs: z.number().nonnegative(),
-    fromCache: z.boolean(),
   }),
 });
 

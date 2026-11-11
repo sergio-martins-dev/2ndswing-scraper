@@ -5,7 +5,7 @@ import { loadCsv } from './lib/csv.ts';
 import { summarize } from './lib/metrics.ts';
 import { GeoBlockedError, HttpClient } from './services/http.client.ts';
 import { scrapeAll } from './services/scraper.ts';
-import { keepCollectionMetrics, writeOutputs, type Output } from './writers.ts';
+import { writeOutputs, type Output } from './writers.ts';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
 
@@ -61,7 +61,6 @@ async function main(): Promise<void> {
       },
       products: result.products,
     };
-    await keepCollectionMetrics(output, args.out);
     const files = await writeOutputs(args.out, output, [...result.unmatched, ...result.failed], {
       flatVariants: args.variantsCsv,
     });
@@ -75,10 +74,7 @@ function printSummary({ metadata: m }: Output, files: string[]): void {
   console.table({
     products: { value: `${m.successful} ok / ${m.unmatched} unmatched / ${m.failed} failed (of ${m.totalInput})` },
     variants: { value: `${m.totalVariants} purchasable child SKUs` },
-    runtime: { value: `${(m.runtimeMs / 1000).toFixed(1)} s (${m.productsPerSecond} products/s)${m.cachedRun ? ' — network collection' : ''}` },
-    ...(m.cachedRun && {
-      'cached run': { value: `${(m.cachedRun.runtimeMs / 1000).toFixed(1)} s (${m.cachedRun.productsPerSecond} products/s), ${m.cachedRun.requests.fromCache} cache hits` },
-    }),
+    runtime: { value: `${(m.runtimeMs / 1000).toFixed(1)} s (${m.productsPerSecond} products/s)` },
     network: { value: `p50 ${m.networkMs.p50} ms · p95 ${m.networkMs.p95} ms · n=${m.networkMs.count}` },
     parse: { value: `p50 ${m.parseMs.p50} ms · p95 ${m.parseMs.p95} ms` },
     requests: { value: `${m.requests.network} network · ${m.requests.fromCache} cache · ${m.requests.retries} retries` },

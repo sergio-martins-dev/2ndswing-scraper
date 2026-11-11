@@ -56,7 +56,6 @@ test('scrapes, classifies and keeps CSV order regardless of completion order', a
   const [trtl, pro] = result.products;
   assert.equal(trtl!.media.images.length, 2);
   assert.equal(pro!.pricing.model, 'per_club');
-  assert.equal(pro!.meta.fromCache, true);
   assert.ok(result.parseMs.length === 2);
 });
 

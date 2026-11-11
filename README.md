@@ -109,8 +109,7 @@ almost all of the runtime; parsing adds up to ~4% of it (10–12 ms per product)
 
 `performance.now()` around every network request (connect, response and body) and around each
 product's parse/build step. Percentiles are nearest-rank. Results are printed at the end of the run
-and stored in `output.json → metadata`. When a run is served entirely from the cache, `metadata`
-keeps the numbers of the last network run and reports the cached run under `metadata.cachedRun`.
+and stored in `output.json → metadata` (`requests.fromCache` tells a cached run from a live one).
 
 | Run | Wall time | Requests | Retries | Network p50 / p95 | Result |
 |---|---|---|---|---|---|
@@ -162,7 +161,7 @@ Each product in `output.json` (abridged):
   "specs": [{ "Loft": "9°", "Length": "45.75\"", "Lie": "59°", "Head Volume": "460cc", "Swing Weight": "D3", "Hand": "RH Only" }, ...],
   "media": { "images": ["https://www.2ndswing.com/images/standard/ZXI%20RKT%20MAX%20DVR.jpg", ...],
              "videos": ["https://www.youtube.com/watch?v=ThtESvbOyBI"] },
-  "meta": { "resolvedVia": "root_slug", "fetchedAt": "...", "httpMs": ..., "parseMs": ..., "fromCache": false }
+  "meta": { "resolvedVia": "root_slug", "fetchedAt": "..." }
 }
 ```
 
